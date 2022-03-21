@@ -1,0 +1,160 @@
+.contenuto {
+  border-left: 1px dashed #737373;
+  border-right: 1px dashed #737373;
+  margin: 0px 15%;
+  width: 70%;
+}
+
+.mainContenitoreSez1 {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.titolo {
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.titolo p {
+  text-align: center;
+  color: #333333;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.lineaTitolo {
+  position: absolute;
+  background-color: #cae32d;
+  bottom: 5px;
+  height: 30px;
+  width: 100%;
+  z-index: -1;
+}
+
+.contenitoreMainBtn {
+  margin-bottom: 250px;
+  position: relative;
+}
+
+.mainBtn {
+  position: absolute;
+  color: #333333;
+  text-decoration: none;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  border: 0.2px solid #cae32d;
+  background-color: #c4c4c4;
+  height: 50px;
+  line-height: 50px;
+  width: 200px;
+  left: 0;
+  right: 0;
+}
+
+.mainBtnStile {
+  position: absolute;
+  background-color: #9d9d9d;
+  border: 0.2px solid #cae32d;
+  color: #333333;
+  margin-left: auto;
+  margin-right: auto;
+  height: 50px;
+  width: 200px;
+  margin-top: 8px;
+  z-index: -1;
+  left: 0;
+  right: 0;
+}
+
+.mainBtn:hover {
+  margin-top: 6px;
+}
+
+.contenitoreKiki {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+}
+
+.kiki {
+  background: url(./../../assets/img/home/kiki.svg) no-repeat left top;
+  height: 90px;
+  width: 90px;
+  -webkit-animation: kikiWaking 1s steps(5) infinite;
+          animation: kikiWaking 1s steps(5) infinite;
+}
+
+.terra {
+  position: relative;
+  background-color: #333333;
+  height: 500px;
+}
+
+@-webkit-keyframes kikiWaking {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -450px 0;
+  }
+}
+
+@keyframes kikiWaking {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -450px 0;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .contenuto {
+    margin: 0 7.5%;
+    width: 85%;
+  }
+  .lineaTitolo {
+    bottom: 0;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .lineaTitolo {
+    bottom: -3px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .tabs {
+    display: none;
+  }
+  .lineaTitolo {
+    bottom: -5px;
+  }
+  .mainBtn,
+  .mainBtnStile {
+    height: 45px;
+    line-height: 45px;
+    width: 170px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .contenuto {
+    margin: 0;
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,156 @@
+$colorePrimario: #333333;
+$coloreSecondario: #cae32d;
+
+@font-face {
+  font-family: forwardFont;
+  src: url("./../../assets/fonts/forwardFont.TTF");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+body {
+  font-family: forwardFont;
+  min-width: 380px;
+
+  a {
+    text-decoration: none;
+    color: $colorePrimario;
+  }
+}
+
+/**********************************************************************/
+/***** navbar *****/
+
+.navBar {
+  border-bottom: 1px dashed #737373;
+  color: $colorePrimario;
+  padding: 0 15%;
+}
+
+.contenutoNavBar {
+  display: flex;
+  line-height: 60px;
+}
+
+.logo {
+  display: inline-block;
+  background-image: url(./../../assets/img/main/logo.png);
+  height: 64px;
+  width: 64px;
+}
+
+.mainContenutoNavBar {
+  display: inline-block;
+  border-left: 1px dashed #737373;
+  width: 100%;
+
+  span {
+    cursor: pointer;
+    margin-right: 30px;
+  }
+}
+
+.contenitoreMenuLogin {
+  border-right: 1px dashed #737373;
+}
+
+.login {
+  flex-shrink: 1;
+
+  a {
+    border: solid 1px $colorePrimario;
+    padding: 3px 20px;
+  }
+}
+
+.menu {
+  display: none;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  width: 70px;
+  transform: scale(0.7);
+  cursor: pointer;
+}
+
+label span {
+  background: $colorePrimario;
+  height: 7px;
+  margin: 7px 0;
+  transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.menuBar:nth-of-type(1) {
+  width: 50%;
+}
+
+.menuBar:nth-of-type(2) {
+  width: 100%;
+}
+
+.menuBar:nth-of-type(3) {
+  width: 75%;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.menuInput:checked ~ .menuBar:nth-of-type(1) {
+  transform-origin: bottom;
+  transform: rotatez(45deg) translate(8px, 0px);
+}
+
+.menuInput:checked ~ .menuBar:nth-of-type(2) {
+  transform-origin: top;
+  transform: rotatez(-45deg);
+}
+
+.menuInput:checked ~ .menuBar:nth-of-type(3) {
+  transform-origin: bottom;
+  width: 50%;
+  transform: translate(30px, -11px) rotatez(45deg);
+}
+
+/**********************************************************************/
+/***** scrollbar *****/
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9d9d9d;
+}
+
+@media (max-width: 1199.98px) {
+  .navBar {
+    padding: 0 7.5%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .menu {
+    display: block;
+  }
+  .login {
+    display: none;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .navBar {
+    padding: 0;
+  }
+}
