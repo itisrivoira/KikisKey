@@ -2,7 +2,8 @@ import pygame
 
 # importo gli schermi
 from screens.menu.menu import menuScreen
-from utilities.musica import playMusic
+
+from utilities.music import music
 
 # inizializzo pygame
 pygame.init()
@@ -23,9 +24,11 @@ pygame.display.set_caption("Kiki's Key")
 icona = pygame.image.load('assets/img/icona.png')
 pygame.display.set_icon(icona)
 
-#musica di sottofondo
-playMusic()
+
+# avvio musica di sottofondo
+musicaSottofondo = music(True, "assets/music/musica.mp3", 0.5)
+musicaSottofondo.playMusic()
 
 
 # creo sulla finestra il menu di gioco attraverso la funzione "menuScreen" 
-menuScreen(finestra, OFFSET_FINESTRA, FPS)
+menuScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS)

@@ -2,7 +2,7 @@ import pygame
 import sys
 
 # definisco la funzione per la creazione del menu di gioco 
-def menuScreen(finestra, OFFSET_FINESTRA, FPS):
+def menuScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     # carico l'immagini 
     immagini = {
         'sfondoImg' : pygame.image.load('screens/menu/assets/sfondo.png'),
@@ -20,7 +20,7 @@ def menuScreen(finestra, OFFSET_FINESTRA, FPS):
     while True:
         finestra.blit(immagini['sfondoImg'], (0,0))
         mini=immagini['miniSfondo']
-        mini=pygame.transform.scale(mini, (640*OFFSET_FINESTRA, 360*OFFSET_FINESTRA))
+        mini=pygame.transform.scale(mini, (int(640*OFFSET_FINESTRA), int(360*OFFSET_FINESTRA)))
         finestra.blit(mini,(620*OFFSET_FINESTRA,300*OFFSET_FINESTRA))
         # catturo la posizione del mouse 
         posizioneMouse = pygame.mouse.get_pos()
@@ -72,10 +72,10 @@ def menuScreen(finestra, OFFSET_FINESTRA, FPS):
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if giocaBtn.controllaSeCliccato(posizioneMouse):
-                    giocaScreen(finestra, OFFSET_FINESTRA, FPS)
+                    giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS)
 
                 if opzioniBtn.controllaSeCliccato(posizioneMouse):
-                    opzioniScreen(finestra, OFFSET_FINESTRA, FPS)
+                    opzioniScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS)
 
                 if esciBtn.controllaSeCliccato(posizioneMouse):
                     pygame.quit()
@@ -91,6 +91,7 @@ def menuScreen(finestra, OFFSET_FINESTRA, FPS):
 from utilities.font import getFont
 from utilities.btn import btn
 from utilities.resizeImgs import resizeImgs
+from utilities.music import music
 
 # importo gli schermi
 from screens.game.game import giocaScreen

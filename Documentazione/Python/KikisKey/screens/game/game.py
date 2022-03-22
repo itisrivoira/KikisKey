@@ -5,7 +5,7 @@ import sys
 from utilities.font import getFont
 from utilities.btn import btn
 
-def giocaScreen(finestra, OFFSET_FINESTRA, FPS):
+def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
 
     while True:
         finestra.fill("black")

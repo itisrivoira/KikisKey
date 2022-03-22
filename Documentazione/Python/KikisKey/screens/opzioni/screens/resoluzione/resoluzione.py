@@ -1,6 +1,6 @@
 import pygame
 
-def resoluzioneScreen(finestra, OFFSET_FINESTRA, FPS):
+def resoluzioneScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     # carico l'immagini 
     immagini = {
         'sfondoImg' : pygame.image.load('screens/opzioni/screens/resoluzione/assets/sfondo.png'),
@@ -82,22 +82,22 @@ def resoluzioneScreen(finestra, OFFSET_FINESTRA, FPS):
                     OFFSET_FINESTRA = 0.8 
                     finestra = pygame.display.set_mode((int(1280 * OFFSET_FINESTRA), int(720 * OFFSET_FINESTRA)))
                     immagini = resizeImgs(immagini, OFFSET_FINESTRA)  
-                    menuScreen(finestra, OFFSET_FINESTRA, FPS)
+                    menuScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS)
 
                 if resoluzione2Btn.controllaSeCliccato(posizioneMouse):
                     OFFSET_FINESTRA = 1
                     finestra = pygame.display.set_mode((int(1280 * OFFSET_FINESTRA), int(720 * OFFSET_FINESTRA)))
                     immagini = resizeImgs(immagini, OFFSET_FINESTRA)  
-                    menuScreen(finestra, OFFSET_FINESTRA, FPS)
+                    menuScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS)
 
                 if resoluzione3Btn.controllaSeCliccato(posizioneMouse):
                     OFFSET_FINESTRA = 1.2
                     finestra = pygame.display.set_mode((int(1280 * OFFSET_FINESTRA), int(720 * OFFSET_FINESTRA)))
                     immagini = resizeImgs(immagini, OFFSET_FINESTRA)  
-                    menuScreen(finestra, OFFSET_FINESTRA, FPS)
+                    menuScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS)
 
                 if indietroBtn.controllaSeCliccato(posizioneMouse):
-                    opzioniScreen(finestra, OFFSET_FINESTRA, FPS)
+                    opzioniScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS)
 
    
 

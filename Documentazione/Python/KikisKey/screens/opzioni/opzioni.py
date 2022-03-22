@@ -1,18 +1,14 @@
-import pygame
-import sys
-from utilities.musica import playMusic, stop
+import pygame, sys
+
 
 # definisco la funzione per la creazione dello schermo opzioni
-def opzioniScreen(finestra, OFFSET_FINESTRA, FPS):
+def opzioniScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     # carico l'immagini 
     immagini = {
-        'sfondoImg' : pygame.image.load('screens/menu/assets/sfondo.png'),
+        'sfondoImg' : pygame.image.load('screens/opzioni/assets/sfondo.png'),
         'resoluzioneBtnImg' : pygame.image.load("screens/opzioni/assets/resoluzione.png"),
+        'audioBtnImg' : pygame.image.load("screens/opzioni/assets/audio.png"),
         'indietroBtnImg' : pygame.image.load("screens/opzioni/assets/indietro.png"),
-        "volume": pygame.image.load("screens/opzioni/assets/volume.png"),
-        "noVolume": pygame.image.load("screens/opzioni/assets/novolume.png"),
-        "noVolumeH": pygame.image.load("screens/opzioni/assets/novolumeH.png"),
-        "volumeH": pygame.image.load("screens/opzioni/assets/volumeH.png")
     }
 
     # ridimenziono le immagini rispetto alla dimenzione della finestra
@@ -40,24 +36,20 @@ def opzioniScreen(finestra, OFFSET_FINESTRA, FPS):
                                 coloreTxtHover = "#000000"
                             )
 
-        # creo il bottone: musicaSi & musicaNo
-        musicaPBtn =   btnimg(
-                            img = immagini['volume'], 
-                            pos = (int(560 * OFFSET_FINESTRA), int(400 * OFFSET_FINESTRA)), 
-                            imgNotHover=immagini['volume'],
-                            imgHover=immagini['volumeH']
-                        )
-        musicaSBtn =   btnimg(
-                            img = immagini['noVolume'], 
-                            pos = (int(820 * OFFSET_FINESTRA), int(400 * OFFSET_FINESTRA)), 
-                            imgNotHover=immagini['noVolume'],
-                            imgHover=immagini['noVolumeH']
+        # creo il bottone: audio
+        audioBtn =    btn(
+                            img = immagini['audioBtnImg'], 
+                            pos = (int(640 * OFFSET_FINESTRA), int(330 * OFFSET_FINESTRA)), 
+                            txt = "AUDIO", 
+                            font = getFont("forwardFont", int(30 * OFFSET_FINESTRA)), 
+                            coloreTxt = "#ffffff", 
+                            coloreTxtHover = "#000000"
                         )
 
         # creo il bottone: indietro
         indietroBtn =   btn(
                             img = immagini['indietroBtnImg'], 
-                            pos = (int(640 * OFFSET_FINESTRA), int(510 * OFFSET_FINESTRA)), 
+                            pos = (int(640 * OFFSET_FINESTRA), int(460 * OFFSET_FINESTRA)), 
                             txt = "INDIETRO", 
                             font = getFont("forwardFont", int(30 * OFFSET_FINESTRA)), 
                             coloreTxt = "#ffffff", 
@@ -65,13 +57,9 @@ def opzioniScreen(finestra, OFFSET_FINESTRA, FPS):
                         )
 
         # for per cambiare il colore del testo dei bottoni(hover) ed aggiornarlo 
-        for bottone in [resoluzioneBtn, indietroBtn]:
+        for bottone in [resoluzioneBtn, audioBtn, indietroBtn]:
             bottone.cambiaColoreTesto(posizioneMouse)
             bottone.aggiorna(finestra)
-
-        for bottoneImg in [musicaPBtn,musicaSBtn]:
-            bottoneImg.cambiaColoreImg(posizioneMouse)
-            bottoneImg.aggiornaI(OFFSET_FINESTRA,finestra)
 
         # for per gestire gli eventi 
         for event in pygame.event.get():
@@ -81,29 +69,26 @@ def opzioniScreen(finestra, OFFSET_FINESTRA, FPS):
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if resoluzioneBtn.controllaSeCliccato(posizioneMouse):
-                    resoluzioneScreen(finestra, OFFSET_FINESTRA, FPS)
+                    resoluzioneScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS)
 
-                if musicaPBtn.controllaSeCliccatoI(posizioneMouse):
-                    playMusic()            
-
-                if musicaSBtn.controllaSeCliccatoI(posizioneMouse):
-                    stop()
-                    
+                if audioBtn.controllaSeCliccato(posizioneMouse):
+                    audioScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS)
 
                 if indietroBtn.controllaSeCliccato(posizioneMouse):
-                    menuScreen(finestra, OFFSET_FINESTRA, FPS)   
+                    menuScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS)   
         
         # aggiorno la finestra
         pygame.display.update()	
         pygame.time.Clock().tick(FPS)
 
 
-# import delle resorse
+# importo gli schermi
 from utilities.font import getFont
 from utilities.btn import btn
-from utilities.btnimg import btnimg
 from utilities.resizeImgs import resizeImgs
 
-#import degli schermi
+
+# importo le riscorse
 from screens.opzioni.screens.resoluzione.resoluzione import resoluzioneScreen
+from screens.opzioni.screens.audio.audio import audioScreen
 from screens.menu.menu import menuScreen

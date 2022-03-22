@@ -7,10 +7,12 @@ class btn():
 		self.coloreTxt, self.coloreTxtHover = coloreTxt, coloreTxtHover
 		self.txt = txt
 		self.text = self.font.render(self.txt, True, self.coloreTxt)
-		if self.img is None:
-			self.img = self.text
 		self.rect = self.img.get_rect(center=(self.x_pos, self.y_pos))
 		self.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))
+		
+		if self.img is None:
+			self.img = self.text
+
 
 	def aggiorna (self, schermo):
 		if self.img is not None:
