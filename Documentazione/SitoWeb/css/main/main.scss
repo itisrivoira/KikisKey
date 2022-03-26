@@ -1,6 +1,8 @@
 $colorePrimario: #333333;
 $coloreSecondario: #e5b62e;
 
+$dimTesto: clamp(0.9rem, 1.2vw, 1.1rem);
+
 @font-face {
   font-family: forwardFont;
   src: url("./../../assets/fonts/forwardFont.TTF");
@@ -15,6 +17,7 @@ $coloreSecondario: #e5b62e;
 
 body {
   font-family: forwardFont;
+  font-size: $dimTesto;
   min-width: 380px;
   overflow-x: hidden;
 

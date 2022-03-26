@@ -16,6 +16,7 @@
 
 body {
   font-family: forwardFont;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
   min-width: 380px;
   overflow-x: hidden;
 }
