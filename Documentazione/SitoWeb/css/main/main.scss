@@ -16,6 +16,7 @@ $coloreSecondario: #e5b62e;
 body {
   font-family: forwardFont;
   min-width: 380px;
+  overflow-x: hidden;
 
   a {
     text-decoration: none;
@@ -61,7 +62,6 @@ body {
 
 .login {
   flex-shrink: 1;
-
   a {
     border: solid 1px $colorePrimario;
     padding: 3px 20px;
@@ -69,7 +69,9 @@ body {
 }
 
 .menu {
+  position: relative;
   display: none;
+  z-index: 5;
 }
 
 label {
@@ -117,6 +119,15 @@ input[type="checkbox"] {
   transform-origin: bottom;
   width: 50%;
   transform: translate(30px, -11px) rotatez(45deg);
+}
+
+.overlayMenu {
+  position: fixed;
+  display: none;
+  background-color: #ffffff;
+  width: 100vw;
+  height: 100vh;
+  z-index: 4;
 }
 
 /**********************************************************************/

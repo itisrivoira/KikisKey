@@ -17,6 +17,7 @@
 body {
   font-family: forwardFont;
   min-width: 380px;
+  overflow-x: hidden;
 }
 
 body a {
@@ -72,7 +73,9 @@ body a {
 }
 
 .menu {
+  position: relative;
   display: none;
+  z-index: 5;
 }
 
 label {
@@ -133,6 +136,15 @@ input[type="checkbox"] {
   width: 50%;
   -webkit-transform: translate(30px, -11px) rotatez(45deg);
           transform: translate(30px, -11px) rotatez(45deg);
+}
+
+.overlayMenu {
+  position: fixed;
+  display: none;
+  background-color: #ffffff;
+  width: 100vw;
+  height: 100vh;
+  z-index: 4;
 }
 
 /**********************************************************************/
