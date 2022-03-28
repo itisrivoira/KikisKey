@@ -1,0 +1,32 @@
+@font-face {
+  font-family: forwardFont;
+  src: url("../../assets/fonts/forwardFont.TTF");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+body {
+  font-family: forwardFont;
+  font-size: clamp(1.2rem, 1.5vw, 1.6rem);
+}
+
+a {
+  text-decoration: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.spacerBtns {
+  margin-bottom: 25px;
+}
+/*# sourceMappingURL=Game.css.map */

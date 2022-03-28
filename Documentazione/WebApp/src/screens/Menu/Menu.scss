@@ -1,0 +1,71 @@
+$colorePrimario: #333333;
+$coloreSecondario: #e5b62e;
+
+$titolo: clamp(2.5rem, 3.2vw, 3rem);
+$titoloX2: clamp(3.2rem, 4vw, 5rem);
+
+.contenitoreMenu {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.contenutoMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.titoloMenu {
+  font-size: $titoloX2;
+  color: #000000;
+  margin-bottom: 50px;
+}
+
+.actionBtnMenu {
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #ffffff;
+  width: 300px;
+  height: 100px;
+  background-size: contain;
+}
+
+.actionBtn:hover {
+  color: #000000;
+}
+
+.giocaBtn {
+  background-image: url(./../../../assets/img/Game/btn1.svg);
+}
+
+.opzioniBtn {
+  background-image: url(./../../../assets/img/Game/btn2.svg);
+}
+
+@media (max-width: 1199.98px) {
+  .contenutoMenu {
+    width: 90%;
+    margin-left: 5%;
+  }
+  .actionBtnMenu {
+    width: 250px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .contenutoMenu {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-left: 0;
+  }
+}

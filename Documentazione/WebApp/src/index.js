@@ -1,11 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import Game from './game/Game';
+import React from "react";
+import ReactDOM from "react-dom";
+import Game from "./Game/Game";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
-  <Game />,
-  document.getElementById('root')
+  <BrowserRouter>
+    <Game />
+  </BrowserRouter>,
+  document.getElementById("root")
 );
-
-

@@ -1,0 +1,59 @@
+$colorePrimario: #333333;
+$coloreSecondario: #e5b62e;
+
+$titolo: clamp(2.5rem, 3.2vw, 3rem);
+$titoloX2: clamp(3.5rem, 4.5vw, 5rem);
+
+.contenitoreOpz {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.contenutoOpz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.titoloOpz {
+  font-size: $titolo;
+  color: #000000;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.actionBtnOpz {
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #ffffff;
+  width: 300px;
+  height: 100px;
+  background-size: contain;
+}
+
+.audioBtn {
+  background-image: url(./../../../assets/img/Game/btn1.svg);
+}
+
+.indietroBtn {
+  background-image: url(./../../../assets/img/Game/btn2.svg);
+}
+
+@media (max-width: 1199.98px) {
+  .contenutoOpz {
+    width: 90%;
+    margin-left: 5%;
+  }
+  .actionBtnOpz {
+    width: 250px;
+    height: 80px;
+  }
+}

@@ -1,0 +1,30 @@
+$colorePrimario: #333333;
+$coloreSecondario: #e5b62e;
+
+$testo: clamp(1.2rem, 1.5vw, 1.6rem);
+
+@font-face {
+  font-family: forwardFont;
+  src: url("../../assets/fonts/forwardFont.TTF");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+body {
+  font-family: forwardFont;
+  font-size: $testo;
+}
+
+a {
+  text-decoration: none;
+  width: fit-content;
+}
+
+.spacerBtns {
+  margin-bottom: 25px;
+}
