@@ -2,7 +2,7 @@
 <div align="center">
 <!-- Title: -->
   <a href="https://github.com/itisrivoira/">
-    <img src="https://raw.githubusercontent.com/itisrivoira/KikisKey/main/sitoWeb/assets/img/main/logo1.svg" height="150">
+    <img src="https://raw.githubusercontent.com/itisrivoira/KikisKey/main/sitoWeb/assets/img/main/logo.png" height="150">
   </a>
   <h1><a href="https://github.com/itisrivoira/">ItisRivoira</a> - Kiki's Key</h1>
 
