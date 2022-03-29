@@ -41,13 +41,14 @@ contenutoPagineSez2 = [
   Pensandoci bene potrebbe trovare proprio lì dentro ciò che sta cercando, 
   o almeno una parte dei codici di accesso.<br /><br />`,
 
-  `Nullam semper posuere venenatis. Donec sit amet fringilla magna.
-   Etiam rutrum at quam a posuere. Vivamus commodo ex tellus, <br /><br />
-   sit amet iaculis odio fermentum ultrices. Sed facilisis nisi neque, 
-   vel placerat magna varius vel. Cras nec lacinia ipsum, at laoreet nisl. 
-   Maecenas blandit, urna et gravida dapibus, nunc nulla facilisis dolor, <br /><br />
-   ut interdum eros nulla quis augue. 
-   Quisque sit amet tortor eget nunc malesuada mollis nec non felis.<br />`,
+  `Vagando per la scuola, senza farsi beccare dai bidelli, 
+   Kiki trova la biblioteca, dove potrebbe trovare altri indizi utili per la chiave.<br /><br />
+   Credendo di avere tutto il necessario per accedere al registro Kiki si dirige 
+   verso l’ufficio del preside ma scopre che gli manca qualcosa per entrarci...<br /><br />
+   pensadoci bene qualcuno potrebbe dargli ancora una mano,  
+   ma nulla è semplice come sembra, infatti dovrà afrrontare una 
+   sfida ardua che gli permetterà di raggiungere l’obiettivo finale 
+   per cui ha faticato durante quest’avventura.<br /><br />`,
 ];
 
 //for per associare evento "click" ad ogni bottone pagina
