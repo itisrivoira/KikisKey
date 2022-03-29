@@ -16,7 +16,8 @@
 
 body {
   font-family: forwardFont;
-  font-size: clamp(1.2rem, 1.5vw, 1.6rem);
+  font-size: clamp(1.5rem, 1vw, 1.5rem);
+  overflow: hidden;
 }
 
 a {
@@ -26,7 +27,12 @@ a {
   width: fit-content;
 }
 
-.spacerBtns {
+.spacerXBtns {
   margin-bottom: 25px;
+}
+
+.spacerYBtns {
+  margin-right: 25px;
+  display: inline-block;
 }
 /*# sourceMappingURL=Game.css.map */

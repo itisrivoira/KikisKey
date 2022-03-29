@@ -1,13 +1,15 @@
 $colorePrimario: #333333;
 $coloreSecondario: #e5b62e;
 
-$titolo: clamp(2.5rem, 3.2vw, 3rem);
-$titoloX2: clamp(3.5rem, 4.5vw, 5rem);
+$titolo: clamp(2.8rem, 5vw, 4rem);
 
 .contenitoreAudio {
   display: flex;
   height: 100vh;
   width: 100vw;
+  background-image: url(./../../../../../assets/img/Game/sfondo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .contenutoAudio {
@@ -21,8 +23,7 @@ $titoloX2: clamp(3.5rem, 4.5vw, 5rem);
 
 .titoloAudio {
   font-size: $titolo;
-  color: #000000;
-  padding-top: 50px;
+  color: $coloreSecondario;
   padding-bottom: 50px;
 }
 
@@ -36,11 +37,34 @@ $titoloX2: clamp(3.5rem, 4.5vw, 5rem);
   color: #ffffff;
   width: 300px;
   height: 100px;
-  background-size: contain;
 }
 
 .indietroBtn {
-  background-image: url("./../../../../../assets/img/Game/btn1.svg");
+  background-image: url(./../../../../../assets/img/Game/btn1.png);
+}
+
+.contenitoreAudioBtn {
+  display: inline-block;
+}
+
+.audioOnBtn {
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  background-image: url(./../../../../../assets/img/Audio/audioOn.png);
+}
+
+.audioOffBtn {
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  background-image: url(./../../../../../assets/img/Audio/audioOff.png);
 }
 
 @media (max-width: 1199.98px) {
@@ -50,6 +74,15 @@ $titoloX2: clamp(3.5rem, 4.5vw, 5rem);
   }
   .actionBtnAudio {
     width: 250px;
-    height: 80px;
+    height: 85px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .contenutoAudio {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-left: 0;
   }
 }

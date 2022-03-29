@@ -104,12 +104,13 @@ $dimTesto: clamp(0.85rem, 1.3vw, 1.1rem);
   }
 }
 
-.bg {
+.movingBg {
   position: absolute;
   width: 100px;
   height: 50px;
   background-color: #c4c4c4;
   bottom: 0;
+  z-index: -1;
 }
 
 .terra {
@@ -136,7 +137,6 @@ $dimTesto: clamp(0.85rem, 1.3vw, 1.1rem);
   grid-template-columns: 1.5fr 1fr;
   grid-template-rows: 1fr;
   grid-row-gap: 0px;
-  min-height: 350px;
 }
 
 .testoSezioneScuro {

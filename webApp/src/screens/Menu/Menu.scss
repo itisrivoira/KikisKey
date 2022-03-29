@@ -1,14 +1,16 @@
 $colorePrimario: #333333;
 $coloreSecondario: #e5b62e;
 
-$titolo: clamp(2.5rem, 3.2vw, 3rem);
-$titoloX2: clamp(3.2rem, 4vw, 5rem);
+$titolo: clamp(3.3rem, 5.8vw, 5rem);
 
 .contenitoreMenu {
   display: flex;
   align-items: center;
   height: 100vh;
   width: 100vw;
+  background-image: url(./../../../assets/img/Game/sfondo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .contenutoMenu {
@@ -17,11 +19,12 @@ $titoloX2: clamp(3.2rem, 4vw, 5rem);
   align-items: right;
   width: 80%;
   margin-left: 10%;
+  min-width: 380px;
 }
 
 .titoloMenu {
-  font-size: $titoloX2;
-  color: #000000;
+  font-size: $titolo;
+  color: $coloreSecondario;
   margin-bottom: 50px;
 }
 
@@ -43,11 +46,11 @@ $titoloX2: clamp(3.2rem, 4vw, 5rem);
 }
 
 .giocaBtn {
-  background-image: url(./../../../assets/img/Game/btn1.svg);
+  background-image: url(./../../../assets/img/Game/btn1.png);
 }
 
 .opzioniBtn {
-  background-image: url(./../../../assets/img/Game/btn2.svg);
+  background-image: url(./../../../assets/img/Game/btn2.png);
 }
 
 @media (max-width: 1199.98px) {
@@ -57,11 +60,11 @@ $titoloX2: clamp(3.2rem, 4vw, 5rem);
   }
   .actionBtnMenu {
     width: 250px;
-    height: 80px;
+    height: 85px;
   }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
   .contenutoMenu {
     justify-content: center;
     align-items: center;

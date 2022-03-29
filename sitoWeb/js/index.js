@@ -1,27 +1,45 @@
+/*************** sezione 1(main) ***************/
+bgSez1 = document.querySelector(".mainContenitoreSez1");
+
+const createMovingBg = () => {
+  mvBg = document.createElement("div");
+  mvBg.setAttribute("class", "movingBg");
+  bgSez1.appendChild(mvBg);
+};
+
+setInterval(async function () {
+  createMovingBg();
+  tlAnimaBg = gsap.to(".movingBg", {
+    x: bgSez1.offsetWidth,
+    duration: 5,
+    ease: "none",
+  });
+}, Math.floor(Math.random() * 3000) + 5000);
+
 /*************** sezione 2 ***************/
 mainTestoSez2 = document.querySelector(".testoSez2");
 pagBtns = document.querySelectorAll(".navPagine span");
 
 contenutoPagineSez2 = [
-  `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
-   ut malesuada sapien. Nunc vulputate nec felis sed vestibulum.
-   Pellentesque habitant morbi tristique senectus et netus et
-   malesuada fames ac turpis egestas. <br /><br />
-   Sed lacus erat, gravida eu ullamcorper eget, congue sit amet
-   augue. Curabitur et metus odio. Phasellus sagittis non tortor
-   ac dignissim. Aliquam semper nulla lacus, vitae scelerisque
-   velit mollis non.<br /><br />
-   Aenean vel erat auctor, efficitur nisl ut, laoreet ligula.
-   Pellentesque faucibus lorem eget nunc venenatis hendrerit.<br />`,
+  `La storia del gioco è basata su un escape room. Il protagonista, ovvero Kiki, 
+   ha l’intezione di rimanere rinchiuso all’interno della scuola per scovare 
+   i codici di accesso per poter entrare nel registro elettronico del preside e 
+   cambiare i voti di tutti gli studenti.<br /><br />
+   Per raggiungere il suo obiettivo Kiki dovrà superare con successo differenti 
+   prove e indovinelli sparsi nelle stanze della scuola.<br /><br />
+   La missione di Kiki inizia proprio durante un giorno di scuola, 
+   più precisamente durante l’intervallo, dove approfitterà dell’occasione<br />
+   per nascondersi nella scuola.<br /><br />`,
 
-  `Curabitur luctus ultrices aliquet. Ut nec iaculis odio, quis bibendum mi.
-   Maecenas ultricies malesuada ligula, at auctor velit aliquam at. 
-   Fusce interdum congue gravida.<br /><br />
-   Phasellus facilisis risus in risus molestie ornare non non ante.<br /><br />
-   Phasellus et mauris eu eros consectetur convallis sit amet rutrum ante.
-   Praesent luctus mauris ante, id eleifend lorem aliquet at. 
-   Sed ultricies lorem lorem, in porttitor velit tempus ut. <br /><br />
-   Donec lacus ex, suscipit ut metus sit amet<br />`,
+  `Kiki si trova all’interno del laboratorio di chimica, dove sarà necessario 
+  trovare un modo per uscire e iniziare così la sua ricerca.
+  Uscito dal laboratorio inizia ad aggirarsi per i corridoi e 
+  le stanze della scuola per scovare i codici del registro.<br /><br />
+  Quasi tutte le stanze non sono aperte ma non la bideleria che ha 
+  una finestra socchiusa.<br /><br /> 
+  Sfortunatamente è troppo in alto ma troverà qualcuno ad aiutarlo. 
+  Pensandoci bene potrebbe trovare proprio lì dentro ciò che sta cercando, 
+  o almeno una parte dei codici di accesso.<br /><br />`,
 
   `Nullam semper posuere venenatis. Donec sit amet fringilla magna.
    Etiam rutrum at quam a posuere. Vivamus commodo ex tellus, <br /><br />
@@ -35,10 +53,17 @@ contenutoPagineSez2 = [
 //for per associare evento "click" ad ogni bottone pagina
 for (let i = 0; i < pagBtns.length; i++) {
   pagBtns[i].addEventListener("click", () => {
-    animateCSS(mainTestoSez2, "fadeOut").then((msg) => {
-      mainTestoSez2.innerHTML = contenutoPagineSez2[i];
-      animateCSS(mainTestoSez2, "fadeIn");
-    });
+    let tlAnimaTestoSez2 = gsap.timeline({ repeatDelay: 1 });
+
+    tlAnimaTestoSez2
+      .set(".testoSez2", { opacity: 1 })
+      .to(".testoSez2", { opacity: 0, duration: 0.8 })
+      .then(() => {
+        mainTestoSez2.innerHTML = contenutoPagineSez2[i];
+      })
+      .then(() => {
+        tlAnimaTestoSez2.to(".testoSez2", { opacity: 1, duration: 0.8 });
+      });
 
     //for per controllare bottone pagina cliccato e per cambiare l'opacita
     for (let k = 0; k < pagBtns.length; k++) {
