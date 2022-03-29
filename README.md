@@ -10,8 +10,6 @@
   <h3>Escape Room A.S. 2021/22 Gruppo 3</h3>
 </div>
 
-storia del gioco in 3 righe...
-
 ## Game Story
 
 La storia del gioco è basata su un escape room. Il protagonista, ovvero Kiki, ha l’intezione di rimanere rinchiuso all’interno della scuola per scovare i codici di accesso per poter entrare nel registro elettronico del preside e cambiare i voti di tutti gli studenti. Per raggiungere il suo obiettivo Kiki dovrà superare con successo differenti prove e indovinelli sparsi nelle stanze della scuola. La missione di Kiki inizia proprio durante un giorno di scuola, più precisamente durante l’intervallo, dove approfitterà dell’occasione per nascondersi nella scuola.
