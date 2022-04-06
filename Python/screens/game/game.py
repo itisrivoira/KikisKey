@@ -4,10 +4,12 @@ import sys
 #import delle resorse
 from utilities.font import getFont
 from utilities.btn import btn
+from utilities.stanza import stanza
+from utilities.player import player
 
 def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
 
-    immagini = {
+    immaginiP = {
         #immagine kiki camminata  a sinistra
             "kikiS0": pygame.image.load('screens/game/assets/kikiS0.png'),
             "kikiS1": pygame.image.load('screens/game/assets/kikiS1.png'),
@@ -46,173 +48,75 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
             "kikiF4": pygame.image.load('screens/game/assets/kikiF4.png'),
             "kikiF5": pygame.image.load('screens/game/assets/kikiF5.png'),
             "kikiF6": pygame.image.load('screens/game/assets/kikiF6.png'),
-            "kikiF7": pygame.image.load('screens/game/assets/kikiF7.png'),
-
-        #immagini mappe ecc
-            "EscMenu": pygame.image.load("screens/game/assets/kiki/EscMenu.png"),
-            'esciBtnImg' : pygame.image.load("screens/menu/assets/esci.png")
-            #"corridoio": pygame.image.load()
+            "kikiF7": pygame.image.load('screens/game/assets/kikiF7.png')
     }
+
+    immagini={
+        "chimica2": pygame.image.load("screens/game/assets/chimica2.png")
+    }
+
+    immaginiP = resizeImgs(immaginiP, OFFSET_FINESTRA,2) #l'ultimo valore moltiplicatore grandezza immagine
+    immagini = resizeImgs(immagini, OFFSET_FINESTRA,3)
+    chimicaConv=immagini["chimica2"].convert() #converte l'immagine in un formato piu veloce
+    chimica=stanza(chimicaConv,OFFSET_FINESTRA)
     
-    immagini = resizeImgs(immagini, OFFSET_FINESTRA)
-    
-
-    walkleft=[
-            immagini["kikiS0"],
-            immagini["kikiS1"],
-            immagini["kikiS2"],
-            immagini["kikiS3"],
-            immagini["kikiS4"],
-            immagini["kikiS5"],
-            immagini["kikiS6"],
-            immagini["kikiS7"]
-            ]
-    
-    walkright=[
-            immagini["kikiD0"],
-            immagini["kikiD1"],
-            immagini["kikiD2"],
-            immagini["kikiD3"],
-            immagini["kikiD4"],
-            immagini["kikiD5"],
-            immagini["kikiD6"],
-            immagini["kikiD7"]
-            ]
-
-    walkup=[
-            immagini["kikiR0"],
-            immagini["kikiR1"],
-            immagini["kikiR2"],
-            immagini["kikiR3"],
-            immagini["kikiR4"],
-            immagini["kikiR5"],
-            immagini["kikiR6"],
-            immagini["kikiR7"]
-            ]
-
-    walkdown=[
-            immagini["kikiF0"],
-            immagini["kikiF1"],
-            immagini["kikiF2"],
-            immagini["kikiF3"],
-            immagini["kikiF4"],
-            immagini["kikiF5"],
-            immagini["kikiF6"],
-            immagini["kikiF7"]
-            ]
-
-    kiki_x = 50*OFFSET_FINESTRA
-    kiki_y = 50*OFFSET_FINESTRA
-    speed = 5*OFFSET_FINESTRA
-    kiki_left=False
-    Kiki_right=False
-    kiki_up=False
-    kiki_down=False
-    BtnExit=False
-    global walkcount
+    #inizializzo le variabili per il personaggio
+    x=50
+    y=50
+    speed=5
     walkcount=0
-    global kiki
-    kiki=immagini["kikiF0"]
-    global esciBtn
-
-    def refresh():
-        global walkcount
-        global kiki
-        
-        
-        if walkcount +1 >=FPS:
-            walkcount=0
-            
-        if kiki_left:
-             finestra.blit(walkleft[walkcount//8],(kiki_x,kiki_y))
-             walkcount+=1
-             kiki= walkleft[0]
-
-        elif Kiki_right:
-             finestra.blit(walkright[walkcount//8],(kiki_x,kiki_y))
-             walkcount+=1
-             kiki= walkright[0]
-
-        elif kiki_up:
-            finestra.blit(walkup[walkcount//8],(kiki_x,kiki_y))
-            walkcount+=1
-            kiki= walkup[0]
-
-        elif kiki_down:
-            finestra.blit(walkdown[walkcount//8],(kiki_x,kiki_y))
-            walkcount+=1
-            kiki= walkdown[0]
-        
-        elif BtnExit:
-            finestra.blit(immagini["EscMenu"],(1280/2-200*OFFSET_FINESTRA,720/2-200*OFFSET_FINESTRA))
-
-        else:
-            finestra.blit(kiki,(kiki_x,kiki_y)) 
-
-        pygame.display.update()	
+    kiki=player(immaginiP,OFFSET_FINESTRA,x,y,FPS,speed,walkcount)
 
     while True:
+        keys = pygame.key.get_pressed()
+
+        if keys[pygame.K_a]:
+         x-=speed
+         left=True
+         right=False
+         up=False
+         down=False
+
+        elif keys[pygame.K_d]:
+         x+=speed
+         left=False
+         right=True
+         up=False
+         down=False
+            
+        elif keys[pygame.K_w]:
+         y-=speed
+         left=False
+         right=False
+         up=True
+         down=False
+
+        elif keys[pygame.K_s]:
+         y+=speed
+         left=False
+         right=False
+         up=False
+         down=True
+      
+        else:
+         left=False
+         right=False
+         up=False
+         down=False
+         walkcount=0
         
         finestra.fill("black")
-        posizioneMouse = pygame.mouse.get_pos()
+        chimica.aggsfondo(finestra)
+        kiki.aggplayer(finestra,left,right,up,down,x,y)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-
-        # tasto schiacciato
-        keys = pygame.key.get_pressed()  
-
-        if keys[pygame.K_a]:
-            kiki_x-=speed
-            kiki_left=True
-            Kiki_right=False
-            kiki_up=False
-            kiki_down=False
-            BtnExit=False
-
-        elif keys[pygame.K_d]:
-            kiki_x+=speed
-            kiki_left=False
-            Kiki_right=True
-            kiki_up=False
-            kiki_down=False
-            BtnExit=False
-            
-        elif keys[pygame.K_w]:
-            kiki_y-=speed
-            kiki_left=False
-            Kiki_right=False
-            kiki_up=True
-            kiki_down=False
-            BtnExit=False
-
-        elif keys[pygame.K_s]:
-            kiki_y+=speed
-            kiki_left=False
-            Kiki_right=False
-            kiki_up=False
-            kiki_down=True
-            BtnExit=False
-
-        elif keys[pygame.K_ESCAPE]:
-            kiki_left=False
-            Kiki_right=False
-            kiki_up=False
-            kiki_down=False
-            BtnExit=True
-            walkcount=0
-
-        else:
-            kiki_left=False
-            Kiki_right=False
-            kiki_up=False
-            kiki_down=False
-            walkcount=0
+        
 
         # aggiorno la finestra
-        refresh()
+        pygame.display.update()
         pygame.time.Clock().tick(FPS)
 
 from utilities.resizeImgs import resizeImgs
