@@ -26,7 +26,7 @@ class player():
       self.walkcount=walkcount
 
 
-   def aggplayer(self,finestra,left,right,up,down,x,y):
+   def aggplayer(self,finestra,left,right,up,down,y,x):
       self.x=x
       self.y=y
            
@@ -35,22 +35,22 @@ class player():
             
       if left:
          finestra.blit(self.walkleft[self.walkcount//8],(self.x,self.y))
-         self.walkcount+=1
+         self.walkcount+=int(self.fps/22)
          self.img= self.walkleft[0]
 
       elif right:
          finestra.blit(self.walkright[self.walkcount//8],(self.x,self.y))
-         self.walkcount+=1
+         self.walkcount+=int(self.fps/22)
          self.img= self.walkright[0]
 
       elif up:
          finestra.blit(self.walkup[self.walkcount//8],(self.x,self.y))
-         self.walkcount+=1
+         self.walkcount+=int(self.fps/22)
          self.img= self.walkup[0]
 
       elif down:
          finestra.blit(self.walkdown[self.walkcount//8],(self.x,self.y))
-         self.walkcount+=1
+         self.walkcount+=int(self.fps/22)
          self.img= self.walkdown[0]
 
       else:

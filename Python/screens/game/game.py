@@ -52,7 +52,9 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     }
 
     immagini={
-        "chimica2": pygame.image.load("screens/game/assets/chimica2.png")
+        "chimica2": pygame.image.load("screens/game/assets/chimica2.png"),
+        "chimica1": pygame.image.load("screens/game/assets/chimica1.png"),
+        "corridoio": pygame.image.load("screens/game/assets/corridoio.png")
     }
 
     immaginiP = resizeImgs(immaginiP, OFFSET_FINESTRA,2) #l'ultimo valore moltiplicatore grandezza immagine
@@ -107,7 +109,7 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
         
         finestra.fill("black")
         chimica.aggsfondo(finestra)
-        kiki.aggplayer(finestra,left,right,up,down,x,y)
+        kiki.aggplayer(finestra,left,right,up,down,y,x)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
