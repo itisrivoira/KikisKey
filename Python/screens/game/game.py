@@ -1,6 +1,7 @@
 import pygame
 import sys
 
+
 #import delle resorse
 from utilities.font import getFont
 from utilities.btn import btn
@@ -59,13 +60,13 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
 
     immaginiP = resizeImgs(immaginiP, OFFSET_FINESTRA,2) #l'ultimo valore moltiplicatore grandezza immagine
     immagini = resizeImgs(immagini, OFFSET_FINESTRA,3)
-    chimicaConv=immagini["chimica2"].convert() #converte l'immagine in un formato piu veloce
-    chimica=stanza(chimicaConv,OFFSET_FINESTRA)
+    stanzaIMGconv=immagini["chimica2"].convert() #converte l'immagine in un formato piu veloce
+    stanzaIMG=stanza(stanzaIMGconv,OFFSET_FINESTRA)
     
     #inizializzo le variabili per il personaggio
-    x=50
-    y=50
-    speed=5
+    x=1280/2*OFFSET_FINESTRA
+    y=720/2*OFFSET_FINESTRA
+    speed=3
     walkcount=0
     kiki=player(immaginiP,OFFSET_FINESTRA,x,y,FPS,speed,walkcount)
 
@@ -106,10 +107,10 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
          up=False
          down=False
          walkcount=0
-        
-        finestra.fill("black")
-        chimica.aggsfondo(finestra)
-        kiki.aggplayer(finestra,left,right,up,down,y,x)
+
+        finestra.fill("black")       
+        stanzaIMG.aggsfondo(finestra)
+        x,y=kiki.aggplayer(finestra,left,right,up,down,y,x,tipostanza="chimica2")
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
