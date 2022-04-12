@@ -130,19 +130,23 @@
   position: relative;
   background-color: #333333;
   height: 2000px;
+  padding-top: 200px;
 }
 
 .contenutoSenzaLinea {
   margin: 0px 15%;
   width: 70%;
-  padding-top: 300px;
 }
 
 .titoloSezioneScuro {
   color: #ffffff;
   font-size: clamp(2.1rem, 3.5vw, 3.3rem);
-  padding-top: 100px;
-  padding-bottom: 30px;
+  padding-top: 250px;
+  margin-bottom: 50px;
+}
+
+.titoloSezioneScuro:nth-child(1) {
+  padding-top: 200px;
 }
 
 .mainContenutoSez2 {
@@ -163,6 +167,7 @@
   grid-area: 1 / 1 / 2 / 2;
   color: #ffffff;
   font-size: clamp(0.85rem, 1.3vw, 1.1rem);
+  line-height: 30px;
 }
 
 .mainImgSez2 {
@@ -172,6 +177,17 @@
   -ms-grid-column-span: 1;
   grid-area: 1 / 2 / 2 / 3;
   background-image: url(./../../assets/img/home/img.gif);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.mainImgSez3 {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-area: 1 / 1 / 2 / 2;
+  background-image: url(./../../assets/img/home/firtsChar.gif);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;

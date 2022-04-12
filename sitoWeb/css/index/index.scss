@@ -117,19 +117,23 @@ $dimTesto: clamp(0.85rem, 1.3vw, 1.1rem);
   position: relative;
   background-color: $colorePrimario;
   height: 2000px;
+  padding-top: 200px;
 }
 
 .contenutoSenzaLinea {
   margin: 0px 15%;
   width: 70%;
-  padding-top: 300px;
 }
 
 .titoloSezioneScuro {
   color: #ffffff;
   font-size: $dimTitoloSezione;
-  padding-top: 100px;
-  padding-bottom: 30px;
+  padding-top: 250px;
+  margin-bottom: 50px;
+}
+
+.titoloSezioneScuro:nth-child(1){
+  padding-top: 200px;
 }
 
 .mainContenutoSez2 {
@@ -143,6 +147,7 @@ $dimTesto: clamp(0.85rem, 1.3vw, 1.1rem);
   grid-area: 1 / 1 / 2 / 2;
   color: #ffffff;
   font-size: $dimTesto;
+  line-height: 30px;
 }
 
 .mainImgSez2 {
@@ -152,6 +157,7 @@ $dimTesto: clamp(0.85rem, 1.3vw, 1.1rem);
   background-repeat: no-repeat;
   background-position: center center;
 }
+
 
 .navPagine {
   margin-top: 60px;
