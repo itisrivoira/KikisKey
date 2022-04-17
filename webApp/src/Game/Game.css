@@ -35,4 +35,9 @@ a {
   margin-right: 25px;
   display: inline-block;
 }
+
+.filtroBN {
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
+}
 /*# sourceMappingURL=Game.css.map */

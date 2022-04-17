@@ -1,8 +1,28 @@
 import "./Audio.css";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { gameContext } from "../../../../Hooks/useContext";
 
 const Audio = () => {
+  const { setMusicaOn } = useContext(gameContext);
+
+  const [stileAudioOnBtn, setStileAudioOnBtn] = useState("audioOnBtn filtroBN");
+  const [stileAudioOffBtn, setStileAudioOffBtn] = useState("audioOffBtn");
+
+  const accendiMusica = () => {
+    setMusicaOn(true);
+    setStileAudioOnBtn("audioOnBtn");
+    setStileAudioOffBtn("audioOffBtn filtroBN");
+  };
+
+  const spegniMusica = () => {
+    setMusicaOn(false);
+    setStileAudioOnBtn("audioOnBtn filtroBN");
+    setStileAudioOffBtn("audioOffBtn");
+  };
+
   return (
     <div className="contenitoreAudio">
       <motion.div
@@ -14,13 +34,26 @@ const Audio = () => {
       >
         <p className="titoloAudio">AUDIO</p>
         <div className="contenitoreAudioBtn">
-          <div className="audioOnBtn"></div>
-          <div className="spacerYBtns"></div>
-          <div className="audioOffBtn"></div>
+          <motion.div
+            whileHover={{ scale: 1.025 }}
+            className={stileAudioOnBtn}
+            onClick={accendiMusica}
+          />
+          <div className="spacerYBtns" />
+          <motion.div
+            whileHover={{ scale: 1.025 }}
+            className={stileAudioOffBtn}
+            onClick={spegniMusica}
+          />
         </div>
         <div className="spacerXBtns"></div>
         <Link to="/Opzioni">
-          <div className="actionBtnAudio indietroBtn">INDIETRO</div>
+          <motion.div
+            whileHover={{ scale: 1.025 }}
+            className="actionBtnAudio indietroBtn"
+          >
+            INDIETRO
+          </motion.div>
         </Link>
       </motion.div>
     </div>

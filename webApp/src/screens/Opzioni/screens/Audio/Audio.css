@@ -51,6 +51,10 @@
   height: 100px;
 }
 
+.actionBtnAudio:hover {
+  color: #000000;
+}
+
 .indietroBtn {
   background-image: url(./../../../../../assets/img/Game/btn1.png);
 }
@@ -87,6 +91,11 @@
   .actionBtnAudio {
     width: 250px;
     height: 85px;
+  }
+  .audioOnBtn,
+  .audioOffBtn {
+    width: 120px;
+    height: 120px;
   }
 }
 
