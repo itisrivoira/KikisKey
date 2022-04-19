@@ -126,15 +126,19 @@ $dimTesto: clamp(0.85rem, 1.3vw, 1.1rem);
 }
 
 .titoloSezioneScuro {
-  color: #ffffff;
+  color: #fff;
   font-size: $dimTitoloSezione;
   padding-top: 250px;
   margin-bottom: 50px;
+}
+.colscuro{
+  color: #333333!important;
 }
 
 .titoloSezioneScuro:nth-child(1){
   padding-top: 200px;
 }
+
 
 .mainContenutoSez2 {
   display: grid;
@@ -142,29 +146,22 @@ $dimTesto: clamp(0.85rem, 1.3vw, 1.1rem);
   grid-template-rows: 1fr;
   grid-row-gap: 0px;
 }
-.mainContenutoSez3{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 1.5px;
-  grid-row-gap: 0px;
-   
-}
+
 .testoSezioneScuro {
   grid-area: 1 / 1 / 2 / 2;
   color: #ffffff;
   font-size: $dimTesto;
   line-height: 30px;
+  
 }
 
 .mainImgSez2 {
   grid-area: 1 / 2 / 2 / 3;
-  background-image: url(./../../assets/img/home/img.gif);
+  background-image: url(./../../assets/img/home/imgSez2.gif);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
 }
-
 
 .navPagine {
   margin-top: 60px;
@@ -187,6 +184,39 @@ $dimTesto: clamp(0.85rem, 1.3vw, 1.1rem);
   }
 }
 
+.mainContenutoSez3 {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "a a a  "
+    ". c .  ";
+
+  .titoloSez3{
+    grid-area: a;
+  }
+  .characterImg {
+    grid-area: c;
+    background-image: url(./../../assets/img/home/characterImg.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-right: 900px ;
+    
+  }
+
+  .descCharacter{
+    grid-area: c;
+    min-height: 300px;
+    margin:0 0 0 650px ;
+    color: #fff;
+  }
+}
+
+
+
 @media (max-width: 1199.98px) {
   .contenutoMain,
   .contenutoSenzaLinea {
@@ -197,6 +227,7 @@ $dimTesto: clamp(0.85rem, 1.3vw, 1.1rem);
     bottom: 0;
   }
 }
+
 
 @media (max-width: 991.98px) {
   .lineaTitolo {
@@ -269,5 +300,22 @@ $dimTesto: clamp(0.85rem, 1.3vw, 1.1rem);
   .contenutoSenzaLinea {
     padding-left: 10px;
     padding-right: 10px;
+  }
+  .mainContenutoSez3{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "a   "
+    "b   "
+    "c ";
+    .characterImg{
+      grid-area: b;
+    }
+    .descCharacter{
+      grid-area: c;
+    }
   }
 }
