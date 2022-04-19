@@ -176,18 +176,7 @@
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-area: 1 / 2 / 2 / 3;
-  background-image: url(./../../assets/img/home/img.gif);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-.mainImgSez3 {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 1;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 1;
-  grid-area: 1 / 1 / 2 / 2;
-  background-image: url(./../../assets/img/home/firtsChar.gif);
+  background-image: url(./../../assets/img/home/imgSez2.gif);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -212,6 +201,45 @@
 .navPagine span:nth-child(2),
 .navPagine span:nth-child(3) {
   opacity: 0.6;
+}
+
+.mainContenutoSez3 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+      grid-template-areas: "a a a  " "b c d  ";
+}
+
+.mainContenutoSez3 .titoloSez3 {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-area: a;
+}
+
+.mainContenutoSez3 .characterImg {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: c;
+  background-image: url(./../../assets/img/home/characterImg.gif);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-right: 900px;
+}
+
+.mainContenutoSez3 .descCharacter {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: c;
+  min-height: 300px;
+  margin: 0 0 0 650px;
+  color: #fff;
 }
 
 @media (max-width: 1199.98px) {
@@ -292,6 +320,17 @@
   .contenutoSenzaLinea {
     padding-left: 10px;
     padding-right: 10px;
+  }
+  .mainContenutoSez3 {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto 1fr;
+        grid-template-columns: auto 1fr;
+    -ms-grid-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+        grid-template-areas: "a a a  " "b c d  ";
   }
 }
 /*# sourceMappingURL=index.css.map */
