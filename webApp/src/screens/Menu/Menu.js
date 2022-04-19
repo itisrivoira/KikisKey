@@ -2,7 +2,7 @@ import "./Menu.css";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const Menu = () => {
+const Menu = (props) => {
   return (
     <div className="contenitoreMenu">
       <motion.div
@@ -14,11 +14,18 @@ const Menu = () => {
       >
         <p className="titoloMenu">KIKI'S KEY</p>
         <Link to="/Gioca">
-          <div className="actionBtnMenu giocaBtn">GIOCA</div>
+          <motion.div whileHover={{ x: 10 }} className="actionBtnMenu giocaBtn">
+            GIOCA
+          </motion.div>
         </Link>
-        <div className="spacerXBtns"></div>
+        <div className="spacerXBtns" />
         <Link to="/Opzioni">
-          <div className="actionBtnMenu opzioniBtn">OPZIONI</div>
+          <motion.div
+            whileHover={{ x: 10 }}
+            className="actionBtnMenu opzioniBtn"
+          >
+            OPZIONI
+          </motion.div>
         </Link>
       </motion.div>
     </div>

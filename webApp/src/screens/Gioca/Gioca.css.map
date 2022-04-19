@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAGA,AAAA,iBAAiB,CAAC;EAChB,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,KAAK;EACZ,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,MAAM;EACnB,gBAAgB,EATD,OAAO;CAUvB",
     "sources": [
         "Gioca.scss"
     ],

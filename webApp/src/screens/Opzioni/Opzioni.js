@@ -2,7 +2,7 @@ import "./Opzioni.css";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-const Opzioni = () => {
+const Opzioni = (props) => {
   return (
     <div className="contenitoreOpz">
       <motion.div
@@ -14,11 +14,21 @@ const Opzioni = () => {
       >
         <p className="titoloOpz">OPZIONI</p>
         <Link to="/Opzioni/Audio">
-          <div className="actionBtnOpz audioBtn">AUDIO</div>
+          <motion.div
+            whileHover={{ scale: 1.025 }}
+            className="actionBtnOpz audioBtn"
+          >
+            AUDIO
+          </motion.div>
         </Link>
-        <div className="spacerXBtns"></div>
+        <div className="spacerXBtns" />
         <Link to="/">
-          <div className="actionBtnOpz indietroBtn">INDIETRO</div>
+          <motion.div
+            whileHover={{ scale: 1.025 }}
+            className="actionBtnOpz indietroBtn"
+          >
+            INDIETRO
+          </motion.div>
         </Link>
       </motion.div>
     </div>

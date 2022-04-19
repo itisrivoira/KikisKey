@@ -41,6 +41,10 @@ $titolo: clamp(2.8rem, 5vw, 4rem);
   background-size: contain;
 }
 
+.actionBtnOpz:hover {
+  color: #000000;
+}
+
 .audioBtn {
   background-image: url(./../../../assets/img/Game/btn1.png);
 }
