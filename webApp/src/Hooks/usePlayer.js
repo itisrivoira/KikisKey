@@ -81,7 +81,6 @@ const usePlayer = (playerRef, step) => {
             getPlayerXY("x") > stanzaCorrente.width - halfGameAreaWidth
           ) {
             setPlayerImgXY("x", getPlayerImgXY("x") + step);
-            console.log("ada");
           }
         }
       },

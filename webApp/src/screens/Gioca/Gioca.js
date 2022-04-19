@@ -1,5 +1,5 @@
 import "./Gioca.css";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useRef, useEffect, useContext } from "react";
 import { gameContext } from "../../Hooks/useContext";
@@ -7,19 +7,30 @@ import { gameContext } from "../../Hooks/useContext";
 import Player from "../../Components/Player";
 import usePlayer from "../../Hooks/usePlayer";
 
+import PauseMenu from "../../Components/PauseManu/PauseManu";
+import usePauseMenu from "../../Hooks/usePauseMenu";
+
 const Gioca = () => {
   const { gameAreaRef, playerRef } = useContext(gameContext);
   const [getPlayerXY, getPlayerImgXY, playerController] = usePlayer(
     playerRef,
     10
   );
+  const mapRef = useRef(null);
+
+  const [showPauseMenu, pauseMenuController] = usePauseMenu("escape");
 
   useEffect(() => {
     const ctx = gameAreaRef.current.getContext("2d");
 
-    window.addEventListener("keydown", (e) => {
+    window.addEventListener("keyup", (e) => {
       let pressedKey = e.key.toLowerCase();
-      playerController(pressedKey);
+
+      if (!showPauseMenu) {
+        playerController(pressedKey);
+      }
+
+      pauseMenuController(pressedKey);
     });
 
     const gameLoop = setInterval(() => {
@@ -28,16 +39,17 @@ const Gioca = () => {
       ctx.fillStyle = "#e5b62e";
       ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
+      ctx.save();
+      ctx.translate(-getPlayerXY("x"), -getPlayerXY("y"));
+
+      ctx.drawImage(mapRef.current, 0, 0, 496 * 3, 336 * 3);
+      ctx.restore();
+
       ctx.drawImage(
         playerRef.current,
         getPlayerImgXY("x"),
         getPlayerImgXY("y")
       );
-
-      ctx.save();
-      ctx.translate(-getPlayerXY("x"), -getPlayerXY("y"));
-
-      ctx.restore();
     }, 1000 / 60);
     return () => {
       clearInterval(gameLoop);
@@ -45,12 +57,16 @@ const Gioca = () => {
   }, []);
 
   return (
-    <div className="contenitoreGioco">
+    <div>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
+        className="contenitoreGioco"
       >
+        {showPauseMenu ? (
+          <PauseMenu pauseMenuController={pauseMenuController} />
+        ) : null}
         <canvas
           className="gameCanvas"
           ref={gameAreaRef}
@@ -58,6 +74,11 @@ const Gioca = () => {
           height={650}
         >
           <Player defaultImg="/img/player/Down/2.png" />
+          <img
+            ref={mapRef}
+            src="./img/map/chimica1.png"
+            style={{ display: "none" }}
+          />
         </canvas>
       </motion.div>
     </div>

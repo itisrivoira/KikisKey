@@ -7,15 +7,15 @@ const useStanze = () => {
       name: "labChimica1",
       width: 2000,
       height: 1500,
-      spawnPlayerX: 400,
-      spawnPlayerY: 200,
+      spawnPlayerX: 70,
+      spawnPlayerY: 50,
     },
     {
       name: "labChimica2",
       width: 3500,
       height: 2000,
-      spawnPlayerX: 0,
-      spawnPlayerY: 0,
+      spawnPlayerX: 200,
+      spawnPlayerY: 400,
     },
   ];
 
