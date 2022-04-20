@@ -28,7 +28,7 @@ contenutoPagineSez2 = [
    Per raggiungere il suo obiettivo Kiki dovrà superare con successo differenti 
    prove e indovinelli sparsi nelle stanze della scuola.<br /><br />
    La missione di Kiki inizia proprio durante un giorno di scuola, 
-   più precisamente durante l’intervallo, dove approfitterà dell’occasione<br />
+   più precisamente durante l’intervallo, dove approfitterà dell’occasione
    per nascondersi nella scuola.<br /><br />`,
 
   `Kiki si trova all’interno del laboratorio di chimica, dove sarà necessario 
