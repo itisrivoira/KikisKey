@@ -64,8 +64,10 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     #inizializzo le variabili per il personaggio
     x=1280/2*OFFSET_FINESTRA
     y=720/2*OFFSET_FINESTRA
-    speed=7
     walkcount=0
+    
+    
+    speed=7*OFFSET_FINESTRA
     kiki=player(immaginiP,OFFSET_FINESTRA,x,y,FPS,speed,walkcount)
     
     while True:
@@ -74,28 +76,28 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_a]:
-         x-=speed
+         x-=speed*OFFSET_FINESTRA
          left=True
          right=False
          up=False
          down=False
 
         elif keys[pygame.K_d]:
-         x+=speed
+         x+=speed*OFFSET_FINESTRA
          left=False
          right=True
          up=False
          down=False
             
         elif keys[pygame.K_w]:
-         y-=speed
+         y-=speed*OFFSET_FINESTRA
          left=False
          right=False
          up=True
          down=False
 
         elif keys[pygame.K_s]:
-         y+=speed
+         y+=speed*OFFSET_FINESTRA
          left=False
          right=False
          up=False
