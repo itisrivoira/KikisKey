@@ -58,7 +58,7 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     }
 
     tipostanza="chimica2"
-    immaginiP = resizeImgs(immaginiP, OFFSET_FINESTRA,2) #l'ultimo valore moltiplicatore grandezza immagine
+    immaginiP = resizeImgs(immaginiP, OFFSET_FINESTRA,1.1) #l'ultimo valore moltiplicatore grandezza immagine
     immagini = resizeImgs(immagini, OFFSET_FINESTRA,3)
     
     #inizializzo le variabili per il personaggio

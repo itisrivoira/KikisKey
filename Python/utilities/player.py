@@ -39,7 +39,7 @@ class player():
       #self.Cam=pygame.Rect(self.x-self.img.get_width()*3, self.y-self.img.get_height()*3, self.img.get_width()*6, self.img.get_height()*6)
       #hitbox player
       #self.rect=pygame.Rect(self.x, self.y, self.img.get_width(), self.img.get_height())
-      self.rect=pygame.Rect(self.x+self.img.get_width()/3, self.y+self.img.get_height()/2, self.img.get_width()/3, self.img.get_height()/4)
+      self.rect=pygame.Rect(self.x+self.img.get_width()/3.3, self.y+self.img.get_height()/1.8, self.img.get_width()/2.4, self.img.get_height()/3.4)
       
       #stanza attuale
       self.tipost=tipostanza
@@ -55,33 +55,33 @@ class player():
          finestra.blit(self.walkleft[self.walkcount//8],(self.x,self.y))
          self.walkcount+=int(self.fps/22*self.off)
          self.img= self.walkleft[0]
-         #pygame.draw.rect(finestra,"red",self.rect,1)
+         pygame.draw.rect(finestra,"red",self.rect,1)
          #pygame.draw.rect(finestra,"blue",self.Cam,1)
 
       elif right:
          finestra.blit(self.walkright[self.walkcount//8],(self.x,self.y))
          self.walkcount+=int(self.fps/22*self.off)
          self.img= self.walkright[0]
-         #pygame.draw.rect(finestra,"red",self.rect,1)
+         pygame.draw.rect(finestra,"red",self.rect,1)
          #pygame.draw.rect(finestra,"blue",self.Cam,1)
 
       elif up:
          finestra.blit(self.walkup[self.walkcount//8],(self.x,self.y))
          self.walkcount+=int(self.fps/22*self.off)
          self.img= self.walkup[0]
-         #pygame.draw.rect(finestra,"red",self.rect,1)
+         pygame.draw.rect(finestra,"red",self.rect,1)
          #pygame.draw.rect(finestra,"blue",self.Cam,1)
 
       elif down:
          finestra.blit(self.walkdown[self.walkcount//8],(self.x,self.y))
          self.walkcount+=int(self.fps/22*self.off)
          self.img= self.walkdown[0]
-         #pygame.draw.rect(finestra,"red",self.rect,1)
+         pygame.draw.rect(finestra,"red",self.rect,1)
          #pygame.draw.rect(finestra,"blue",self.Cam,1)
 
       else:
          finestra.blit(self.img,(self.x,self.y)) 
-         #pygame.draw.rect(finestra,"red",self.rect,1)
+         pygame.draw.rect(finestra,"red",self.rect,1)
          #pygame.draw.rect(finestra,"blue",self.Cam,1)
 
 
