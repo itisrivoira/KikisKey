@@ -1,5 +1,5 @@
-from turtle import speed
 import pygame
+from utilities.dialoghi import dialogo
 
 class player():
    def __init__(self, immaginiP, OFFSET_FINESTRA,x,y,FPS,speed,walkcount):
@@ -24,18 +24,28 @@ class player():
       self.y = y*OFFSET_FINESTRA
       self.speed = speed*OFFSET_FINESTRA
       self.fps=FPS
+      #walkcount serve per le animazioni personaggio
       self.walkcount=walkcount
       self.off=OFFSET_FINESTRA
+
+      #oggetti ottenuti
+      self.oggAcido=False
 
 
    def aggplayer(self,finestra,left,right,up,down,y,x,tipostanza,key):
       self.x=x
       self.y=y
-      #self.Cam=pygame.Rect(self.x-self.img.get_width(), self.y-self.img.get_height(), self.img.get_width()*3, self.img.get_height()*3)
+      #camera
+      #self.Cam=pygame.Rect(self.x-self.img.get_width()*3, self.y-self.img.get_height()*3, self.img.get_width()*6, self.img.get_height()*6)
+      #hitbox player
       #self.rect=pygame.Rect(self.x, self.y, self.img.get_width(), self.img.get_height())
       self.rect=pygame.Rect(self.x+self.img.get_width()/3, self.y+self.img.get_height()/2, self.img.get_width()/3, self.img.get_height()/4)
+      
+      #stanza attuale
       self.tipost=tipostanza
-      txt="x: "+str(x/3)+" y: "+str(y/2)
+
+      #posizione player
+      txt="x: "+str(x)+" y: "+str(y)
       #print(txt)
         
       if self.walkcount +1 >=self.fps:
@@ -43,31 +53,36 @@ class player():
             
       if left:
          finestra.blit(self.walkleft[self.walkcount//8],(self.x,self.y))
-         self.walkcount+=int(self.fps/22)
+         self.walkcount+=int(self.fps/22*self.off)
          self.img= self.walkleft[0]
          #pygame.draw.rect(finestra,"red",self.rect,1)
+         #pygame.draw.rect(finestra,"blue",self.Cam,1)
 
       elif right:
          finestra.blit(self.walkright[self.walkcount//8],(self.x,self.y))
-         self.walkcount+=int(self.fps/22)
+         self.walkcount+=int(self.fps/22*self.off)
          self.img= self.walkright[0]
          #pygame.draw.rect(finestra,"red",self.rect,1)
+         #pygame.draw.rect(finestra,"blue",self.Cam,1)
 
       elif up:
          finestra.blit(self.walkup[self.walkcount//8],(self.x,self.y))
-         self.walkcount+=int(self.fps/22)
+         self.walkcount+=int(self.fps/22*self.off)
          self.img= self.walkup[0]
          #pygame.draw.rect(finestra,"red",self.rect,1)
+         #pygame.draw.rect(finestra,"blue",self.Cam,1)
 
       elif down:
          finestra.blit(self.walkdown[self.walkcount//8],(self.x,self.y))
-         self.walkcount+=int(self.fps/22)
+         self.walkcount+=int(self.fps/22*self.off)
          self.img= self.walkdown[0]
          #pygame.draw.rect(finestra,"red",self.rect,1)
+         #pygame.draw.rect(finestra,"blue",self.Cam,1)
 
       else:
          finestra.blit(self.img,(self.x,self.y)) 
          #pygame.draw.rect(finestra,"red",self.rect,1)
+         #pygame.draw.rect(finestra,"blue",self.Cam,1)
 
 
       #collisioni x*3 y*2
@@ -87,31 +102,31 @@ class player():
 
          #parte bassa stanza
          col4=pygame.Rect((111.6*3*self.off,343*2*self.off,(156-111.6)*3*self.off,(10)*2*self.off) )
-         #pygame.draw.rect(finestra,"red", col4,1)
+         ##pygame.draw.rect(finestra,"red", col4,1)
 
          #parte bassa stanza
          col41=pygame.Rect((174.5*3*self.off,343*2*self.off,(278.3-174.5)*3*self.off,(10)*2*self.off) )
-         #pygame.draw.rect(finestra,"red", col41,1)
+         ##pygame.draw.rect(finestra,"red", col41,1)
 
          #scrivania pc
          col5=pygame.Rect((255.3*3*self.off,130.5*2*self.off,(276.3-255.3)*3*self.off,(184.5-130.5)*2*self.off) )
-         #pygame.draw.rect(finestra,"red", col5,1)
+         ##pygame.draw.rect(finestra,"red", col5,1)
          
          #sedia pc
          col6=pygame.Rect((247.3*3*self.off,144*2*self.off,(256-247.3)*3*self.off,(171-144)*2*self.off) )
-         #pygame.draw.rect(finestra,"red", col6,1)
+         ##pygame.draw.rect(finestra,"red", col6,1)
 
          #acquario 
          col7=pygame.Rect((255.3*3*self.off,204*2*self.off,(277.3-255.3)*3*self.off,(250.5-205.5)*2*self.off) )
-         #pygame.draw.rect(finestra,"red", col7,1)
+         ##pygame.draw.rect(finestra,"red", col7,1)
 
          #porta 
          col8=pygame.Rect((156.5*3*self.off,343*2*self.off,(174.5-156.5)*3*self.off,(10)*2*self.off) )
-         #pygame.draw.rect(finestra,"red", col8,1)
+         ##pygame.draw.rect(finestra,"red", col8,1)
 
          #scaffale piglia acido
          col9=pygame.Rect((150.3*3*self.off,46*2*self.off,(180.8-150.3)*3*self.off,17*2*self.off) )
-         #pygame.draw.rect(finestra,"red", col9,1)
+         ##pygame.draw.rect(finestra,"red", col9,1)
 
          for col in [col1,col2,col3,col4,col41,col5,col6,col7]:
             if self.rect.colliderect(col):
@@ -125,13 +140,18 @@ class player():
                   self.y-=self.speed
             if self.rect.colliderect(col8):
                self.tipost="chimica1"
-            if self.rect.colliderect(col9) and key:
-               self.oggAcido=True
-               print("hai preso l'acido")
+               self.x=38.5
+               self.y=36.5
+            if self.rect.colliderect(col9):
+               dialogo("c'è qualcosa...",finestra,self.off)
+               if key:
+                  self.oggAcido=True
 
       elif self.tipost=="chimica1":
          print ("ciao")
       
-      
+      if self.oggAcido:
+         ogg=pygame.image.load('screens/game/assets/AcidoC.png').convert()
+         finestra.blit(ogg,(10,10))
       pygame.display.update()
       return self.x,self.y,self.tipost
