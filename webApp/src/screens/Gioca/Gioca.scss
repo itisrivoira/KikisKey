@@ -6,6 +6,12 @@ $coloreSecondario: #e5b62e;
   width: 100vw;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   background-color: $colorePrimario;
+}
+
+.dialogBox {
+  text-align: center;
+  color: #fff;
 }

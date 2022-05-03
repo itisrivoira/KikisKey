@@ -1,15 +1,15 @@
 import "./Game.css";
-import { useState, useRef } from "react";
 
-import ReactHowler from "react-howler";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { useRef, useState } from "react";
+
 import { AnimatePresence } from "framer-motion";
-import { Routes, Route, useLocation } from "react-router-dom";
-import { gameContext } from "../Hooks/useContext";
-
-import Menu from "../screens/Menu/Menu";
-import Gioca from "../screens/Gioca/Gioca";
-import Opzioni from "../screens/Opzioni/Opzioni";
 import Audio from "../screens/Opzioni/screens/Audio/Audio";
+import Gioca from "../screens/Gioca/Gioca";
+import Menu from "../screens/Menu/Menu";
+import Opzioni from "../screens/Opzioni/Opzioni";
+import ReactHowler from "react-howler";
+import { gameContext } from "../Hooks/useContext";
 
 const Game = () => {
   const location = useLocation();
@@ -21,12 +21,12 @@ const Game = () => {
   const stanzaLayer2Ref = useRef(null);
 
   const [inventario, setInventario] = useState([
-    [false, ""],
-    [false, ""],
-    [false, ""],
-    [false, ""],
-    [false, ""],
-    [false, ""],
+    [false, "", 0], //[flagOggetto, nomeOggetto, quantitaOggetto]
+    [false, "", 0],
+    [false, "", 0],
+    [false, "", 0],
+    [false, "", 0],
+    [false, "", 0],
   ]);
 
   const gameData = useRef({
