@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 const PauseMenu = (props) => {
   const riprendi = () => {
     props.pauseMenuController("escape");
-    console.log("ok");
   };
 
   return (
@@ -17,7 +16,6 @@ const PauseMenu = (props) => {
         <motion.div
           whileHover={{ scale: 1.025 }}
           className="actionBtnPauseMenu menuBtn"
-          onClick={riprendi}
         >
           MENU
         </motion.div>

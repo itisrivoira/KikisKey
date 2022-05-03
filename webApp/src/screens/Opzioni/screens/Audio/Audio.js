@@ -1,26 +1,37 @@
 import "./Audio.css";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { gameContext } from "../../../../Hooks/useContext";
 
 const Audio = () => {
-  const { setMusicaOn } = useContext(gameContext);
-
+  const { flagMusica, setFlagMusica } = useContext(gameContext);
   const [stileAudioOnBtn, setStileAudioOnBtn] = useState("audioOnBtn filtroBN");
   const [stileAudioOffBtn, setStileAudioOffBtn] = useState("audioOffBtn");
 
+  useEffect(() => {
+    cambiaStileAudioBtn(flagMusica);
+  }, [flagMusica]);
+
   const accendiMusica = () => {
-    setMusicaOn(true);
-    setStileAudioOnBtn("audioOnBtn");
-    setStileAudioOffBtn("audioOffBtn filtroBN");
+    setFlagMusica(true);
+    cambiaStileAudioBtn(flagMusica);
   };
 
   const spegniMusica = () => {
-    setMusicaOn(false);
-    setStileAudioOnBtn("audioOnBtn filtroBN");
-    setStileAudioOffBtn("audioOffBtn");
+    setFlagMusica(false);
+    cambiaStileAudioBtn(flagMusica);
+  };
+
+  const cambiaStileAudioBtn = (flag) => {
+    if (!flag) {
+      setStileAudioOnBtn("audioOnBtn filtroBN");
+      setStileAudioOffBtn("audioOffBtn");
+    } else {
+      setStileAudioOnBtn("audioOnBtn");
+      setStileAudioOffBtn("audioOffBtn filtroBN");
+    }
   };
 
   return (
