@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { gameContext } from "../Hooks/useContext";
+import { gameContext } from "../../Hooks/useContext";
 
 const Player = (props) => {
   const { playerRef } = useContext(gameContext);

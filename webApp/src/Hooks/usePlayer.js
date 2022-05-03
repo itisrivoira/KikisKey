@@ -1,50 +1,49 @@
 import { useRef, useContext } from "react";
+
 import { gameContext } from "./useContext";
 import useStanze from "./useStanze";
+import useCollisionDetector from "./useCollisionDetector";
+import useInventario from "./useInventario";
 
-const usePlayer = (playerRef, step) => {
-  const { gameData } = useContext(gameContext);
-  const [getStanzaCorrenteData] = useStanze();
+const usePlayer = () => {
+  const { playerRef } = useContext(gameContext);
+  const { getStanzaCorrente, checkCambiaStanza, updatePlayerSpawn } =
+    useStanze();
 
-  const stanzaCorrente = getStanzaCorrenteData(gameData["stanzaCorrente"]);
+  const { collisionDetectorX, collisionDetectorY } = useCollisionDetector();
 
-  const playerX = useRef(stanzaCorrente.spawnPlayerX);
-  const playerY = useRef(stanzaCorrente.spawnPlayerY);
-  const playerImgX = useRef(stanzaCorrente.spawnPlayerX);
-  const playerImgY = useRef(stanzaCorrente.spawnPlayerY);
+  const { aggiungiOggetto } = useInventario("e");
 
-  const getPlayerXY = (coord) => {
-    if (coord === "x") {
-      return playerX.current;
-    } else if (coord === "y") {
-      return playerY.current;
-    }
-  };
-  const setPlayerXY = (coord, val) => {
-    if (coord === "x") {
-      return (playerX.current = val);
-    } else if (coord === "y") {
-      return (playerY.current = val);
-    }
-  };
+  const player = useRef({
+    x: getStanzaCorrente().spawnPlayer.x,
+    y: getStanzaCorrente().spawnPlayer.y,
+    dim: 96,
+    step: 48,
+  });
 
-  const getPlayerImgXY = (coord) => {
-    if (coord === "x") {
-      return playerImgX.current;
-    } else if (coord === "y") {
-      return playerImgY.current;
-    }
-  };
-  const setPlayerImgXY = (coord, val) => {
-    if (coord === "x") {
-      return (playerImgX.current = val);
-    } else if (coord === "y") {
-      return (playerImgY.current = val);
+  const setPlayer = (dato, val) => {
+    if (dato === "x") {
+      player.current.x = val;
+    } else if (dato === "y") {
+      player.current.y = val;
+    } else if (dato === "dim") {
+      player.current.dim = val;
+    } else {
+      player.current.step = val;
     }
   };
 
-  const halfGameAreaWidth = 1150 / 2 - 32;
-  const halfGameAreaHeight = 650 / 2 - 36;
+  const getPlayer = (dato) => {
+    if (dato === "x") {
+      return player.current.x;
+    } else if (dato === "y") {
+      return player.current.y;
+    } else if (dato === "dim") {
+      return player.current.dim;
+    } else {
+      return player.current.step;
+    }
+  };
 
   const playerCmds = [
     {
@@ -52,17 +51,9 @@ const usePlayer = (playerRef, step) => {
       keys: ["arrowleft", "a"],
       func: () => {
         if (
-          getPlayerXY("x") - step >= 0 &&
-          getPlayerXY("x") - step <= stanzaCorrente.width
+          collisionDetectorX(getPlayer("x"), getPlayer("y"), -getPlayer("step"))
         ) {
-          setPlayerXY("x", getPlayerXY("x") - step);
-
-          if (
-            getPlayerXY("x") <= halfGameAreaWidth ||
-            getPlayerXY("x") > stanzaCorrente.width - halfGameAreaWidth
-          ) {
-            setPlayerImgXY("x", getPlayerImgXY("x") - step);
-          }
+          setPlayer("x", getPlayer("x") - getPlayer("step"));
         }
       },
     },
@@ -71,17 +62,9 @@ const usePlayer = (playerRef, step) => {
       keys: ["arrowright", "d"],
       func: () => {
         if (
-          getPlayerXY("x") + step >= 0 &&
-          getPlayerXY("x") + step <= stanzaCorrente.width
+          collisionDetectorX(getPlayer("x"), getPlayer("y"), getPlayer("step"))
         ) {
-          setPlayerXY("x", getPlayerXY("x") + step);
-
-          if (
-            getPlayerXY("x") <= halfGameAreaWidth ||
-            getPlayerXY("x") > stanzaCorrente.width - halfGameAreaWidth
-          ) {
-            setPlayerImgXY("x", getPlayerImgXY("x") + step);
-          }
+          setPlayer("x", getPlayer("x") + getPlayer("step"));
         }
       },
     },
@@ -90,17 +73,9 @@ const usePlayer = (playerRef, step) => {
       keys: ["arrowup", "w"],
       func: () => {
         if (
-          getPlayerXY("y") - step >= 0 &&
-          getPlayerXY("y") - step <= stanzaCorrente.height
+          collisionDetectorY(getPlayer("x"), getPlayer("y"), -getPlayer("step"))
         ) {
-          setPlayerXY("y", getPlayerXY("y") - step);
-
-          if (
-            getPlayerXY("y") <= halfGameAreaHeight ||
-            getPlayerXY("y") > stanzaCorrente.height - halfGameAreaHeight
-          ) {
-            setPlayerImgXY("y", getPlayerImgXY("y") - step);
-          }
+          setPlayer("y", getPlayer("y") - getPlayer("step"));
         }
       },
     },
@@ -109,32 +84,24 @@ const usePlayer = (playerRef, step) => {
       keys: ["arrowdown", "s"],
       func: () => {
         if (
-          getPlayerXY("y") + step >= 0 &&
-          getPlayerXY("y") + step <= stanzaCorrente.height
+          collisionDetectorY(getPlayer("x"), getPlayer("y"), getPlayer("step"))
         ) {
-          setPlayerXY("y", getPlayerXY("y") + step);
-
-          if (
-            getPlayerXY("y") <= halfGameAreaHeight ||
-            getPlayerXY("y") > stanzaCorrente.height - halfGameAreaHeight
-          ) {
-            setPlayerImgXY("y", getPlayerImgXY("y") + step);
-          }
+          setPlayer("y", getPlayer("y") + getPlayer("step"));
         }
       },
     },
   ];
 
-  const playerImgIndex = useRef(2);
+  let playerImgIndex = 2;
 
   const animate = (cmdName) => {
     playerRef.current.src =
-      "/img/player/" + cmdName + "/" + playerImgIndex.current + ".png";
+      "/img/player/" + cmdName + "/" + playerImgIndex + ".png";
 
-    if (playerImgIndex.current >= 3) {
-      playerImgIndex.current = 1;
+    if (playerImgIndex >= 3) {
+      playerImgIndex = 1;
     } else {
-      playerImgIndex.current++;
+      playerImgIndex++;
     }
   };
 
@@ -144,11 +111,17 @@ const usePlayer = (playerRef, step) => {
         cmd["func"]();
         let cmdName = cmd["name"];
         animate(cmdName);
+
+        if (checkCambiaStanza(getPlayer("x"), getPlayer("y"), cmdName)) {
+          updatePlayerSpawn(setPlayer);
+          aggiungiOggetto("cloro");
+          aggiungiOggetto("idrogeno");
+        }
       }
     }
   };
 
-  return [getPlayerXY, getPlayerImgXY, playerController];
+  return { setPlayer, getPlayer, playerController };
 };
 
 export default usePlayer;

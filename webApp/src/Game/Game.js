@@ -14,23 +14,37 @@ import Audio from "../screens/Opzioni/screens/Audio/Audio";
 const Game = () => {
   const location = useLocation();
 
-  const [musicaOn, setMusicaOn] = useState(false);
-  const gameAreaRef = useRef(null);
-  const playerRef = useRef(null);
+  const [flagMusica, setFlagMusica] = useState(false);
 
-  const gameData = {
-    stanzaCorrente: "labChimica1",
-  };
+  const playerRef = useRef(null);
+  const stanzaLayer1Ref = useRef(null);
+  const stanzaLayer2Ref = useRef(null);
+
+  const [inventario, setInventario] = useState([
+    [false, ""],
+    [false, ""],
+    [false, ""],
+    [false, ""],
+    [false, ""],
+    [false, ""],
+  ]);
+
+  const gameData = useRef({
+    stanzaCorrente: "chimica1",
+  });
 
   return (
     <>
-      <ReactHowler src="/audio/musicaMenu.mp3" playing={musicaOn} loop />
+      <ReactHowler src="/audio/musicaMenu.mp3" playing={flagMusica} loop />
       <gameContext.Provider
         value={{
-          musicaOn,
-          setMusicaOn,
-          gameAreaRef,
+          flagMusica,
+          setFlagMusica,
           playerRef,
+          stanzaLayer1Ref,
+          stanzaLayer2Ref,
+          inventario,
+          setInventario,
           gameData,
         }}
       >

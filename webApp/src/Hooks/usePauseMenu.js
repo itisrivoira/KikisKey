@@ -1,15 +1,15 @@
 import { useState } from "react";
 
-const usePauseMenu = (screenBtn) => {
-  const [showPauseMenu, setShowPauseMenu] = useState(false);
+const usePauseMenu = (actionBtn) => {
+  const [showPauseMenu, setShowPauseMenu] = useState(0);
 
   const pauseMenuController = (pressedKey) => {
-    if (pressedKey === screenBtn) {
+    if (pressedKey === actionBtn) {
       setShowPauseMenu((prev) => !prev);
     }
   };
 
-  return [showPauseMenu, pauseMenuController];
+  return { showPauseMenu, pauseMenuController };
 };
 
 export default usePauseMenu;
