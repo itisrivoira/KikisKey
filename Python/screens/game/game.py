@@ -54,7 +54,7 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     immagini={
         "chimica2": pygame.image.load("screens/game/assets/chimica2.png"),
         "chimica1": pygame.image.load("screens/game/assets/chimica1.png"),
-        "corridoio": pygame.image.load("screens/game/assets/corridoio.png")
+        "chimica2R": pygame.image.load("screens/game/assets/chimica2R.png"),
     }
 
     tipostanza="chimica2"
@@ -67,7 +67,7 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     walkcount=0
     
     
-    speed=7*OFFSET_FINESTRA
+    speed=4*OFFSET_FINESTRA
     kiki=player(immaginiP,OFFSET_FINESTRA,x,y,FPS,speed,walkcount)
     
     while True:
