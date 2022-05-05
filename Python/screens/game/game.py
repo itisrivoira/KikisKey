@@ -54,12 +54,17 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     immagini={
         "chimica2": pygame.image.load("screens/game/assets/chimica2.png"),
         "chimica1": pygame.image.load("screens/game/assets/chimica1.png"),
-        "corridoio": pygame.image.load("screens/game/assets/corridoio.png")
+        "bidelleriaFuori": pygame.image.load("screens/game/assets/bidelleriaFuori.png")
+    }
+
+    inventario={
+        "inventario": pygame.image.load("screens/game/assets/inventarioBox.png")
     }
 
     tipostanza="chimica2"
     immaginiP = resizeImgs(immaginiP, OFFSET_FINESTRA,1.1) #l'ultimo valore moltiplicatore grandezza immagine
     immagini = resizeImgs(immagini, OFFSET_FINESTRA,3)
+    inventario = resizeImgs(inventario, OFFSET_FINESTRA,4)
     
     #inizializzo le variabili per il personaggio
     x=1280/2*OFFSET_FINESTRA
@@ -67,8 +72,10 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     walkcount=0
     
     
-    speed=7*OFFSET_FINESTRA
+    speed=4*OFFSET_FINESTRA
     kiki=player(immaginiP,OFFSET_FINESTRA,x,y,FPS,speed,walkcount)
+    inventarioImg=stanza(inventario["inventario"],OFFSET_FINESTRA)
+    attivaInv=False
     
     while True:
         stanzaIMGconv=immagini[tipostanza].convert() #converte l'immagine in un formato piu veloce
@@ -76,48 +83,54 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_a]:
-         x-=speed*OFFSET_FINESTRA
-         left=True
-         right=False
-         up=False
-         down=False
+            x-=speed*OFFSET_FINESTRA
+            left=True
+            right=False
+            up=False
+            down=False
 
         elif keys[pygame.K_d]:
-         x+=speed*OFFSET_FINESTRA
-         left=False
-         right=True
-         up=False
-         down=False
+            x+=speed*OFFSET_FINESTRA
+            left=False
+            right=True
+            up=False
+            down=False
             
         elif keys[pygame.K_w]:
-         y-=speed*OFFSET_FINESTRA
-         left=False
-         right=False
-         up=True
-         down=False
+            y-=speed*OFFSET_FINESTRA
+            left=False
+            right=False
+            up=True
+            down=False
 
         elif keys[pygame.K_s]:
-         y+=speed*OFFSET_FINESTRA
-         left=False
-         right=False
-         up=False
-         down=True
-      
+            y+=speed*OFFSET_FINESTRA
+            left=False
+            right=False
+            up=False
+            down=True
+            
         else:
-         left=False
-         right=False
-         up=False
-         down=False
-         walkcount=0
+            left=False
+            right=False
+            up=False
+            down=False
+            walkcount=0
 
         if keys[pygame.K_e]:
             key=True
         else:
             key=False
 
+        if keys[pygame.K_f]:
+            attivaInv=True
+        elif keys[pygame.K_ESCAPE]:
+            attivaInv=False
+
         finestra.fill("black")       
         stanzaIMG.aggsfondo(finestra)
-        x,y,tipostanza=kiki.aggplayer(finestra,left,right,up,down,y,x,tipostanza,key)
+        x,y,tipostanza=kiki.aggplayer(finestra,left,right,up,down,y,x,tipostanza,key,attivaInv,inventarioImg)
+        
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
