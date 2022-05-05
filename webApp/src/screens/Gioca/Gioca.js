@@ -25,10 +25,16 @@ const Gioca = () => {
   const { setPlayer, getPlayer, playerController } = usePlayer();
   const { getStanzaCorrente } = useStanze();
   const { showPauseMenu, pauseMenuController } = usePauseMenu("escape");
-  const { showInventario, inventarioController } = useInventario("e");
+  const {
+    showInventario,
+    inventarioController,
+    aggiungiOggetto,
+    rimuoviOggetto,
+  } = useInventario("e", 6);
 
   // creo varibili appartenenti a quello componente
   const canvasRef = useRef(null);
+  const DialogBoxRef = useRef(null);
 
   useEffect(() => {
     const ctx = canvasRef.current.getContext("2d");
@@ -87,6 +93,9 @@ const Gioca = () => {
   });
 
   useEffect(() => {
+    let aggiuntoCloro = false;
+    let aggiuntoIdrogeno = false;
+    let creatoAcido = false;
     const gameController = (event) => {
       let pressedKey = event.key.toLowerCase();
 
@@ -95,6 +104,58 @@ const Gioca = () => {
       if (!showPauseMenu) {
         playerController(pressedKey);
         inventarioController(pressedKey);
+      }
+
+      //livello 1
+      if (
+        getPlayer("x") === 288 &&
+        getPlayer("y") === 144 &&
+        getStanzaCorrente().name === "chimica1" &&
+        pressedKey === " " &&
+        aggiuntoCloro === false
+      ) {
+        aggiungiOggetto("Cloro");
+        aggiuntoCloro = true;
+        DialogBoxRef.current.innerText = "Trovato Cloro!";
+      }
+
+      if (
+        getPlayer("x") === 672 &&
+        getPlayer("y") === 144 &&
+        getStanzaCorrente().name === "chimica2" &&
+        pressedKey === " " &&
+        aggiuntoIdrogeno === false
+      ) {
+        aggiungiOggetto("Idrogeno");
+        aggiuntoIdrogeno = true;
+        DialogBoxRef.current.innerText = "Trovato Idrogeno!";
+      }
+
+      if (
+        getPlayer("x") === 1056 &&
+        getPlayer("y") === 144 &&
+        getStanzaCorrente().name === "chimica1" &&
+        pressedKey === " " &&
+        aggiuntoCloro === true &&
+        aggiuntoIdrogeno === true
+      ) {
+        aggiungiOggetto("Acido");
+        rimuoviOggetto("Cloro");
+        rimuoviOggetto("Idrogeno");
+        creatoAcido = true;
+        DialogBoxRef.current.innerText = "Creato Acido!";
+      }
+
+      if (
+        getPlayer("x") === 1296 &&
+        getPlayer("y") === 960 &&
+        creatoAcido === true &&
+        getStanzaCorrente().name === "chimica2" &&
+        pressedKey === " "
+      ) {
+        rimuoviOggetto("Acido");
+        DialogBoxRef.current.innerText = "Porta Aperta";
+        console.log("porta aperta");
       }
     };
 
@@ -117,12 +178,13 @@ const Gioca = () => {
         ) : null}
 
         <canvas className="canvas" ref={canvasRef} width={1152} height={672}>
-          <Player defaultImg="/img/player/up/2.png" />
+          <Player defaultImg="/img/player/down/2.png" />
           <Stanza
             defaultImg1="/img/stanze/chimica1/layer1.png"
             defaultImg2="/img/stanze/chimica1/layer2.png"
           />
         </canvas>
+        <div ref={DialogBoxRef} className="dialogBox"></div>
       </motion.div>
     </div>
   );
