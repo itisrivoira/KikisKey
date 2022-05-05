@@ -1,22 +1,21 @@
-import { useRef, useContext } from "react";
+import { useContext, useRef } from "react";
 
 import { gameContext } from "./useContext";
-import useStanze from "./useStanze";
 import useCollisionDetector from "./useCollisionDetector";
 import useInventario from "./useInventario";
+import useStanze from "./useStanze";
 
 const usePlayer = () => {
   const { playerRef } = useContext(gameContext);
+
   const { getStanzaCorrente, checkCambiaStanza, updatePlayerSpawn } =
     useStanze();
-
   const { collisionDetectorX, collisionDetectorY } = useCollisionDetector();
-
-  const { aggiungiOggetto } = useInventario("e");
+  const { aggiungiOggetto, rimuoviOggetto } = useInventario("e", 6);
 
   const player = useRef({
-    x: getStanzaCorrente().spawnPlayer.x,
-    y: getStanzaCorrente().spawnPlayer.y,
+    x: 1104,
+    y: 384,
     dim: 96,
     step: 48,
   });
@@ -114,8 +113,6 @@ const usePlayer = () => {
 
         if (checkCambiaStanza(getPlayer("x"), getPlayer("y"), cmdName)) {
           updatePlayerSpawn(setPlayer);
-          aggiungiOggetto("cloro");
-          aggiungiOggetto("idrogeno");
         }
       }
     }
