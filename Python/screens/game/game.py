@@ -1,3 +1,4 @@
+from ast import And
 import pygame
 import sys
 
@@ -54,25 +55,35 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     immagini={
         "chimica2": pygame.image.load("screens/game/assets/chimica2.png"),
         "chimica1": pygame.image.load("screens/game/assets/chimica1.png"),
-        "bidelleriaFuori": pygame.image.load("screens/game/assets/bidelleriaFuori.png")
+        "bidelleriaFuori": pygame.image.load("screens/game/assets/bidelleriaFuori.png"),
+        "bidelleriaFuori2": pygame.image.load("screens/game/assets/bidelleriaFuori2.png"),
+        "bidelleria": pygame.image.load("screens/game/assets/bidelleria.png")
     }
 
     inventario={
         "inventario": pygame.image.load("screens/game/assets/inventarioBox.png")
     }
 
-    tipostanza="chimica2"
+    oggetti={
+        "acido":pygame.image.load('screens/game/assets/acido.png'),
+        "moneta":pygame.image.load('screens/game/assets/moneta.png'),
+        "merendina":pygame.image.load('screens/game/assets/merendina.png'),
+        "martello":pygame.image.load('screens/game/assets/martello.png')
+    }
+
+    tipostanza="chimica1"
     immaginiP = resizeImgs(immaginiP, OFFSET_FINESTRA,1.1) #l'ultimo valore moltiplicatore grandezza immagine
     immagini = resizeImgs(immagini, OFFSET_FINESTRA,3)
-    inventario = resizeImgs(inventario, OFFSET_FINESTRA,4)
+    inventario = resizeImgs(inventario, OFFSET_FINESTRA,4.5)
+    oggetti = resizeImgs(oggetti, OFFSET_FINESTRA,2)
     
     #inizializzo le variabili per il personaggio
-    x=1280/2*OFFSET_FINESTRA
-    y=720/2*OFFSET_FINESTRA
+    x=1106.5*OFFSET_FINESTRA
+    y=120.5*OFFSET_FINESTRA
     walkcount=0
     
     
-    speed=4*OFFSET_FINESTRA
+    speed=5*OFFSET_FINESTRA
     kiki=player(immaginiP,OFFSET_FINESTRA,x,y,FPS,speed,walkcount)
     inventarioImg=stanza(inventario["inventario"],OFFSET_FINESTRA)
     attivaInv=False
@@ -82,28 +93,28 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
         stanzaIMG=stanza(stanzaIMGconv,OFFSET_FINESTRA)
         keys = pygame.key.get_pressed()
 
-        if keys[pygame.K_a]:
+        if keys[pygame.K_a] and attivaInv==False:
             x-=speed*OFFSET_FINESTRA
             left=True
             right=False
             up=False
             down=False
 
-        elif keys[pygame.K_d]:
+        elif keys[pygame.K_d] and attivaInv==False:
             x+=speed*OFFSET_FINESTRA
             left=False
             right=True
             up=False
             down=False
             
-        elif keys[pygame.K_w]:
+        elif keys[pygame.K_w] and attivaInv==False:
             y-=speed*OFFSET_FINESTRA
             left=False
             right=False
             up=True
             down=False
 
-        elif keys[pygame.K_s]:
+        elif keys[pygame.K_s] and attivaInv==False:
             y+=speed*OFFSET_FINESTRA
             left=False
             right=False
@@ -129,7 +140,7 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
 
         finestra.fill("black")       
         stanzaIMG.aggsfondo(finestra)
-        x,y,tipostanza=kiki.aggplayer(finestra,left,right,up,down,y,x,tipostanza,key,attivaInv,inventarioImg)
+        x,y,tipostanza=kiki.aggplayer(finestra,left,right,up,down,y,x,tipostanza,key,attivaInv,inventarioImg,oggetti)
         
 
         for event in pygame.event.get():

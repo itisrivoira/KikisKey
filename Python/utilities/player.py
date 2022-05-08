@@ -31,22 +31,31 @@ class player():
 
       #oggetti ottenuti
       self.oggAcido=False
+      self.sbloccaP=False
+      self.newroom=False
+      self.oggmartello=False
+      self.oggmoneta=False
+      self.oggmerendina=False
+      
 
 
-   def aggplayer(self,finestra,left,right,up,down,y,x,tipostanza,key,attivaInv,inventarioImg):
+   def aggplayer(self,finestra,left,right,up,down,y,x,tipostanza,key,attivaInv,inventarioImg,oggetti):
       self.x=x
       self.y=y
+
       #hitbox player
-      self.rect=pygame.Rect(self.x, self.y, self.img.get_width(), self.img.get_height())
-      #self.rect=pygame.Rect(self.x+self.img.get_width()/3.3, self.y+self.img.get_height()/1.8, self.img.get_width()/2.4, self.img.get_height()/3.4)
+      #self.rect=pygame.Rect(self.x, self.y, self.img.get_width(), self.img.get_height())
+      self.rect=pygame.Rect(self.x+self.img.get_width()/3.3, self.y+self.img.get_height()/1.8, self.img.get_width()/2.4, self.img.get_height()/3.4)
       
       #stanza attuale
       self.tipost=tipostanza
 
       #posizione player
       txt="x: "+str(x)+" y: "+str(y)
-      print(txt)
-        
+      #print(txt)
+      
+
+      #PLAYER MOVEMENT CON ANIMAZIONI
       if self.walkcount +1 >=self.fps:
          self.walkcount=0
             
@@ -78,54 +87,19 @@ class player():
          finestra.blit(self.img,(self.x,self.y)) 
          pygame.draw.rect(finestra,"red",self.rect,1)
 
-      
-   #STANZA CHIMICA2
-      if self.tipost=="chimica2" :
-
-         #importo collisioni generali
-         collisione=collisioni(self.tipost,self.off)
-
-         #porta da cambiare 642 con 652
-         porta=pygame.Rect( (504*self.off,642*self.off,(570-504)*self.off,30*self.off) )
-         #pygame.draw.rect(finestra,"red", porta,1)
-
-         #scaffale piglia acido
-         scaffale=pygame.Rect( (492*self.off,148*self.off,(586-492)*self.off,30*self.off) )
-         #pygame.draw.rect(finestra,"red", scaffale,1)
-
-         for col in collisione:
-            if self.rect.colliderect(col):
-               if left:
-                  self.x+=self.speed
-               if right:
-                  self.x-=self.speed
-               if up:
-                  self.y+=self.speed
-               if down:
-                  self.y-=self.speed
-
-            if self.rect.colliderect(porta):
-               self.tipost="chimica1"
-               self.x=174.5
-               self.y=120.5
-            if self.rect.colliderect(scaffale):
-               dialogo("c'è qualcosa...",finestra,self.off)
-               if key:
-                  self.oggAcido=True
-
 
    #STANZA CHIMICA1        
-      elif self.tipost=="chimica1":
+      if self.tipost=="chimica1":
 
          #IMPORTO TUTTE LE COLLISIONI GENERALI
-         collisione=collisioni(self.tipost,self.off)
+         collisione=collisioni(self.tipost,self.off,finestra)
 
          #porta chimica1
          porta1=pygame.Rect( (174.5*self.off,90.5*self.off,(246-174.5)*self.off,30*self.off) )
-         #pygame.draw.rect(finestra,"red", porta,1)
+         pygame.draw.rect(finestra,"red", porta1,1)
 
          #porta bidelleria
-         porta2=pygame.Rect( (42.5*self.off,516.5*self.off,30*self.off,(584.5-516.5)*self.off) )
+         porta2=pygame.Rect( (34.5*self.off,516.5*self.off,30*self.off,(584.5-516.5)*self.off) )
          pygame.draw.rect(finestra,"red", porta2,1)
 
          for col in collisione:
@@ -140,49 +114,185 @@ class player():
                   self.y-=self.speed
 
          if self.rect.colliderect(porta1):
-               self.tipost="chimica2"
-               self.x=502.5
-               self.y=556.5
+            self.tipost="chimica2"
+            self.x=502.5*self.off
+            self.y=556.5*self.off
 
-         if self.rect.colliderect(porta2):
+         if self.rect.colliderect(porta2) and self.sbloccaP==False and self.oggAcido==False:
+            dialogo("porta bloccata",finestra,self.off)
+         elif self.rect.colliderect(porta2) and self.sbloccaP==False and self.oggAcido==True:
+            dialogo("sciogli la maniglia",finestra,self.off)
+
+         if self.rect.colliderect(porta2) and self.oggAcido==True and key:
+            self.sbloccaP=True
+         elif self.sbloccaP and self.rect.colliderect(porta2) and self.newroom==False and left:
                self.tipost="bidelleriaFuori"
-               self.x=1142.5
-               self.y=468.5
+               self.x=1142.5*self.off
+               self.y=468.5*self.off
+         elif self.sbloccaP and self.rect.colliderect(porta2) and self.newroom==True and left:
+               self.tipost="bidelleriaFuori2"
+               self.x=1142.5*self.off
+               self.y=468.5*self.off
+
+         #stanza chimica 2
+      elif self.tipost=="chimica2" :
+
+         #importo collisioni generali
+         collisione=collisioni(self.tipost,self.off,finestra)
+
+         #porta per chimica1 
+         porta1=pygame.Rect( (504*self.off,648*self.off,(570-504)*self.off,30*self.off) )
+         pygame.draw.rect(finestra,"red", porta1,1)
+
+         #scaffale acido
+         acido=pygame.Rect( (734.5*self.off,142.5*self.off,(775-734.5)*self.off,30*self.off) )
+         pygame.draw.rect(finestra,"red", acido,1)
+
+         for col in collisione:
+            if self.rect.colliderect(col):
+               if left:
+                  self.x+=self.speed
+               if right:
+                  self.x-=self.speed
+               if up:
+                  self.y+=self.speed
+               if down:
+                  self.y-=self.speed
+
+            if self.rect.colliderect(acido) and self.oggAcido==False:
+               dialogo("prendi oggetto...",finestra,self.off)
+               if key:
+                  self.oggAcido=True
+
+            if self.rect.colliderect(porta1):
+                  self.tipost="chimica1"
+                  self.x=174.5*self.off
+                  self.y=120.5*self.off
 
                
    #STANZA BIDELLERIA FUORI            
-      elif self.tipost=="bidelleriaFuori":
+      elif self.tipost=="bidelleriaFuori" or self.tipost=="bidelleriaFuori2" :
 
          #importo collisioni generali
-         #collisione=collisioni(self.tipost,self.off)
+         collisione=collisioni(self.tipost,self.off,finestra)
          
          #porta chimica1
          porta1=pygame.Rect( (1214.5*self.off,468.5*self.off,30*self.off,(540.5-468.5)*self.off) )
          pygame.draw.rect(finestra,"red", porta1,1)
 
-         #for col in collisione:
-            #if self.rect.colliderect(col):
-               #if left:
-                  #self.x+=self.speed
-               #if right:
-                  #self.x-=self.speed
-               #if up:
-                  #self.y+=self.speed
-               #if down:
-                  #self.y-=self.speed
-         
+         #porta biblioteca
+         porta2=(pygame.Rect((32.5*self.off,467.5*self.off,30*self.off,(545.5-467.5)*self.off) ))
+         pygame.draw.rect(finestra,"red", porta2,1)
+
+         #porta finta bidelleria
+         portaF=pygame.Rect( (934.5*self.off,136.5*self.off,(1014.5-934.5)*self.off,30*self.off) )
+         pygame.draw.rect(finestra,"red", portaF,1)
+
+         #finestra da rompere
+         finestraRompi=pygame.Rect( (558.5*self.off,335.5*self.off,(622.5-558.5)*self.off,30*self.off) )
+         pygame.draw.rect(finestra,"red", finestraRompi,1)
+
+         #personaggio misterioso
+         misterioso=pygame.Rect( (1135.5*self.off,165.5*self.off,(1190.5-1135.5)*self.off,(197.5-165.5)*self.off) )
+         pygame.draw.rect(finestra,"red", misterioso,1)
+
+         #macchineetta
+         macchinetta=pygame.Rect( (194.5*self.off,334.5*self.off,(282.5-194.5)*self.off,30*self.off) )
+         pygame.draw.rect(finestra,"red", macchinetta,1)
+
+         for col in collisione:
+            if self.rect.colliderect(col):
+               if left:
+                  self.x+=self.speed
+               if right:
+                  self.x-=self.speed
+               if up:
+                  self.y+=self.speed
+               if down:
+                  self.y-=self.speed
+                  
+         #cambio stanza torna chimica1
          if self.rect.colliderect(porta1):
                self.tipost="chimica1"
-               self.x=74.5
-               self.y=516.5
+               self.x=74.5*self.off
+               self.y=516.5*self.off
 
+         #collisione porta finta bidelleria in alto
+         if self.rect.colliderect(portaF):
+            dialogo("Impossibile da aprire...",finestra,self.off)
+
+         #collisione personaggio misterioso
+         if self.rect.colliderect(misterioso) and self.oggmoneta==False:
+            dialogo("ho fame, tieni questa moneta...",finestra,self.off)
+            if key:
+               self.oggmoneta=True
+         if self.rect.colliderect(misterioso) and self.oggmerendina==True and self.oggmartello==False:
+            dialogo("tieni questo martello...",finestra,self.off)
+            if key:
+               self.oggmartello=True
+
+         #collisione macchinetta
+         if self.rect.colliderect(macchinetta) and self.oggmoneta==False:
+            dialogo("non hai monete per acquistare...",finestra,self.off)
+         elif self.rect.colliderect(macchinetta) and self.oggmoneta==True and self.oggmerendina==False:
+            dialogo("compra qualcosa...",finestra,self.off)
+            if key:
+               self.oggmerendina=True
+
+         #collisione finestra e cambio stanza in bidelleria interno
+         if self.rect.colliderect(finestraRompi) and self.oggmartello==False:
+            dialogo("finestra fragile...",finestra,self.off)
+         elif self.rect.colliderect(finestraRompi) and self.oggmartello==True and self.newroom==False:
+            dialogo("rompi la finestra...",finestra,self.off)
+            if key:
+               self.tipost="bidelleriaFuori2"
+               self.newroom=True
+         elif self.rect.colliderect(finestraRompi) and up and self.newroom==True:
+            self.tipost="bidelleria"
+            self.x=938.5*self.off
+            self.y=620.5*self.off
+
+   #STANZA BIDELLERIA             
+      elif self.tipost=="bidelleria":
+
+         #importo collisioni generali
+         collisione=collisioni(self.tipost,self.off,finestra)
+
+         #finestra torna bidelleria esterno
+         finestraRompi=pygame.Rect( (942.5*self.off,692.5*self.off,(1002.5-942.5)*self.off,(192.5-164.5)*self.off) )
+         pygame.draw.rect(finestra,"red", finestraRompi,1)
+
+         for col in collisione:
+            if self.rect.colliderect(col):
+               if left:
+                  self.x+=self.speed
+               if right:
+                  self.x-=self.speed
+               if up:
+                  self.y+=self.speed
+               if down:
+                  self.y-=self.speed 
+
+         if self.rect.colliderect(finestraRompi) :
+            self.tipost="bidelleriaFuori2"
+            self.x=558.5
+            self.y=358.5
 
    #Mostra inventario
       if attivaInv:
-         inventarioImg.aggsfondo(finestra)
+         inventarioImg.agginventario(finestra)
          if self.oggAcido:
-            ogg=pygame.image.load('screens/game/assets/AcidoC.png').convert()
-            finestra.blit(ogg,(500,224))
+            finestra.blit(oggetti["acido"],(500,240))
+         if self.oggmoneta:
+            finestra.blit(oggetti["moneta"],(610,240))
+         if self.oggmerendina:
+            finestra.blit(oggetti["merendina"],(720,240))
+         if self.oggmartello:
+            finestra.blit(oggetti["martello"],(500,350))
+
+            #500 240 - 610 240 - 720 240
+            #500 350 - 610 350 - 720 350
+            #500 460 - 610 460 - 720 460
 
 
       pygame.display.update()
