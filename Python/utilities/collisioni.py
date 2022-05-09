@@ -8,31 +8,31 @@ def collisioni(tipost,offset,finestra):
       collisione=[]
             
       #parte alta stanza
-      collisione.append(pygame.Rect((392*offset,134*offset,(872.3-392)*offset,30*offset) ))
+      collisione.append(pygame.Rect((394*offset,134*offset,(872.3-390)*offset,30*offset) ))
       #pygame.draw.rect(finestra,"red", collisione[0],1)
 
       #parte sinistra stanza
-      collisione.append(pygame.Rect((362*offset,164*offset,30*offset,(651-164)*offset) ))
+      collisione.append(pygame.Rect((366*offset,164*offset,30*offset,(651-164)*offset) ))
       #pygame.draw.rect(finestra,"red", collisione[1],1)
 
       #parte destra stanza
-      collisione.append(pygame.Rect((876*offset,164*offset,30*offset,(648-164)*offset) ))
+      collisione.append(pygame.Rect((880*offset,164*offset,30*offset,(648-164)*offset) ))
       #pygame.draw.rect(finestra,"red", collisione[2],1)
 
       #parte bassa stanza1
-      collisione.append(pygame.Rect((392*offset,642*offset,(504-392)*offset,30*offset) ))
+      collisione.append(pygame.Rect((396*offset,642*offset,(504-392)*offset,30*offset) ))
       #pygame.draw.rect(finestra,"red", collisione[3],1)
 
       #parte bassa stanza2
-      collisione.append(pygame.Rect( (570*offset,642*offset,(876-570)*offset,30*offset) ))
+      collisione.append(pygame.Rect( (574*offset,642*offset,(876-570)*offset,30*offset) ))
       #pygame.draw.rect(finestra,"red", collisione[4],1)
 
       #banco pc
-      collisione.append(pygame.Rect( (816*offset,270*offset,(876-816)*offset,(340-270)*offset) ))
+      collisione.append(pygame.Rect( (820*offset,270*offset,(876-816)*offset,(340-270)*offset) ))
       #pygame.draw.rect(finestra,"red", collisione[5],1)
             
       # pc
-      collisione.append(pygame.Rect( (808*offset,408*offset,(876-808)*offset,(504-408)*offset) ))
+      collisione.append(pygame.Rect( (812*offset,408*offset,(876-810)*offset,(504-408)*offset) ))
       #pygame.draw.rect(finestra,"red", collisione[6],1)
 
 
@@ -50,11 +50,11 @@ def collisioni(tipost,offset,finestra):
 
       #sinistra parte 1
       collisione.append(pygame.Rect((29.5*offset,120.5*offset,30*offset,(516.5-120.5)*offset) ))
-      pygame.draw.rect(finestra,"red", collisione[2],1)
+      #pygame.draw.rect(finestra,"red", collisione[2],1)
 
       #sinistra parte 2
       collisione.append(pygame.Rect((29.5*offset,584.5*offset,30*offset,(700-584.5)*offset) ))         
-      pygame.draw.rect(finestra,"red", collisione[3],1)
+      #pygame.draw.rect(finestra,"red", collisione[3],1)
 
       #destra
       collisione.append(pygame.Rect((1218.5*offset,120.5*offset,30*offset,(700-120.5)*offset) ))
@@ -138,8 +138,48 @@ def collisioni(tipost,offset,finestra):
 
       collisione=[]
 
-      #collsione casuale per provare da eliminare
-      collisione.append(pygame.Rect( (1142.5*offset,164.5*offset,(1190.5-1142.5)*offset,(192.5-164.5)*offset) ))
-      pygame.draw.rect(finestra,"red", collisione[0],1) 
+      #collsione banchi
+      collisione.append(pygame.Rect( (171.5*offset,215.5*offset,(341.5-171.5)*offset,(405.5-215.5)*offset) ))
+      pygame.draw.rect(finestra,"red", collisione[0],1)
+
+
+
+   elif tipost=="biblioteca":
+
+      collisione=[]
+
+       #collsione banchi
+      collisione.append(pygame.Rect( (171.5*offset,215.5*offset,(341.5-171.5)*offset,(405.5-215.5)*offset) ))
+      #pygame.draw.rect(finestra,"red", collisione[0],1)
+
+      #collsione libreria1
+      collisione.append(pygame.Rect( (446.5*offset,210.5*offset,(1022.5-446.5)*offset,(312.5-210.5)*offset) ))
+      #pygame.draw.rect(finestra,"red", collisione[1],1)
+
+      #collsione libreria2
+      collisione.append(pygame.Rect( (446.5*offset,403.5*offset,(1022.5-446.5)*offset,(102)*offset) ))
+      #pygame.draw.rect(finestra,"red", collisione[2],1)
+
+      #collsione parte alta
+      collisione.append(pygame.Rect( (62.5*offset,90.5*offset,(1217.5-62.5)*offset,30*offset) ))
+      #pygame.draw.rect(finestra,"red", collisione[3],1) 
+
+      #collsione parte destra
+      collisione.append(pygame.Rect( (1217.5*offset,90.5*offset,30*offset,(699.5-90.5)*offset) ))
+      #pygame.draw.rect(finestra,"red", collisione[4],1)
+
+      #collsione parte sinistra
+      collisione.append(pygame.Rect( (32.5*offset,90.5*offset,30*offset,(699.5-90.5)*offset) ))
+      #pygame.draw.rect(finestra,"red", collisione[5],1)
+
+      #collsione parte bassa
+      collisione.append(pygame.Rect( (62.5*offset,693.5*offset,(1217.5-62.5)*offset,30*offset) ))
+      #pygame.draw.rect(finestra,"red", collisione[6],1)
+
+      #collsione pc
+      collisione.append(pygame.Rect( (161.5*offset,554.5*offset,(255.5-161.5)*offset,(659.5-554.5)*offset) ))
+      #pygame.draw.rect(finestra,"red", collisione[7],1)
+
+
       
    return collisione

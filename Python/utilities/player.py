@@ -31,11 +31,11 @@ class player():
 
       #oggetti ottenuti
       self.oggAcido=False
-      self.sbloccaP=False
-      self.newroom=False
-      self.oggmartello=False
-      self.oggmoneta=False
-      self.oggmerendina=False
+      self.sbloccaP=True
+      self.newroom=True
+      self.oggmartello=True
+      self.oggmoneta=True
+      self.oggmerendina=True
       
 
 
@@ -44,15 +44,15 @@ class player():
       self.y=y
 
       #hitbox player
-      #self.rect=pygame.Rect(self.x, self.y, self.img.get_width(), self.img.get_height())
-      self.rect=pygame.Rect(self.x+self.img.get_width()/3.3, self.y+self.img.get_height()/1.8, self.img.get_width()/2.4, self.img.get_height()/3.4)
+      self.rect=pygame.Rect(self.x, self.y, self.img.get_width(), self.img.get_height())
+      #self.rect=pygame.Rect(self.x+self.img.get_width()/3.3, self.y+self.img.get_height()/1.8, self.img.get_width()/2.4, self.img.get_height()/3.4)
       
       #stanza attuale
       self.tipost=tipostanza
 
       #posizione player
       txt="x: "+str(x)+" y: "+str(y)
-      #print(txt)
+      print(txt)
       
 
       #PLAYER MOVEMENT CON ANIMAZIONI
@@ -115,8 +115,8 @@ class player():
 
          if self.rect.colliderect(porta1):
             self.tipost="chimica2"
-            self.x=502.5*self.off
-            self.y=556.5*self.off
+            self.x=507.5*self.off
+            self.y=555.5*self.off
 
          if self.rect.colliderect(porta2) and self.sbloccaP==False and self.oggAcido==False:
             dialogo("porta bloccata",finestra,self.off)
@@ -141,11 +141,11 @@ class player():
          collisione=collisioni(self.tipost,self.off,finestra)
 
          #porta per chimica1 
-         porta1=pygame.Rect( (504*self.off,648*self.off,(570-504)*self.off,30*self.off) )
+         porta1=pygame.Rect( (508*self.off,644*self.off,(570-504)*self.off,30*self.off) )
          pygame.draw.rect(finestra,"red", porta1,1)
 
          #scaffale acido
-         acido=pygame.Rect( (734.5*self.off,142.5*self.off,(775-734.5)*self.off,30*self.off) )
+         acido=pygame.Rect( (738.5*self.off,142.5*self.off,(775-734.5)*self.off,30*self.off) )
          pygame.draw.rect(finestra,"red", acido,1)
 
          for col in collisione:
@@ -183,6 +183,7 @@ class player():
          #porta biblioteca
          porta2=(pygame.Rect((32.5*self.off,467.5*self.off,30*self.off,(545.5-467.5)*self.off) ))
          pygame.draw.rect(finestra,"red", porta2,1)
+
 
          #porta finta bidelleria
          portaF=pygame.Rect( (934.5*self.off,136.5*self.off,(1014.5-934.5)*self.off,30*self.off) )
@@ -249,8 +250,13 @@ class player():
                self.newroom=True
          elif self.rect.colliderect(finestraRompi) and up and self.newroom==True:
             self.tipost="bidelleria"
-            self.x=938.5*self.off
-            self.y=620.5*self.off
+            self.x=503.5*self.off
+            self.y=565.5*self.off
+
+         if self.rect.colliderect(porta2) and left:
+            self.tipost="biblioteca"
+            self.x=1133.5*self.off
+            self.y=315.5*self.off
 
    #STANZA BIDELLERIA             
       elif self.tipost=="bidelleria":
@@ -259,8 +265,8 @@ class player():
          collisione=collisioni(self.tipost,self.off,finestra)
 
          #finestra torna bidelleria esterno
-         finestraRompi=pygame.Rect( (942.5*self.off,692.5*self.off,(1002.5-942.5)*self.off,(192.5-164.5)*self.off) )
-         pygame.draw.rect(finestra,"red", finestraRompi,1)
+         finestraRotta=pygame.Rect( (503.5*self.off,645.5*self.off,(576.5-503.5)*self.off,30*self.off) )
+         pygame.draw.rect(finestra,"red", finestraRotta,1)
 
          for col in collisione:
             if self.rect.colliderect(col):
@@ -273,22 +279,49 @@ class player():
                if down:
                   self.y-=self.speed 
 
-         if self.rect.colliderect(finestraRompi) :
+         if self.rect.colliderect(finestraRotta) and down :
             self.tipost="bidelleriaFuori2"
             self.x=558.5
             self.y=358.5
+      
+
+      #stanza biblioteca
+      elif self.tipost=="biblioteca":
+
+         #importo collisioni generali
+         collisione=collisioni(self.tipost,self.off,finestra)
+
+         # collisione porta per bidelleria fuori
+         porta1=pygame.Rect( (1215.5*self.off,320.5*self.off,30*self.off,(390.5-320.5)*self.off) )
+         pygame.draw.rect(finestra,"red", porta1,1)
+
+         for col in collisione:
+            if self.rect.colliderect(col):
+               if left:
+                  self.x+=self.speed
+               if right:
+                  self.x-=self.speed
+               if up:
+                  self.y+=self.speed
+               if down:
+                  self.y-=self.speed
+
+         if self.rect.colliderect(porta1) and right :
+            self.tipost="bidelleriaFuori2"
+            self.x=73.5
+            self.y=468.5
 
    #Mostra inventario
       if attivaInv:
          inventarioImg.agginventario(finestra)
          if self.oggAcido:
-            finestra.blit(oggetti["acido"],(500,240))
+            finestra.blit(oggetti["acido"],(500*self.off,240*self.off))
          if self.oggmoneta:
-            finestra.blit(oggetti["moneta"],(610,240))
+            finestra.blit(oggetti["moneta"],(610*self.off,240*self.off))
          if self.oggmerendina:
-            finestra.blit(oggetti["merendina"],(720,240))
+            finestra.blit(oggetti["merendina"],(720*self.off,240*self.off))
          if self.oggmartello:
-            finestra.blit(oggetti["martello"],(500,350))
+            finestra.blit(oggetti["martello"],(500*self.off,350*self.off))
 
             #500 240 - 610 240 - 720 240
             #500 350 - 610 350 - 720 350
