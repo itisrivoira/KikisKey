@@ -6,7 +6,7 @@ class stanza():
       self.img=img
       self.rect=self.img.get_rect()
       self.rect.center=(int(1280*OFFSET_FINESTRA/2), int(720*OFFSET_FINESTRA/2))
-      self.inventario=(int(1280*OFFSET_FINESTRA/2-145), int(170*OFFSET_FINESTRA))
+      self.inventario=(int(1280*OFFSET_FINESTRA/2-145*OFFSET_FINESTRA), int(170*OFFSET_FINESTRA))
       self.off=OFFSET_FINESTRA
 
    def aggsfondo(self,finestra):

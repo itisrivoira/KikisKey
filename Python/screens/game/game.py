@@ -53,11 +53,12 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     }
 
     immagini={
-        "chimica2": pygame.image.load("screens/game/assets/chimica2.png"),
-        "chimica1": pygame.image.load("screens/game/assets/chimica1.png"),
-        "bidelleriaFuori": pygame.image.load("screens/game/assets/bidelleriaFuori.png"),
-        "bidelleriaFuori2": pygame.image.load("screens/game/assets/bidelleriaFuori2.png"),
-        "bidelleria": pygame.image.load("screens/game/assets/bidelleria.png")
+        "chimica2": pygame.image.load("screens/game/assets/stanze/chimica2.png"),
+        "chimica1": pygame.image.load("screens/game/assets/stanze/chimica1.png"),
+        "bidelleriaFuori": pygame.image.load("screens/game/assets/stanze/bidelleriaFuori.png"),
+        "bidelleriaFuori2": pygame.image.load("screens/game/assets/stanze/bidelleriaFuori2.png"),
+        "bidelleria": pygame.image.load("screens/game/assets/stanze/bidelleria.png"),
+        "biblioteca": pygame.image.load("screens/game/assets/stanze/biblioteca.png")
     }
 
     inventario={
@@ -65,10 +66,10 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     }
 
     oggetti={
-        "acido":pygame.image.load('screens/game/assets/acido.png'),
-        "moneta":pygame.image.load('screens/game/assets/moneta.png'),
-        "merendina":pygame.image.load('screens/game/assets/merendina.png'),
-        "martello":pygame.image.load('screens/game/assets/martello.png')
+        "acido":pygame.image.load('screens/game/assets/item/acido.png'),
+        "moneta":pygame.image.load('screens/game/assets/item/moneta.png'),
+        "merendina":pygame.image.load('screens/game/assets/item/merendina.png'),
+        "martello":pygame.image.load('screens/game/assets/item/martello.png')
     }
 
     tipostanza="chimica1"
@@ -81,12 +82,15 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     x=1106.5*OFFSET_FINESTRA
     y=120.5*OFFSET_FINESTRA
     walkcount=0
-    
-    
-    speed=5*OFFSET_FINESTRA
+    speed=4*OFFSET_FINESTRA
     kiki=player(immaginiP,OFFSET_FINESTRA,x,y,FPS,speed,walkcount)
+
+    #inventario
     inventarioImg=stanza(inventario["inventario"],OFFSET_FINESTRA)
     attivaInv=False
+
+
+    clock = pygame.time.Clock()
     
     while True:
         stanzaIMGconv=immagini[tipostanza].convert() #converte l'immagine in un formato piu veloce
@@ -151,6 +155,8 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
 
         # aggiorno la finestra
         pygame.display.update()
-        pygame.time.Clock().tick(FPS)
+        clock.tick(FPS)
+
+        #print(clock.get_fps())
 
 from utilities.resizeImgs import resizeImgs
