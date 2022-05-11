@@ -21,14 +21,13 @@ finestra = pygame.display.set_mode((LARGHEZZA_FINESTRA, ALTEZZA_FINESTRA))
 
 # imposto titolo ed icona dello schermo creato 
 pygame.display.set_caption("Kiki's Key")
-icona = pygame.image.load('assets/img/icona.png')
+icona = pygame.image.load('assets/img/icona.png').convert_alpha()
 pygame.display.set_icon(icona)
 
 
 # avvio musica di sottofondo
 musicaSottofondo = music(True, "assets/music/musica.mp3", 0.5)
 #musicaSottofondo.playMusic()
-
 
 # creo sulla finestra il menu di gioco attraverso la funzione "menuScreen" 
 menuScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS)

@@ -95,7 +95,7 @@ def collisioni(tipost,offset,finestra):
       #porta dimenticata
       collisione.append(pygame.Rect(29.5*offset,516.5*offset,30*offset,(584.5-516.5)*offset))
    
-   elif tipost=="bidelleriaFuori" or tipost=="bidelleriaFuori2" :
+   elif tipost=="corridoio" or tipost=="corridoio2" :
 
       collisione=[]
             
@@ -234,8 +234,28 @@ def collisioni(tipost,offset,finestra):
 
       #collsione sedia2
       collisione.append(pygame.Rect( (278.5*offset,216.5*offset,(230.5-182.5)*offset,(392.5-216.5)*offset) ))
-      #pygame.draw.rect(finestra,"red", collisione[9],1) 
+      #pygame.draw.rect(finestra,"red", collisione[9],1)
 
+   
+   elif tipost=="ascensore" or tipost=="ascensore2":
+      
+      collisione=[]
+      
+      #collsione parte alta
+      collisione.append(pygame.Rect( (401.5*offset,138.5*offset,(877.5-401.5)*offset,30*offset) ))
+      pygame.draw.rect(finestra,"red", collisione[0],1)
+
+      #collsione parte destra
+      collisione.append(pygame.Rect( (877.5*offset,168.5*offset,30*offset,(544.5-168.5)*offset) ))
+      pygame.draw.rect(finestra,"red", collisione[1],1)
+
+      #collsione parte sinistra
+      collisione.append(pygame.Rect( (371.5*offset,168.5*offset,30*offset,(544.5-168.5)*offset) ))
+      pygame.draw.rect(finestra,"red", collisione[2],1)
+
+      #collsione parte bassa
+      collisione.append(pygame.Rect( (401.5*offset,547.5*offset,(877.5-401.5)*offset,30*offset) ))
+      pygame.draw.rect(finestra,"red", collisione[3],1)
 
       
    return collisione

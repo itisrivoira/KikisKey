@@ -1,3 +1,4 @@
+from re import T
 import pygame
 from utilities.font import getFont
 
@@ -6,10 +7,14 @@ img=pygame.image.load('screens/game/assets/textBox2.png')
 
 def dialogo(txt,finestra,OFFSET_FINESTRA):
   global img
-  font = getFont("forwardFont", int(16 * OFFSET_FINESTRA))
+  img=img.convert_alpha()
+  font = getFont("forwardFont", int(17 * OFFSET_FINESTRA))
   text=font.render(txt,True,(0,0,0))
+  font = getFont("forwardFont", int(13 * OFFSET_FINESTRA))
+  Tasto=font.render("Clicca E",True,(0,0,0))
   img1=pygame.transform.scale(img, (int(img.get_width() * OFFSET_FINESTRA*6), int(img.get_height() * OFFSET_FINESTRA*3)))
   imgRect=img1.get_rect(center=(630*OFFSET_FINESTRA, 640*OFFSET_FINESTRA))
   textRect=text.get_rect(center=(630*OFFSET_FINESTRA, 640*OFFSET_FINESTRA))
   finestra.blit(img1,imgRect)
   finestra.blit(text,textRect)
+  finestra.blit(Tasto,(750*OFFSET_FINESTRA,670*OFFSET_FINESTRA))
