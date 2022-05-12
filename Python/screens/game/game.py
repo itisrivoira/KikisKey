@@ -5,6 +5,7 @@ import sys
 #import delle resorse
 from utilities.font import getFont
 from utilities.btn import btn
+from utilities.music import music
 from utilities.stanza import stanza
 from utilities.player import player
 
@@ -75,7 +76,7 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
         "martello":pygame.image.load('screens/game/assets/item/martello.png')
     }
 
-    tipostanza="biblioteca"
+    tipostanza="chimica1"
     immaginiP = resizeImgs(immaginiP, OFFSET_FINESTRA,1.1) #l'ultimo valore moltiplicatore grandezza immagine
     immagini = resizeImgs(immagini, OFFSET_FINESTRA,3)
     inventario = resizeImgs(inventario, OFFSET_FINESTRA,4.5)
@@ -91,8 +92,8 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     #inventario
     inventarioImg=stanza(inventario["inventario"],OFFSET_FINESTRA)
     attivaInv=False
-
-
+    
+    i=0
     clock = pygame.time.Clock()
     
     while True:
@@ -147,7 +148,13 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
 
         finestra.fill("black")       
         stanzaIMG.aggsfondo(finestra)
-        x,y,tipostanza=kiki.aggplayer(finestra,left,right,up,down,y,x,tipostanza,key,attivaInv,inventarioImg,oggetti,musicaSottofondo)
+        x,y,tipostanza=kiki.aggplayer(finestra,left,right,up,down,y,x,tipostanza,key,attivaInv,inventarioImg,oggetti)
+        if tipostanza=="ascensore" or tipostanza=="ascensore2":
+            if i==0:
+                i=i+1
+                musicaSottofondo.stopMusic()
+                musica=music(True, "assets/music/musica1.mp3", 0.5)
+                musica.playMusic()
         
 
         for event in pygame.event.get():

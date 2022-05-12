@@ -27,7 +27,7 @@ pygame.display.set_icon(icona)
 
 # avvio musica di sottofondo
 musicaSottofondo = music(True, "assets/music/musica.mp3", 0.5)
-#musicaSottofondo.playMusic()
+musicaSottofondo.playMusic()
 
 # creo sulla finestra il menu di gioco attraverso la funzione "menuScreen" 
 menuScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS)

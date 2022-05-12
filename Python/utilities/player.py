@@ -33,19 +33,19 @@ class player():
       self.off=OFFSET_FINESTRA
 
       #oggetti ottenuti
-      self.oggAcido=True
-      self.sbloccaP=True
-      self.newroom=True
-      self.oggmartello=True
-      self.oggmoneta=True
-      self.oggmerendina=True
-      self.port1=True
-      self.port2=True
-      self.server=True
-      self.scaff2=True
-      self.scaff3=True
-      self.scaff1=True
-      self.flag=True
+      self.oggAcido=False
+      self.sbloccaP=False
+      self.newroom=False
+      self.oggmartello=False
+      self.oggmoneta=False
+      self.oggmerendina=False
+      self.port1=False
+      self.port2=False
+      self.server=False
+      self.scaff2=False
+      self.scaff3=False
+      self.scaff1=False
+      self.flag=False
       self.lvl=False
       self.boss=False
       
@@ -53,13 +53,13 @@ class player():
 #--------------------------------------------------------------------------------#
 
 
-   def aggplayer(self,finestra,left,right,up,down,y,x,tipostanza,key,attivaInv,inventarioImg,oggetti,musicasottofondo):
+   def aggplayer(self,finestra,left,right,up,down,y,x,tipostanza,key,attivaInv,inventarioImg,oggetti):
       self.x=x
       self.y=y
 
       #hitbox player
-      self.rect=pygame.Rect(self.x, self.y, self.img.get_width(), self.img.get_height())
-      #self.rect=pygame.Rect(self.x+self.img.get_width()/3.3, self.y+self.img.get_height()/1.8, self.img.get_width()/2.4, self.img.get_height()/3.4)
+      #self.rect=pygame.Rect(self.x, self.y, self.img.get_width(), self.img.get_height())
+      self.rect=pygame.Rect(self.x+self.img.get_width()/3.3, self.y+self.img.get_height()/1.8, self.img.get_width()/2.4, self.img.get_height()/3.4)
       
       #stanza attuale
       self.tipost=tipostanza
@@ -80,29 +80,29 @@ class player():
          finestra.blit(self.walkleft[self.walkcount//8],(self.x,self.y))
          self.walkcount+=int(self.fps/22*self.off)
          self.img= self.walkleft[0]
-         pygame.draw.rect(finestra,"red",self.rect,1)
+         #pygame.draw.rect(finestra,"red",self.rect,1)
 
       elif right:
          finestra.blit(self.walkright[self.walkcount//8],(self.x,self.y))
          self.walkcount+=int(self.fps/22*self.off)
          self.img= self.walkright[0]
-         pygame.draw.rect(finestra,"red",self.rect,1)
+         #pygame.draw.rect(finestra,"red",self.rect,1)
 
       elif up:
          finestra.blit(self.walkup[self.walkcount//8],(self.x,self.y))
          self.walkcount+=int(self.fps/22*self.off)
          self.img= self.walkup[0]
-         pygame.draw.rect(finestra,"red",self.rect,1)
+         #pygame.draw.rect(finestra,"red",self.rect,1)
 
       elif down:
          finestra.blit(self.walkdown[self.walkcount//8],(self.x,self.y))
          self.walkcount+=int(self.fps/22*self.off)
          self.img= self.walkdown[0]
-         pygame.draw.rect(finestra,"red",self.rect,1)
+         #pygame.draw.rect(finestra,"red",self.rect,1)
 
       else:
          finestra.blit(self.img,(self.x,self.y)) 
-         pygame.draw.rect(finestra,"red",self.rect,1)
+         #pygame.draw.rect(finestra,"red",self.rect,1)
 
 
 #--------------------------------------------------------------------------------#
@@ -116,11 +116,11 @@ class player():
 
          #porta chimica2
          porta1=pygame.Rect( (174.5*self.off,90.5*self.off,(246-174.5)*self.off,30*self.off) )
-         pygame.draw.rect(finestra,"red", porta1,1)
+        # pygame.draw.rect(finestra,"red", porta1,1)
 
          #porta corridoio
          porta2=pygame.Rect( (34.5*self.off,516.5*self.off,30*self.off,(584.5-516.5)*self.off) )
-         pygame.draw.rect(finestra,"red", porta2,1)
+        # pygame.draw.rect(finestra,"red", porta2,1)
 
          for col in collisione:
             if self.rect.colliderect(col):
@@ -166,11 +166,11 @@ class player():
 
          #porta per chimica1 
          porta1=pygame.Rect( (508*self.off,644*self.off,(570-504)*self.off,30*self.off) )
-         pygame.draw.rect(finestra,"red", porta1,1)
+        # pygame.draw.rect(finestra,"red", porta1,1)
 
          #scaffale acido
          acido=pygame.Rect( (738.5*self.off,142.5*self.off,(775-734.5)*self.off,30*self.off) )
-         pygame.draw.rect(finestra,"red", acido,1)
+        # pygame.draw.rect(finestra,"red", acido,1)
 
          for col in collisione:
             if self.rect.colliderect(col):
@@ -206,32 +206,32 @@ class player():
          
          #porta chimica1
          porta1=pygame.Rect( (1214.5*self.off,468.5*self.off,30*self.off,(540.5-468.5)*self.off) )
-         pygame.draw.rect(finestra,"red", porta1,1)
+        # pygame.draw.rect(finestra,"red", porta1,1)
 
          #porta biblioteca
          porta2=(pygame.Rect((32.5*self.off,467.5*self.off,30*self.off,(545.5-467.5)*self.off) ))
-         pygame.draw.rect(finestra,"red", porta2,1)
+        # pygame.draw.rect(finestra,"red", porta2,1)
 
 
          #porta finta bidelleria
          portaF=pygame.Rect( (934.5*self.off,136.5*self.off,(1014.5-934.5)*self.off,30*self.off) )
-         pygame.draw.rect(finestra,"red", portaF,1)
+        # pygame.draw.rect(finestra,"red", portaF,1)
 
          #finestra da rompere
          finestraRompi=pygame.Rect( (558.5*self.off,335.5*self.off,(622.5-558.5)*self.off,30*self.off) )
-         pygame.draw.rect(finestra,"red", finestraRompi,1)
+        # pygame.draw.rect(finestra,"red", finestraRompi,1)
 
          #personaggio misterioso
          misterioso=pygame.Rect( (1135.5*self.off,165.5*self.off,(1190.5-1135.5)*self.off,(197.5-165.5)*self.off) )
-         pygame.draw.rect(finestra,"red", misterioso,1)
+        # pygame.draw.rect(finestra,"red", misterioso,1)
 
          #macchineetta
          macchinetta=pygame.Rect( (194.5*self.off,334.5*self.off,(282.5-194.5)*self.off,30*self.off) )
-         pygame.draw.rect(finestra,"red", macchinetta,1)
+        # pygame.draw.rect(finestra,"red", macchinetta,1)
 
          #ascensore
          ascensore=pygame.Rect( (893.5*self.off,638.5*self.off,(962.5-893.5)*self.off,30*self.off) )
-         pygame.draw.rect(finestra,"red", ascensore,1)
+        # pygame.draw.rect(finestra,"red", ascensore,1)
 
          for col in collisione:
             if self.rect.colliderect(col):
@@ -314,15 +314,15 @@ class player():
 
          #finestra torna bidelleria esterno
          finestraRotta=pygame.Rect( (503.5*self.off,645.5*self.off,(576.5-503.5)*self.off,30*self.off) )
-         pygame.draw.rect(finestra,"red", finestraRotta,1)
+        # pygame.draw.rect(finestra,"red", finestraRotta,1)
 
          #pc quest
          pc=pygame.Rect( (1060.5*self.off,302.5*self.off,(1168.5-1060.5)*self.off,(416.5-302.5)*self.off) )
-         pygame.draw.rect(finestra,"red", pc,1)
+        # pygame.draw.rect(finestra,"red", pc,1)
 
          #server
          server=pygame.Rect( (184*self.off,144*self.off,(213-184)*self.off,30*self.off) )
-         pygame.draw.rect(finestra,"red", server,1)
+        # pygame.draw.rect(finestra,"red", server,1)
 
          for col in collisione:
             if self.rect.colliderect(col):
@@ -364,19 +364,19 @@ class player():
 
          # collisione porta per corridoio
          porta1=pygame.Rect( (1215.5*self.off,320.5*self.off,30*self.off,(390.5-320.5)*self.off) )
-         pygame.draw.rect(finestra,"red", porta1,1)
+        # pygame.draw.rect(finestra,"red", porta1,1)
 
          # collisione scaffale1
          scaffale1=pygame.Rect( (573.5*self.off,289.5*self.off,(617.5-573.5)*self.off,30*self.off) )
-         pygame.draw.rect(finestra,"red", scaffale1,1)
+        # pygame.draw.rect(finestra,"red", scaffale1,1)
 
          # collisione scaffale2
          scaffale2=pygame.Rect( (673.5*self.off,482.5*self.off,(617.5-573.5)*self.off,30*self.off) )
-         pygame.draw.rect(finestra,"red", scaffale2,1)
+        # pygame.draw.rect(finestra,"red", scaffale2,1)
 
          # collisione scaffale3
          scaffale3=pygame.Rect( (949.5*self.off,289.5*self.off,(617.5-573.5)*self.off,30*self.off) )
-         pygame.draw.rect(finestra,"red", scaffale3,1)
+        # pygame.draw.rect(finestra,"red", scaffale3,1)
 
          for col in collisione:
             if self.rect.colliderect(col):
@@ -464,7 +464,7 @@ class player():
 
          # collisione scaffale3
          porta=pygame.Rect( (612*self.off,143*self.off,(672-612)*self.off,30*self.off) )
-         pygame.draw.rect(finestra,"red", porta,1)
+        # pygame.draw.rect(finestra,"red", porta,1)
 
          for col in collisione:
             if self.rect.colliderect(col):
