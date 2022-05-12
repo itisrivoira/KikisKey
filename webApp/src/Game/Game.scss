@@ -38,3 +38,14 @@ a {
 .filtroBN {
   filter: grayscale(1);
 }
+
+:root {
+  --toastify-font-family: forwardFont !important;
+  --toastify-z-index: 98 !important;
+  --toastify-text-color-light: #333333 !important;
+  --toastify-color-progress-light: #e5b62e !important;
+}
+
+.Toastify__toast-body {
+  font-size: 15px !important;
+}

@@ -27,6 +27,15 @@ const Menu = (props) => {
             OPZIONI
           </motion.div>
         </Link>
+        <div className="spacerXBtns" />
+        <Link to="/Classifica">
+          <motion.div
+            whileHover={{ x: 10 }}
+            className="actionBtnMenu classificaBtn"
+          >
+            CLASSIFICA
+          </motion.div>
+        </Link>
       </motion.div>
     </div>
   );

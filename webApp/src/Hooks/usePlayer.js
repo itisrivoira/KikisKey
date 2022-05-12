@@ -2,16 +2,13 @@ import { useContext, useRef } from "react";
 
 import { gameContext } from "./useContext";
 import useCollisionDetector from "./useCollisionDetector";
-import useInventario from "./useInventario";
 import useStanze from "./useStanze";
 
 const usePlayer = () => {
   const { playerRef } = useContext(gameContext);
 
-  const { getStanzaCorrente, checkCambiaStanza, updatePlayerSpawn } =
-    useStanze();
+  const { checkCambioStanza, updatePlayerPos } = useStanze();
   const { collisionDetectorX, collisionDetectorY } = useCollisionDetector();
-  const { aggiungiOggetto, rimuoviOggetto } = useInventario("e", 6);
 
   const player = useRef({
     x: 1104,
@@ -91,11 +88,11 @@ const usePlayer = () => {
     },
   ];
 
-  let playerImgIndex = 2;
+  let playerImgIndex = 1;
 
   const animate = (cmdName) => {
     playerRef.current.src =
-      "/img/player/" + cmdName + "/" + playerImgIndex + ".png";
+      "/img/characters/kiki/" + cmdName + "/" + playerImgIndex + ".png";
 
     if (playerImgIndex >= 3) {
       playerImgIndex = 1;
@@ -111,8 +108,14 @@ const usePlayer = () => {
         let cmdName = cmd["name"];
         animate(cmdName);
 
-        if (checkCambiaStanza(getPlayer("x"), getPlayer("y"), cmdName)) {
-          updatePlayerSpawn(setPlayer);
+        let returnCheckCambioStanza = checkCambioStanza(
+          getPlayer("x"),
+          getPlayer("y"),
+          cmdName
+        );
+
+        if (Array.isArray(returnCheckCambioStanza)) {
+          updatePlayerPos(setPlayer, returnCheckCambioStanza);
         }
       }
     }

@@ -1,11 +1,13 @@
 import "./Gioca.css";
 import React from "react";
-import { motion } from "framer-motion";
 import { useRef, useContext, useEffect } from "react";
+import { motion } from "framer-motion";
+import { ToastContainer } from "react-toastify";
 
 //importo componenti
-import Player from "../../Components/Player/Player";
+import Character from "../../Components/Character/Character";
 import Stanza from "../../Components/Stanza/Stanza";
+import DialogBox from "../../Components/DialogBox/DialogBox";
 import PauseMenu from "../../Components/PauseManu/PauseManu";
 import Inventario from "../../Components/Inventario/Inventario";
 
@@ -16,25 +18,28 @@ import usePlayer from "../../Hooks/usePlayer";
 import useStanze from "../../Hooks/useStanze";
 import usePauseMenu from "../../Hooks/usePauseMenu";
 import useInventario from "../../Hooks/useInventario";
+import useLivello1 from "../../Hooks/livelli/useLivello1";
 
 const Gioca = () => {
-  // creo variabili passati dai custom hooks importati
-  const { playerRef, stanzaLayer1Ref, stanzaLayer2Ref } =
-    useContext(gameContext);
+  // creo le variabili e le funzionni passati dai custom hooks importati
+  const {
+    playerRef,
+    bidelloRef,
+    misteriosoRef,
+    stanzaLayer1Ref,
+    stanzaLayer2Ref,
+  } = useContext(gameContext);
+
   const { clamp } = useClamp();
   const { setPlayer, getPlayer, playerController } = usePlayer();
   const { getStanzaCorrente } = useStanze();
   const { showPauseMenu, pauseMenuController } = usePauseMenu("escape");
-  const {
-    showInventario,
-    inventarioController,
-    aggiungiOggetto,
-    rimuoviOggetto,
-  } = useInventario("e", 6);
+  const { showInventario, inventarioController } = useInventario("e", 6);
+
+  const { startLivello1 } = useLivello1();
 
   // creo varibili appartenenti a quello componente
   const canvasRef = useRef(null);
-  const DialogBoxRef = useRef(null);
 
   useEffect(() => {
     const ctx = canvasRef.current.getContext("2d");
@@ -79,12 +84,19 @@ const Gioca = () => {
 
       ctx.translate(-camX, -camY);
 
-      //console.log("playerX: " + getPlayer("x") + " " + "playerY: " + getPlayer("y"));
+      console.log(
+        "playerX: " + getPlayer("x") + " " + "playerY: " + getPlayer("y")
+      );
 
       //draw here
       ctx.drawImage(stanzaLayer1Ref.current, 96, 96);
+      if (getStanzaCorrente().name === "corridoio") {
+        ctx.drawImage(misteriosoRef.current, 4128, 144);
+      }
       ctx.drawImage(playerRef.current, getPlayer("x"), getPlayer("y"));
       ctx.drawImage(stanzaLayer2Ref.current, 0, 0);
+
+
     }, 1000 / 60);
 
     return () => {
@@ -93,9 +105,6 @@ const Gioca = () => {
   });
 
   useEffect(() => {
-    let aggiuntoCloro = false;
-    let aggiuntoIdrogeno = false;
-    let creatoAcido = false;
     const gameController = (event) => {
       let pressedKey = event.key.toLowerCase();
 
@@ -105,63 +114,23 @@ const Gioca = () => {
         playerController(pressedKey);
         inventarioController(pressedKey);
       }
-
-      //livello 1
-      if (
-        getPlayer("x") === 288 &&
-        getPlayer("y") === 144 &&
-        getStanzaCorrente().name === "chimica1" &&
-        pressedKey === " " &&
-        aggiuntoCloro === false
-      ) {
-        aggiungiOggetto("Cloro");
-        aggiuntoCloro = true;
-        DialogBoxRef.current.innerText = "Trovato Cloro!";
-      }
-
-      if (
-        getPlayer("x") === 672 &&
-        getPlayer("y") === 144 &&
-        getStanzaCorrente().name === "chimica2" &&
-        pressedKey === " " &&
-        aggiuntoIdrogeno === false
-      ) {
-        aggiungiOggetto("Idrogeno");
-        aggiuntoIdrogeno = true;
-        DialogBoxRef.current.innerText = "Trovato Idrogeno!";
-      }
-
-      if (
-        getPlayer("x") === 1056 &&
-        getPlayer("y") === 144 &&
-        getStanzaCorrente().name === "chimica1" &&
-        pressedKey === " " &&
-        aggiuntoCloro === true &&
-        aggiuntoIdrogeno === true
-      ) {
-        aggiungiOggetto("Acido");
-        rimuoviOggetto("Cloro");
-        rimuoviOggetto("Idrogeno");
-        creatoAcido = true;
-        DialogBoxRef.current.innerText = "Creato Acido!";
-      }
-
-      if (
-        getPlayer("x") === 1296 &&
-        getPlayer("y") === 960 &&
-        creatoAcido === true &&
-        getStanzaCorrente().name === "chimica2" &&
-        pressedKey === " "
-      ) {
-        rimuoviOggetto("Acido");
-        DialogBoxRef.current.innerText = "Porta Aperta";
-        console.log("porta aperta");
-      }
     };
 
     window.addEventListener("keydown", gameController);
     return () => window.removeEventListener("keydown", gameController);
   }, [showPauseMenu]);
+
+  useEffect(() => {
+    const livelloController = (event) => {
+      let pressedKey = event.key.toLowerCase();
+
+      //livello 1
+      startLivello1(pressedKey, getPlayer("x"), getPlayer("y"));
+    };
+
+    window.addEventListener("keydown", livelloController);
+    return () => window.removeEventListener("keydown", livelloController);
+  }, []);
 
   return (
     <div>
@@ -178,13 +147,20 @@ const Gioca = () => {
         ) : null}
 
         <canvas className="canvas" ref={canvasRef} width={1152} height={672}>
-          <Player defaultImg="/img/player/down/2.png" />
           <Stanza
             defaultImg1="/img/stanze/chimica1/layer1.png"
             defaultImg2="/img/stanze/chimica1/layer2.png"
           />
+          <Character
+            characterRef={playerRef}
+            defaultImg="/img/characters/kiki/down/1.png"
+          />
+          <Character
+            characterRef={misteriosoRef}
+            defaultImg="/img/characters/misterioso/1.png"
+          />
         </canvas>
-        <div ref={DialogBoxRef} className="dialogBox"></div>
+        <ToastContainer />
       </motion.div>
     </div>
   );

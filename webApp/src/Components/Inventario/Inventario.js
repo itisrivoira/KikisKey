@@ -1,7 +1,6 @@
 import "./Inventario.css";
 
 import React, { useContext } from "react";
-
 import { gameContext } from "../../Hooks/useContext";
 
 const Inventario = () => {

@@ -53,6 +53,10 @@ $titolo: clamp(3.3rem, 5.8vw, 5rem);
   background-image: url(./../../../assets/img/Game/btn2.png);
 }
 
+.classificaBtn {
+  background-image: url(./../../../assets/img/Game/btn1.png);
+}
+
 @media (max-width: 1199.98px) {
   .contenutoMenu {
     width: 90%;

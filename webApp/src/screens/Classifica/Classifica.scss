@@ -1,0 +1,109 @@
+$colorePrimario: #333333;
+$coloreSecondario: #e5b62e;
+
+$titolo: clamp(2.8rem, 5vw, 4rem);
+
+.contenitoreClassifica {
+  height: 100vh;
+  width: 100vw;
+  background-image: url(./../../../assets/img/Game/sfondo.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 100px;
+}
+
+.titoloClassifica {
+  font-size: $titolo;
+  color: $coloreSecondario;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+.contenitoreTabella {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.responsiveTabella {
+  font-size: 18px !important;
+  li {
+    border-radius: 3px;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  .table-header {
+    background-color: #95a5a6;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .table-row {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+  }
+  .col-1 {
+    flex-basis: 10%;
+  }
+  .col-2 {
+    flex-basis: 40%;
+  }
+  .col-3 {
+    flex-basis: 25%;
+  }
+  .col-4 {
+    flex-basis: 25%;
+  }
+
+  @media all and (max-width: 767px) {
+    .table-header {
+      display: none;
+    }
+    li {
+      display: block;
+    }
+    .col {
+      flex-basis: 100%;
+    }
+    .col {
+      display: flex;
+      padding: 10px 0;
+      &:before {
+        color: #6c7a89;
+        padding-right: 10px;
+        content: attr(data-label);
+        flex-basis: 50%;
+        text-align: right;
+      }
+    }
+  }
+}
+
+.contenitoreActionBtns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.actionBtnClassifica {
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #ffffff;
+  width: 300px;
+  height: 100px;
+}
+
+.actionBtnClassifica:hover {
+  color: #000000;
+}
+
+.indietroBtn {
+  background-image: url(./../../../assets/img/Game/btn1.png);
+}
