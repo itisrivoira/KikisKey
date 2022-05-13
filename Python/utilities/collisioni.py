@@ -243,19 +243,19 @@ def collisioni(tipost,offset,finestra):
       
       #collsione parte alta
       collisione.append(pygame.Rect( (401.5*offset,138.5*offset,(877.5-401.5)*offset,30*offset) ))
-      pygame.draw.rect(finestra,"red", collisione[0],1)
+      #pygame.draw.rect(finestra,"red", collisione[0],1)
 
       #collsione parte destra
       collisione.append(pygame.Rect( (877.5*offset,168.5*offset,30*offset,(544.5-168.5)*offset) ))
-      pygame.draw.rect(finestra,"red", collisione[1],1)
+      #pygame.draw.rect(finestra,"red", collisione[1],1)
 
       #collsione parte sinistra
       collisione.append(pygame.Rect( (371.5*offset,168.5*offset,30*offset,(544.5-168.5)*offset) ))
-      pygame.draw.rect(finestra,"red", collisione[2],1)
+      #pygame.draw.rect(finestra,"red", collisione[2],1)
 
       #collsione parte bassa
       collisione.append(pygame.Rect( (401.5*offset,547.5*offset,(877.5-401.5)*offset,30*offset) ))
-      pygame.draw.rect(finestra,"red", collisione[3],1)
+      #pygame.draw.rect(finestra,"red", collisione[3],1)
 
       
    return collisione
