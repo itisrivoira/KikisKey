@@ -33,18 +33,18 @@ class player():
       self.off=OFFSET_FINESTRA
 
       #oggetti ottenuti
-      self.oggAcido=False
-      self.sbloccaP=False
-      self.newroom=False
-      self.oggmartello=False
-      self.oggmoneta=False
-      self.oggmerendina=False
-      self.port1=False
-      self.port2=False
-      self.server=False
-      self.scaff2=False
-      self.scaff3=False
-      self.scaff1=False
+      self.oggAcido=True
+      self.sbloccaP=True
+      self.newroom=True
+      self.oggmartello=True
+      self.oggmoneta=True
+      self.oggmerendina=True
+      self.port1=True
+      self.port2=True
+      self.server=True
+      self.scaff2=True
+      self.scaff3=True
+      self.scaff1=True
       self.flag=False
       self.lvl=False
       self.boss=False
@@ -66,7 +66,7 @@ class player():
 
       #posizione player
       txt="x: "+str(x)+" y: "+str(y)
-      print(txt)
+      #print(txt)
 
       
 #--------------------------------------------------------------------------------#
@@ -389,8 +389,13 @@ class player():
                if down:
                   self.y-=self.speed
 
-         if self.rect.colliderect(porta1) and right :
+         if self.rect.colliderect(porta1) and right and self.newroom :
             self.tipost="corridoio2"
+            self.x=73.5*self.off
+            self.y=468.5*self.off
+
+         elif self.rect.colliderect(porta1) and right and self.newroom==False :
+            self.tipost="corridoio"
             self.x=73.5*self.off
             self.y=468.5*self.off
 
