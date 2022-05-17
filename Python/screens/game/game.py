@@ -50,7 +50,10 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
             "kikiF4": pygame.image.load('screens/game/assets/kikiF4.png'),
             "kikiF5": pygame.image.load('screens/game/assets/kikiF5.png'),
             "kikiF6": pygame.image.load('screens/game/assets/kikiF6.png'),
-            "kikiF7": pygame.image.load('screens/game/assets/kikiF7.png')
+            "kikiF7": pygame.image.load('screens/game/assets/kikiF7.png'),
+
+            "pugno": pygame.image.load('screens/game/assets/attacco.png'),
+            "pallaombra": pygame.image.load('screens/game/assets/pallaombra.png')
     }
 
     immagini={
@@ -61,8 +64,16 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
         "bidelleria": pygame.image.load("screens/game/assets/stanze/bidelleria.png"),
         "biblioteca": pygame.image.load("screens/game/assets/stanze/biblioteca.png"),
         "ascensore": pygame.image.load("screens/game/assets/stanze/ascensore.png"),
-        "ascensore2": pygame.image.load("screens/game/assets/stanze/ascensore2.png")
+        "ascensore2": pygame.image.load("screens/game/assets/stanze/ascensore2.png"),
+        "boss": pygame.image.load("screens/game/assets/stanze/boss.png"),
+        "end": pygame.image.load("screens/game/assets/stanze/end.png"),
 
+    }
+
+
+    imgPr={
+        "preside": pygame.image.load('screens/game/assets/preside.png'),
+        "presideRed": pygame.image.load('screens/game/assets/presideRed.png'),
     }
 
     inventario={
@@ -77,6 +88,7 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     }
 
     tipostanza="chimica1"
+    imgPr =resizeImgs(imgPr, OFFSET_FINESTRA,3) 
     immaginiP = resizeImgs(immaginiP, OFFSET_FINESTRA,1.1) #l'ultimo valore moltiplicatore grandezza immagine
     immagini = resizeImgs(immagini, OFFSET_FINESTRA,3)
     inventario = resizeImgs(inventario, OFFSET_FINESTRA,4.5)
@@ -87,19 +99,26 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     y=120.5*OFFSET_FINESTRA
     walkcount=0
     speed=4*OFFSET_FINESTRA
-    kiki=player(immaginiP,OFFSET_FINESTRA,x,y,FPS,speed,walkcount)
+    kiki=player(immaginiP,OFFSET_FINESTRA,x,y,FPS,speed,walkcount,imgPr)
 
     #inventario
     inventarioImg=stanza(inventario["inventario"],OFFSET_FINESTRA)
     attivaInv=False
     
     i=0
+    i1=0
+    i2=0
     clock = pygame.time.Clock()
+
+    musica=music(True, "assets/music/musica1.mp3", 0.5)
+    bossfight=music(True, "assets/music/musica2.mp3", 0.5)
+    togli=pygame.time.get_ticks()
     
     while True:
         stanzaIMGconv=immagini[tipostanza].convert() #converte l'immagine in un formato piu veloce
         stanzaIMG=stanza(stanzaIMGconv,OFFSET_FINESTRA)
         keys = pygame.key.get_pressed()
+        
 
         if keys[pygame.K_LEFT] or keys[pygame.K_a] and attivaInv==False:
             x-=speed*OFFSET_FINESTRA
@@ -141,6 +160,11 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
         else:
             key=False
 
+        if keys[pygame.K_SPACE]:
+            attacco=True
+        else:
+            attacco=False
+
         if keys[pygame.K_f]:
             attivaInv=True
         elif keys[pygame.K_ESCAPE]:
@@ -148,13 +172,21 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
 
         finestra.fill("black")       
         stanzaIMG.aggsfondo(finestra)
-        x,y,tipostanza=kiki.aggplayer(finestra,left,right,up,down,y,x,tipostanza,key,attivaInv,inventarioImg,oggetti)
+        x,y,tipostanza=kiki.aggplayer(finestra,left,right,up,down,y,x,tipostanza,key,attivaInv,inventarioImg,oggetti,attacco,togli)
         if tipostanza=="ascensore" or tipostanza=="ascensore2":
             if i==0:
                 i=i+1
                 musicaSottofondo.stopMusic()
-                musica=music(True, "assets/music/musica1.mp3", 0.5)
                 musica.playMusic()
+        if tipostanza=="boss":
+            if i1==0:
+                i1=i+1
+                musica.stopMusic()
+                bossfight.playMusic()
+        if tipostanza=="end":
+            if i2==0:
+                i2=i+1
+                musicaSottofondo.playMusic()
         
 
         for event in pygame.event.get():

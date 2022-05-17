@@ -257,5 +257,29 @@ def collisioni(tipost,offset,finestra):
       collisione.append(pygame.Rect( (401.5*offset,547.5*offset,(877.5-401.5)*offset,30*offset) ))
       #pygame.draw.rect(finestra,"red", collisione[3],1)
 
+
+   elif tipost=="boss":
+
+      collisione=[]
+
+      #collsione parte alta
+      collisione.append(pygame.Rect( (62.5*offset,86.5*offset,(1218.5-62.5)*offset,30*offset) ))
+      #pygame.draw.rect(finestra,"red", collisione[0],1)
+
+      #collsione parte destra
+      collisione.append(pygame.Rect( (1218.5*offset,86.5*offset,30*offset,(696.5-86.5)*offset) ))
+      #pygame.draw.rect(finestra,"red", collisione[1],1)
+
+      #collsione parte sinistra
+      collisione.append(pygame.Rect( (32.5*offset,86.5*offset,30*offset,(696.5-86.5)*offset) ))
+      #pygame.draw.rect(finestra,"red", collisione[2],1)
+
+      #collsione parte bassa
+      collisione.append(pygame.Rect( (62.5*offset,690.5*offset,(1218.5-62.5)*offset,30*offset) ))
+      #pygame.draw.rect(finestra,"red", collisione[3],1)
+
+      #non puo arrivare al boss
+      collisione.append(pygame.Rect( (62.5*offset,270*offset,(1218.5-62.5)*offset,30*offset) ))
+
       
    return collisione
