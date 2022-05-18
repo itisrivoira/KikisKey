@@ -84,7 +84,7 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
         "acido":pygame.image.load('screens/game/assets/item/acido.png'),
         "moneta":pygame.image.load('screens/game/assets/item/moneta.png'),
         "merendina":pygame.image.load('screens/game/assets/item/merendina.png'),
-        "martello":pygame.image.load('screens/game/assets/item/martello.png')
+        "martello":pygame.image.load('screens/game/assets/item/martello.png'),
     }
 
     tipostanza="chimica1"
@@ -110,8 +110,10 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     i2=0
     clock = pygame.time.Clock()
 
-    musica=music(True, "assets/music/musica1.mp3", 0.5)
-    bossfight=music(True, "assets/music/musica2.mp3", 0.5)
+    musica1=music(True, "assets/music/musica1.mp3", 0.5)
+    musica2=music(True, "assets/music/musica2.mp3", 0.5)
+    musica3=music(True, "assets/music/musica3.mp3", 0.5)
+    
     togli=pygame.time.get_ticks()
     
     while True:
@@ -177,16 +179,16 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
             if i==0:
                 i=i+1
                 musicaSottofondo.stopMusic()
-                musica.playMusic()
+                musica1.playMusic()
         if tipostanza=="boss":
             if i1==0:
                 i1=i+1
-                musica.stopMusic()
-                bossfight.playMusic()
+                musica1.stopMusic()
+                musica2.playMusic()
         if tipostanza=="end":
             if i2==0:
                 i2=i+1
-                musicaSottofondo.playMusic()
+                musica3.playMusic()
         
 
         for event in pygame.event.get():

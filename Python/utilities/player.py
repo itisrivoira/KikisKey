@@ -33,20 +33,21 @@ class player():
       #walkcount serve per le animazioni personaggio
       self.walkcount=walkcount
       self.off=OFFSET_FINESTRA
+      self.kiki=pygame.image.load('screens/game/assets/fine.png').convert_alpha()
 
       #oggetti ottenuti
-      self.oggAcido=True
-      self.sbloccaP=True
-      self.newroom=True
-      self.oggmartello=True
-      self.oggmoneta=True
-      self.oggmerendina=True
-      self.port1=True
-      self.port2=True
-      self.server=True
-      self.scaff2=True
-      self.scaff3=True
-      self.scaff1=True
+      self.oggAcido=False
+      self.sbloccaP=False
+      self.newroom=False
+      self.oggmartello=False
+      self.oggmoneta=False
+      self.oggmerendina=False
+      self.port1=False
+      self.port2=False
+      self.server=False
+      self.scaff2=False
+      self.scaff3=False
+      self.scaff1=False
       self.flag=False
       self.lvl=False
       self.boss=False
@@ -577,8 +578,8 @@ class player():
                   self.y-=self.speed
          
          if self.tocca==False:
-            self.x_boss+=self.speed_boss*self.off
-            rectBoss=pygame.Rect((self.x_boss+20)*self.off, self.y_boss, (self.imgPreside.get_width()-40)*self.off, self.imgPreside.get_height())
+            self.x_boss+=self.speed_boss
+            rectBoss=pygame.Rect((self.x_boss+20), self.y_boss, (self.imgPreside.get_width()-40), self.imgPreside.get_height())
             if self.hitted:
                finestra.blit(self.imgPresideHit,(self.x_boss,self.y_boss))
             else:
@@ -586,7 +587,7 @@ class player():
             if rectBoss.colliderect(destra):
                self.tocca=True
          elif self.tocca==True:
-            self.x_boss-=self.speed_boss*self.off
+            self.x_boss-=self.speed_boss
             rectBoss=pygame.Rect(self.x_boss, self.y_boss, self.imgPreside.get_width(), self.imgPreside.get_height())
             if self.hitted:
                finestra.blit(self.imgPresideHit,(self.x_boss,self.y_boss))
@@ -686,9 +687,10 @@ class player():
          font = getFont("forwardFont", int(50 * self.off))
          fine = font.render("The End", True, "white")
          font = getFont("forwardFont", int(20 * self.off))
-         tempof=font.render("Run conclusa con "+self.tempo, True, "white")
-         finestra.blit(fine, (510*self.off, 300*self.off))
-         finestra.blit(tempof,(495*self.off,450*self.off))
+         tempof=font.render("Run conclusa in "+self.tempo, True, "white")
+         finestra.blit(self.kiki,(530,0))
+         finestra.blit(fine, (406*self.off, 300*self.off))
+         finestra.blit(tempof,(398*self.off,450*self.off))
 
 
 
