@@ -35,18 +35,18 @@ class player():
       self.off=OFFSET_FINESTRA
 
       #oggetti ottenuti
-      self.oggAcido=False
-      self.sbloccaP=False
-      self.newroom=False
-      self.oggmartello=False
-      self.oggmoneta=False
-      self.oggmerendina=False
-      self.port1=False
-      self.port2=False
-      self.server=False
-      self.scaff2=False
-      self.scaff3=False
-      self.scaff1=False
+      self.oggAcido=True
+      self.sbloccaP=True
+      self.newroom=True
+      self.oggmartello=True
+      self.oggmoneta=True
+      self.oggmerendina=True
+      self.port1=True
+      self.port2=True
+      self.server=True
+      self.scaff2=True
+      self.scaff3=True
+      self.scaff1=True
       self.flag=False
       self.lvl=False
       self.boss=False
@@ -83,6 +83,7 @@ class player():
       self.hittato=False
       self.agg=0
       self.aggiungi=0
+      self.tempof=0
 
 #--------------------------------------------------------------------------------#
 
@@ -102,6 +103,23 @@ class player():
       txt="x: "+str(x)+" y: "+str(y)
       #print(txt)
       
+
+      self.timer=pygame.time.get_ticks()
+      self.secondi=int((self.timer-togli-self.riduci+self.agg)/1000)
+      
+      if self.secondi>59:
+         if self.secondi%60==0:
+            self.minuti=self.minuti+1
+            self.riduci=self.minuti*60*1000
+
+      font = getFont("forwardFont", int(17 * self.off))
+      if self.tipost!="end":
+         text = font.render("Timer:", True, "white")
+         finestra.blit(text, (68*self.off, 657*self.off))
+         textMin=font.render(str(self.minuti)+" : ", True, "white")
+         TextSec=font.render(str(int(self.secondi)), True, "white")
+         finestra.blit(textMin, (150*self.off, 657*self.off))
+         finestra.blit(TextSec, (180*self.off, 657*self.off))
 
       
 #--------------------------------------------------------------------------------#
@@ -594,7 +612,7 @@ class player():
          
          if self.morto:
             self.tipost="end"
-
+            self.tempo=str(self.minuti)+" : "+str(self.secondi)
 
          if self.nuovoatt==True:
             self.attx1=random.randint(100,300)*self.off
@@ -645,31 +663,12 @@ class player():
          else:
             self.hittato=False
 
-
-         self.timer=pygame.time.get_ticks()
-         #minuti=self.timer /
-
-         self.secondi=int((self.timer-togli-self.riduci+self.agg)/1000)
-      
-         if self.secondi>59:
-            if self.secondi%60==0:
-               self.minuti=self.minuti+1
-               self.riduci=self.minuti*60*1000
-
-
-         font = getFont("forwardFont", int(17 * self.off))
-         text = font.render("Timer:", True, "black")
-         finestra.blit(text, (68*self.off, 657*self.off))
          if self.hittato:
             textMin=font.render(str(self.minuti)+" : ", True, "red")
             TextSec=font.render(str(int(self.secondi)), True, "red")
             finestra.blit(textMin, (150*self.off, 657*self.off))
             finestra.blit(TextSec, (180*self.off, 657*self.off))
-         else:
-            textMin=font.render(str(self.minuti)+" : ", True, "white")
-            TextSec=font.render(str(int(self.secondi)), True, "white")
-            finestra.blit(textMin, (150*self.off, 657*self.off))
-            finestra.blit(TextSec, (180*self.off, 657*self.off))
+         
 
 
          textBoss= font.render("Preside:", True, "black")
@@ -686,7 +685,10 @@ class player():
       elif self.tipost=="end":
          font = getFont("forwardFont", int(50 * self.off))
          fine = font.render("The End", True, "white")
+         font = getFont("forwardFont", int(20 * self.off))
+         tempof=font.render("Run conclusa con "+self.tempo, True, "white")
          finestra.blit(fine, (510*self.off, 300*self.off))
+         finestra.blit(tempof,(495*self.off,450*self.off))
 
 
 
