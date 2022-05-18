@@ -1,12 +1,14 @@
-import imp
+import random
 from webbrowser import get
 from utilities.music import music
 import pygame
 from utilities.dialoghi import dialogo
 from utilities.collisioni import collisioni
+from utilities.font import getFont
+
 
 class player():
-   def __init__(self, immaginiP, OFFSET_FINESTRA,x,y,FPS,speed,walkcount):
+   def __init__(self, immaginiP, OFFSET_FINESTRA,x,y,FPS,speed,walkcount,imgboss):
       self.img=immaginiP["kikiF0"]
       self.walkleft=[
             immaginiP["kikiS0"],immaginiP["kikiS1"],immaginiP["kikiS2"],immaginiP["kikiS3"],
@@ -33,27 +35,59 @@ class player():
       self.off=OFFSET_FINESTRA
 
       #oggetti ottenuti
-      self.oggAcido=True
-      self.sbloccaP=True
-      self.newroom=True
-      self.oggmartello=True
-      self.oggmoneta=True
-      self.oggmerendina=True
-      self.port1=True
-      self.port2=True
-      self.server=True
-      self.scaff2=True
-      self.scaff3=True
-      self.scaff1=True
+      self.oggAcido=False
+      self.sbloccaP=False
+      self.newroom=False
+      self.oggmartello=False
+      self.oggmoneta=False
+      self.oggmerendina=False
+      self.port1=False
+      self.port2=False
+      self.server=False
+      self.scaff2=False
+      self.scaff3=False
+      self.scaff1=False
       self.flag=False
       self.lvl=False
       self.boss=False
-      
+      self.pungo=immaginiP["pugno"]
+
+      #preside
+      self.tocca=False
+      self.imgPreside=imgboss["preside"]
+      self.imgPresideHit=imgboss["presideRed"]
+      self.x_boss=70*self.off
+      self.y_boss=30*self.off
+      self.speed_boss=4*self.off
+      self.vita=300
+      self.hitted=False
+      self.morto=False
+      self.speed_Hit=3*self.off
+      self.attx1=random.randint(100,300)
+      self.attx2=random.randint(300,600)
+      self.attx3=random.randint(600,900)
+      self.attx4=random.randint(900,1100)
+      self.nuovoatt=False
+      self.atty1=210*self.off
+      self.atty2=210*self.off
+      self.atty3=210*self.off
+      self.atty4=210*self.off
+      self.pallaombra=immaginiP["pallaombra"]
+      self.attx5=50*self.off
+
+      #timer
+      self.minuti=0
+      self.secondi=0
+      self.ore=0
+      self.riduci=0
+      self.hittato=False
+      self.agg=0
+      self.aggiungi=0
 
 #--------------------------------------------------------------------------------#
 
 
-   def aggplayer(self,finestra,left,right,up,down,y,x,tipostanza,key,attivaInv,inventarioImg,oggetti):
+   def aggplayer(self,finestra,left,right,up,down,y,x,tipostanza,key,attivaInv,inventarioImg,oggetti,attacco,togli):
       self.x=x
       self.y=y
 
@@ -67,6 +101,7 @@ class player():
       #posizione player
       txt="x: "+str(x)+" y: "+str(y)
       #print(txt)
+      
 
       
 #--------------------------------------------------------------------------------#
@@ -75,36 +110,37 @@ class player():
       #PLAYER MOVEMENT CON ANIMAZIONI
       if self.walkcount +1 >=self.fps:
          self.walkcount=0
-            
-      if left:
-         finestra.blit(self.walkleft[self.walkcount//8],(self.x,self.y))
-         self.walkcount+=int(self.fps/22*self.off)
-         self.img= self.walkleft[0]
-         #pygame.draw.rect(finestra,"red",self.rect,1)
 
-      elif right:
-         finestra.blit(self.walkright[self.walkcount//8],(self.x,self.y))
-         self.walkcount+=int(self.fps/22*self.off)
-         self.img= self.walkright[0]
-         #pygame.draw.rect(finestra,"red",self.rect,1)
+      if self.morto==False:         
+         if left:
+            finestra.blit(self.walkleft[self.walkcount//8],(self.x,self.y))
+            self.walkcount+=int(self.fps/22*self.off)
+            self.img= self.walkleft[0]
+            #pygame.draw.rect(finestra,"red",self.rect,1)
 
-      elif up:
-         finestra.blit(self.walkup[self.walkcount//8],(self.x,self.y))
-         self.walkcount+=int(self.fps/22*self.off)
-         self.img= self.walkup[0]
-         #pygame.draw.rect(finestra,"red",self.rect,1)
+         elif right:
+            finestra.blit(self.walkright[self.walkcount//8],(self.x,self.y))
+            self.walkcount+=int(self.fps/22*self.off)
+            self.img= self.walkright[0]
+            #pygame.draw.rect(finestra,"red",self.rect,1)
 
-      elif down:
-         finestra.blit(self.walkdown[self.walkcount//8],(self.x,self.y))
-         self.walkcount+=int(self.fps/22*self.off)
-         self.img= self.walkdown[0]
-         #pygame.draw.rect(finestra,"red",self.rect,1)
+         elif up:
+            finestra.blit(self.walkup[self.walkcount//8],(self.x,self.y))
+            self.walkcount+=int(self.fps/22*self.off)
+            self.img= self.walkup[0]
+            #pygame.draw.rect(finestra,"red",self.rect,1)
 
+         elif down:
+            finestra.blit(self.walkdown[self.walkcount//8],(self.x,self.y))
+            self.walkcount+=int(self.fps/22*self.off)
+            self.img= self.walkdown[0]
+            #pygame.draw.rect(finestra,"red",self.rect,1)
+
+         else:
+            finestra.blit(self.img,(self.x,self.y)) 
+            #pygame.draw.rect(finestra,"red",self.rect,1)
       else:
-         finestra.blit(self.img,(self.x,self.y)) 
-         #pygame.draw.rect(finestra,"red",self.rect,1)
-
-
+         finestra.blit(self.img,(-1000,-1000))
 #--------------------------------------------------------------------------------#
 
 
@@ -492,8 +528,166 @@ class player():
             if key:
                self.boss=True
          
-         if self.boss and self.rect.colliderect(porta) and up:
-            self.tipost="bidelleria"
+         if self.rect.colliderect(porta) and self.boss and up:
+            self.x=606*self.off
+            self.y=625*self.off
+            self.tipost="boss"
+
+
+#--------------------------------------------------------------------------------#
+      
+
+      #stanza boss fight
+      elif self.tipost=="boss":
+         collisione=collisioni(self.tipost,self.off,finestra)
+
+         #collsione parte destra
+         destra=(pygame.Rect( (1216.5*self.off,86.5*self.off,30*self.off,(696.5-86.5)*self.off) ))
+
+         #collsione parte sinistra
+         sinistra=(pygame.Rect( (34.5*self.off,86.5*self.off,30*self.off,(696.5-86.5)*self.off) ))
+
+         for col in collisione:
+            if self.rect.colliderect(col):
+               if left:
+                  self.x+=self.speed
+               if right:
+                  self.x-=self.speed
+               if up:
+                  self.y+=self.speed
+               if down:
+                  self.y-=self.speed
+         
+         if self.tocca==False:
+            self.x_boss+=self.speed_boss*self.off
+            rectBoss=pygame.Rect((self.x_boss+20)*self.off, self.y_boss, (self.imgPreside.get_width()-40)*self.off, self.imgPreside.get_height())
+            if self.hitted:
+               finestra.blit(self.imgPresideHit,(self.x_boss,self.y_boss))
+            else:
+               finestra.blit(self.imgPreside,(self.x_boss,self.y_boss))
+            if rectBoss.colliderect(destra):
+               self.tocca=True
+         elif self.tocca==True:
+            self.x_boss-=self.speed_boss*self.off
+            rectBoss=pygame.Rect(self.x_boss, self.y_boss, self.imgPreside.get_width(), self.imgPreside.get_height())
+            if self.hitted:
+               finestra.blit(self.imgPresideHit,(self.x_boss,self.y_boss))
+            else:
+               finestra.blit(self.imgPreside,(self.x_boss,self.y_boss))
+            if rectBoss.colliderect(sinistra):
+               self.tocca=False
+
+         if attacco:
+            hit=pygame.Rect((self.x+15)*self.off, (self.y-120)*self.off, (self.img.get_width()-30)*self.off, (self.img.get_height()+120)*self.off)
+            
+            finestra.blit(self.pungo,(self.x-20,self.y-134))
+            if hit.colliderect(rectBoss):
+               self.vita-=1
+               self.hitted=True
+            else:
+               self.hitted=False
+         else:
+            self.hitted=False
+
+         if self.vita==0:
+            self.morto=True
+         
+         if self.morto:
+            self.tipost="end"
+
+
+         if self.nuovoatt==True:
+            self.attx1=random.randint(100,300)*self.off
+            self.attx2=random.randint(300,600)*self.off
+            self.attx3=random.randint(600,900)*self.off
+            self.attx4=random.randint(900,1100)*self.off
+
+         self.atty1+=self.speed_Hit
+         self.atty2+=self.speed_Hit
+         self.atty3+=self.speed_Hit
+         self.atty4+=self.speed_Hit
+         self.attx5+=5*self.off
+
+         attBoss1=pygame.Rect(self.attx1, self.atty1, 40*self.off, 40*self.off)
+         finestra.blit(self.pallaombra,(self.attx1, self.atty1,))
+
+         attBoss2=pygame.Rect(self.attx2, self.atty2, 40*self.off, 40*self.off)
+         finestra.blit(self.pallaombra,(self.attx2, self.atty2,))
+         
+         attBoss3=pygame.Rect(self.attx3, self.atty3, 40*self.off, 40*self.off)
+         finestra.blit(self.pallaombra,(self.attx3, self.atty3,))
+         
+         attBoss4=pygame.Rect(self.attx4, self.atty4, 40*self.off, 40*self.off)
+         finestra.blit(self.pallaombra,(self.attx4, self.atty4,))
+
+         attBoss5=pygame.Rect(self.attx5, 310*self.off, 40*self.off, 40*self.off)
+         finestra.blit(self.pallaombra,(self.attx5, 310*self.off,))
+
+         if attBoss5.colliderect(destra):
+            self.attx5=50*self.off
+
+
+         basso=(pygame.Rect( (62.5*self.off,690.5*self.off,(1218.5-62.5)*self.off,30*self.off) ))
+
+         if attBoss1.colliderect(basso):
+            self.nuovoatt=True
+            self.atty1=210*self.off
+            self.atty2=210*self.off
+            self.atty3=210*self.off
+            self.atty4=210*self.off
+         else:
+            self.nuovoatt=False
+               
+         if self.rect.colliderect(attBoss1) or self.rect.colliderect(attBoss2) or self.rect.colliderect(attBoss3) or self.rect.colliderect(attBoss4) or self.rect.colliderect(attBoss5):
+            self.hittato=True
+            self.aggiungi+=1
+            self.agg=1*1000*self.aggiungi
+         else:
+            self.hittato=False
+
+
+         self.timer=pygame.time.get_ticks()
+         #minuti=self.timer /
+
+         self.secondi=int((self.timer-togli-self.riduci+self.agg)/1000)
+      
+         if self.secondi>59:
+            if self.secondi%60==0:
+               self.minuti=self.minuti+1
+               self.riduci=self.minuti*60*1000
+
+
+         font = getFont("forwardFont", int(17 * self.off))
+         text = font.render("Timer:", True, "black")
+         finestra.blit(text, (68*self.off, 657*self.off))
+         if self.hittato:
+            textMin=font.render(str(self.minuti)+" : ", True, "red")
+            TextSec=font.render(str(int(self.secondi)), True, "red")
+            finestra.blit(textMin, (150*self.off, 657*self.off))
+            finestra.blit(TextSec, (180*self.off, 657*self.off))
+         else:
+            textMin=font.render(str(self.minuti)+" : ", True, "white")
+            TextSec=font.render(str(int(self.secondi)), True, "white")
+            finestra.blit(textMin, (150*self.off, 657*self.off))
+            finestra.blit(TextSec, (180*self.off, 657*self.off))
+
+
+         textBoss= font.render("Preside:", True, "black")
+         finestra.blit(textBoss, (520*self.off, 657*self.off))
+
+         pygame.draw.rect(finestra,"red",(630*self.off,659*self.off,self.vita/2*self.off,20*self.off))
+         pygame.draw.rect(finestra, "black" , (630*self.off,659*self.off,self.vita/2*self.off,20*self.off),2)
+
+
+#--------------------------------------------------------------------------------#
+
+
+
+      elif self.tipost=="end":
+         font = getFont("forwardFont", int(50 * self.off))
+         fine = font.render("The End", True, "white")
+         finestra.blit(fine, (510*self.off, 300*self.off))
+
 
 
 #--------------------------------------------------------------------------------#
