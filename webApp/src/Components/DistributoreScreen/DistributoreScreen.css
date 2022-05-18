@@ -1,4 +1,4 @@
-.contenitorePlayerInventario {
+.contenitoreDistributore {
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
@@ -20,67 +20,38 @@
   z-index: 98;
 }
 
-.titoloPlayerInventario {
+.titoloDistributore {
   font-size: clamp(2.8rem, 5vw, 4rem);
   color: #e5b62e;
   margin-bottom: 50px;
 }
 
-.inventario {
+.contenitoreProdottiDistri {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
   -ms-grid-rows: (1fr)[2];
       grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 20px;
-  grid-row-gap: 50px;
+  grid-column-gap: 50px;
+  grid-row-gap: 0px;
 }
 
-.box {
-  height: 110px;
-  width: 110px;
-  background-image: url("./../../../assets/img/Gioca/itemBox1.png");
-  background-repeat: no-repeat;
-  background-position: center center;
+.imgProdotto1 {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-area: 1 / 1 / 2 / 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  position: relative;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  color: rgba(0, 0, 0, 0.3);
 }
 
-.box .nomeItem {
-  position: absolute;
-  top: 100%;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 18px !important;
-  text-align: center;
-}
-
-.box .quantitaItem {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 14px !important;
-}
-
-.box2 {
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 1;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  grid-area: 1 / 1 / 2 / 2;
-}
-
-.box3 {
+.costoProdotto1 {
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
   -ms-grid-column: 2;
@@ -88,15 +59,27 @@
   grid-area: 1 / 2 / 2 / 3;
 }
 
-.box4 {
+.compraProddot1 {
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
   -ms-grid-column: 3;
   -ms-grid-column-span: 1;
   grid-area: 1 / 3 / 2 / 4;
+  color: white;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.box5 {
+.compraproddot1:hover {
+  color: #e5b62e;
+}
+
+.div4 {
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   -ms-grid-column: 1;
@@ -104,7 +87,7 @@
   grid-area: 2 / 1 / 3 / 2;
 }
 
-.box6 {
+.div5 {
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   -ms-grid-column: 2;
@@ -112,11 +95,11 @@
   grid-area: 2 / 2 / 3 / 3;
 }
 
-.box7 {
+.div6 {
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   -ms-grid-column: 3;
   -ms-grid-column-span: 1;
   grid-area: 2 / 3 / 3 / 4;
 }
-/*# sourceMappingURL=Inventario.css.map */
+/*# sourceMappingURL=DistributoreScreen.css.map */

@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const PauseMenu = (props) => {
   const riprendi = () => {
-    props.pauseMenuController("escape");
+    props.controller("escape");
   };
 
   return (
@@ -26,7 +26,7 @@ const PauseMenu = (props) => {
         className="actionBtnPauseMenu riprendiBtn"
         onClick={riprendi}
       >
-        REPRENDI
+        RIPRENDI
       </motion.div>
     </div>
   );

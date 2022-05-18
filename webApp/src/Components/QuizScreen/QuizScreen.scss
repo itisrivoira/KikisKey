@@ -1,0 +1,70 @@
+$colorePrimario: #333333;
+$coloreSecondario: #e5b62e;
+
+$titolo: clamp(2.8rem, 5vw, 4rem);
+
+@font-face {
+  font-family: forwardFont;
+  src: url("../../../assets/fonts/forwardFont.TTF");
+}
+
+.contenitoreDomanda {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 380px;
+  z-index: 99;
+}
+
+.titoloDomanda {
+  font-size: $titolo;
+  color: $coloreSecondario;
+  margin-bottom: 40px;
+}
+
+.testoDomandata {
+  color: #fff;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 10px;
+}
+
+.inputRisposta {
+  width: 300px;
+  height: 60px;
+  border: none;
+  text-align: center;
+  font-family: forwardFont;
+  outline: none;
+}
+
+.btnCheck {
+  margin-top: 40px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #ffffff;
+  width: 300px;
+  height: 100px;
+  background-size: contain;
+  margin-bottom: 20px;
+  background-image: url(./../../../assets/img/Game/btn1.png);
+}
+
+.btnCheck:hover {
+  color: #000000;
+}
+
+@media (max-width: 1199.98px) {
+  .btnCheck {
+    width: 250px;
+    height: 85px;
+  }
+}
