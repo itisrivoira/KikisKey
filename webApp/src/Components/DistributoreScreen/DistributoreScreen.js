@@ -5,9 +5,9 @@ import usePlayerItemsManager from "../../Hooks/usePlayerItemsManager";
 const DistributoreScreen = () => {
   const { checkItem, rimuoviItem, aggiungiItem } = usePlayerItemsManager();
   const compra = () => {
-    if (checkItem("Moneta Rara") && checkItem("Moneta comune")) {
+    if (checkItem("Moneta Rara") && checkItem("Moneta Comune")) {
       aggiungiItem("Patate");
-      rimuoviItem("Moneta comune");
+      rimuoviItem("Moneta Comune");
       rimuoviItem("Moneta Rara");
     }
   };

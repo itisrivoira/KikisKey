@@ -171,7 +171,7 @@ const Gioca = () => {
           />
           <Oggetto
             oggettoRef={monetaComuneRef}
-            img="/img/oggetti/MonetaComune.png"
+            img="/img/oggetti/monetaComune.png"
           />
           <Oggetto
             oggettoRef={finestraRottaRef}

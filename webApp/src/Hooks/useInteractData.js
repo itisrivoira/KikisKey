@@ -104,7 +104,7 @@ const useInteractData = () => {
       },
       cmd: () => {
         if (gameData.current.monetaComuneRaccolta === false) {
-          aggiungiItem("Moneta comune");
+          aggiungiItem("Moneta Comune");
           gameData.current.monetaComuneRaccolta = true;
         }
       },
