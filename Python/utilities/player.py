@@ -73,6 +73,7 @@ class player():
       self.atty3=210*self.off
       self.atty4=210*self.off
       self.pallaombra=immaginiP["pallaombra"]
+      self.attx5=50*self.off
 
       #timer
       self.minuti=0
@@ -605,6 +606,7 @@ class player():
          self.atty2+=self.speed_Hit
          self.atty3+=self.speed_Hit
          self.atty4+=self.speed_Hit
+         self.attx5+=5*self.off
 
          attBoss1=pygame.Rect(self.attx1, self.atty1, 40*self.off, 40*self.off)
          finestra.blit(self.pallaombra,(self.attx1, self.atty1,))
@@ -618,6 +620,12 @@ class player():
          attBoss4=pygame.Rect(self.attx4, self.atty4, 40*self.off, 40*self.off)
          finestra.blit(self.pallaombra,(self.attx4, self.atty4,))
 
+         attBoss5=pygame.Rect(self.attx5, 310*self.off, 40*self.off, 40*self.off)
+         finestra.blit(self.pallaombra,(self.attx5, 310*self.off,))
+
+         if attBoss5.colliderect(destra):
+            self.attx5=50*self.off
+
 
          basso=(pygame.Rect( (62.5*self.off,690.5*self.off,(1218.5-62.5)*self.off,30*self.off) ))
 
@@ -630,7 +638,7 @@ class player():
          else:
             self.nuovoatt=False
                
-         if self.rect.colliderect(attBoss1) or self.rect.colliderect(attBoss2) or self.rect.colliderect(attBoss3) or self.rect.colliderect(attBoss4) :
+         if self.rect.colliderect(attBoss1) or self.rect.colliderect(attBoss2) or self.rect.colliderect(attBoss3) or self.rect.colliderect(attBoss4) or self.rect.colliderect(attBoss5):
             self.hittato=True
             self.aggiungi+=1
             self.agg=1*1000*self.aggiungi
@@ -651,24 +659,24 @@ class player():
 
          font = getFont("forwardFont", int(17 * self.off))
          text = font.render("Timer:", True, "black")
-         finestra.blit(text, (68, 657))
+         finestra.blit(text, (68*self.off, 657*self.off))
          if self.hittato:
             textMin=font.render(str(self.minuti)+" : ", True, "red")
             TextSec=font.render(str(int(self.secondi)), True, "red")
-            finestra.blit(textMin, (150, 657))
-            finestra.blit(TextSec, (180, 657))
+            finestra.blit(textMin, (150*self.off, 657*self.off))
+            finestra.blit(TextSec, (180*self.off, 657*self.off))
          else:
             textMin=font.render(str(self.minuti)+" : ", True, "white")
             TextSec=font.render(str(int(self.secondi)), True, "white")
-            finestra.blit(textMin, (150, 657))
-            finestra.blit(TextSec, (180, 657))
+            finestra.blit(textMin, (150*self.off, 657*self.off))
+            finestra.blit(TextSec, (180*self.off, 657*self.off))
 
 
          textBoss= font.render("Preside:", True, "black")
-         finestra.blit(textBoss, (520, 657))
+         finestra.blit(textBoss, (520*self.off, 657*self.off))
 
-         pygame.draw.rect(finestra,"red",(630,659,self.vita/2,20))
-         pygame.draw.rect(finestra, "black" , (630,659,self.vita/2,20),2)
+         pygame.draw.rect(finestra,"red",(630*self.off,659*self.off,self.vita/2*self.off,20*self.off))
+         pygame.draw.rect(finestra, "black" , (630*self.off,659*self.off,self.vita/2*self.off,20*self.off),2)
 
 
 #--------------------------------------------------------------------------------#
