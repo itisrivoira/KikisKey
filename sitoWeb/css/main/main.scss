@@ -133,6 +133,28 @@ input[type="checkbox"] {
   z-index: 4;
 }
 
+@media (max-width: 1199.98px) {
+  .navBar {
+    padding: 0 7.5%;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .menu {
+    display: block;
+  }
+  .login,
+  .tabs {
+    display: none;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .navBar {
+    padding: 0;
+  }
+}
+
 /**********************************************************************/
 /***** scrollbar *****/
 
@@ -148,23 +170,76 @@ input[type="checkbox"] {
   background: #9d9d9d;
 }
 
-@media (max-width: 1199.98px) {
-  .navBar {
-    padding: 0 7.5%;
-  }
+/**********************************************************************/
+/***** footer *****/
+.footer {
+  background-color: $colorePrimario;
+  color: #ffffff;
+  height: auto;
+  padding-top: 50px;
 }
 
-@media (max-width: 767.98px) {
-  .menu {
-    display: block;
-  }
-  .login {
-    display: none;
-  }
+.contenutoFooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenitoreSocial {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgDenina {
+  height: 150px;
+  width: 150px;
+  background-image: url(./../../assets/img/main/denina.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-bottom: 75px;
+}
+
+.imgInstagram {
+  height: 64px;
+  width: 64px;
+  background-image: url(./../../assets/img/main/instagram.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-right: 75px;
+}
+
+.imgGithub {
+  height: 64px;
+  width: 64px;
+  background-image: url(./../../assets/img/main/github.png);
+  background-repeat: no-repeat;
+  margin-right: 75px;
+}
+
+.imgYoutube {
+  height: 64px;
+  width: 64px;
+  background-image: url(./../../assets/img/main/youtube.png);
+  background-repeat: no-repeat;
+}
+
+.contenitoreCopyright {
+  padding: 20px;
+  margin-top: 35px;
+  background-color: $coloreSecondario;
+  color: $colorePrimario;
+  text-align: center;
 }
 
 @media (max-width: 575.98px) {
-  .navBar {
-    padding: 0;
+  .imgInstagram {
+    margin-right: 40px;
+  }
+
+  .imgGithub {
+    margin-right: 40px;
   }
 }

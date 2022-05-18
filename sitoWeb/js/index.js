@@ -76,3 +76,16 @@ for (let i = 0; i < pagBtns.length; i++) {
     }
   });
 }
+
+/*************** sezione 3s ***************/
+gsap.to(".box", {
+  duration: 1,
+  scale: 0.1,
+  y: 40,
+  ease: "power1.inOut",
+  stagger: {
+    grid: [3,6],
+    from: "center",
+    amount: 1.5
+  }
+});

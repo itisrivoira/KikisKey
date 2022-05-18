@@ -1,0 +1,115 @@
+.swiper-cards .swiper-slide {
+  overflow: visible !important;
+}
+
+.swiper {
+  width: 400px;
+  height: 420px;
+}
+
+.contenutoMain {
+  border-left: 1px dashed #737373;
+  border-right: 1px dashed #737373;
+  margin: 0px 15%;
+  width: 70%;
+  min-height: 600px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background: #fff;
+  border-radius: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #000;
+  position: relative;
+  z-index: 1;
+}
+
+.swiper-slide.swiper-slide-active {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.swiper-slide .img {
+  width: 150px;
+  height: 150px;
+  border: 5px solid #fdfdfd;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 3;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.swiper-slide .name {
+  padding-top: 100px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 26px;
+}
+
+.swiper-slide .title {
+  text-align: center;
+  font-size: 14px;
+  color: #e5b62e;
+  font-weight: 300;
+}
+
+.swiper-slide .desc {
+  color: #333333;
+  text-align: center;
+  font-size: 16px;
+  padding: 10px 20px;
+  font-weight: 300;
+}
+
+.swiper-slide .img-1 {
+  background-image: url("./../../assets/img/aboutUs/persona1.jpg");
+}
+
+.swiper-slide .img-2 {
+  background-image: url("./../../assets/img/aboutUs/persona2.jpg");
+}
+
+.swiper-slide .img-3 {
+  background-image: url("./../../assets/img/aboutUs/persona3.jpg");
+}
+
+.swiper-slide .img-4 {
+  background-image: url("./../../assets/img/aboutUs/persona4.jpg");
+}
+
+.swiper-slide .img-5 {
+  background-image: url("./../../assets/img/aboutUs/persona5.jpg");
+}
+
+@media (max-width: 1199.98px) {
+  .contenutoMain {
+    margin: 0 7.5%;
+    width: 85%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .contenutoMain {
+    margin: 0;
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=aboutUs.css.map */

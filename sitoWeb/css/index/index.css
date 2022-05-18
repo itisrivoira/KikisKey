@@ -249,6 +249,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  line-height: 30px;
 }
 
 .mainContenutoSez3 .characterInfo .characterName {
@@ -280,7 +281,7 @@
           justify-content: center;
 }
 
-.contenitoreRule {
+.contenitoreRules .contenitoreRule {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -289,22 +290,29 @@
           justify-content: flex-start;
 }
 
-.contenitoreRule:nth-child(2) {
+.contenitoreRules .contenitoreRule:nth-child(2) {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
 
-.rule {
+.contenitoreRules .rule {
   word-wrap: break-word;
   width: 450px;
   padding: 20px;
   background-color: #c4c4c4;
   margin-bottom: 75px;
+  line-height: 30px;
 }
 
-.ruleName {
+.contenitoreRules .rule .ruleName {
   font-size: clamp(1.3rem, 1.3vw, 1.6rem);
+  color: #333333;
+}
+
+.contenitoreRules .rule .ruleDesc {
+  color: #333333;
+  padding-top: 10px;
 }
 
 .titoloSez5 {
@@ -312,14 +320,29 @@
 }
 
 .contenitoreMappa {
-  height: 400px;
-  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.footer {
-  background-color: #333333;
-  color: #ffffff;
-  height: 300px;
+.mappa {
+  background-image: url(./../../assets/img/home/mappa.jpg);
+  height: 500px;
+  width: 600px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 1399.98px) {
+  .rule {
+    width: 400px !important;
+  }
 }
 
 @media (max-width: 1199.98px) {
@@ -336,6 +359,19 @@
 @media (max-width: 991.98px) {
   .lineaTitolo {
     bottom: -3px;
+  }
+  .titoloSezioneChiaro {
+    text-align: center;
+  }
+  .rule {
+    margin-bottom: 35px !important;
+    width: 400px !important;
+  }
+  .contenitoreRule,
+  .contenitoreRule:nth-child(2) {
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
   }
 }
 
@@ -388,18 +424,6 @@
     grid-area: three;
     text-align: center;
     display: block;
-  }
-  .titoloSezioneChiaro {
-    text-align: center;
-  }
-  .rule {
-    margin-bottom: 35px;
-  }
-  .contenitoreRule,
-  .contenitoreRule:nth-child(2) {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
   }
 }
 

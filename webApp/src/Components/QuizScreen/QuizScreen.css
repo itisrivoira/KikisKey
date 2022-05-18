@@ -1,0 +1,81 @@
+@font-face {
+  font-family: forwardFont;
+  src: url("../../../assets/fonts/forwardFont.TTF");
+}
+
+.contenitoreDomanda {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-width: 380px;
+  z-index: 99;
+}
+
+.titoloDomanda {
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  color: #e5b62e;
+  margin-bottom: 40px;
+}
+
+.testoDomandata {
+  color: #fff;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 10px;
+}
+
+.inputRisposta {
+  width: 300px;
+  height: 60px;
+  border: none;
+  text-align: center;
+  font-family: forwardFont;
+  outline: none;
+}
+
+.btnCheck {
+  margin-top: 40px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  color: #ffffff;
+  width: 300px;
+  height: 100px;
+  background-size: contain;
+  margin-bottom: 20px;
+  background-image: url(./../../../assets/img/Game/btn1.png);
+}
+
+.btnCheck:hover {
+  color: #000000;
+}
+
+@media (max-width: 1199.98px) {
+  .btnCheck {
+    width: 250px;
+    height: 85px;
+  }
+}
+/*# sourceMappingURL=QuizScreen.css.map */

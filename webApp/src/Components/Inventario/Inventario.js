@@ -2,50 +2,78 @@ import "./Inventario.css";
 
 import React, { useContext } from "react";
 import { gameContext } from "../../Hooks/useContext";
+import { useDrag, useDrop } from "react-dnd";
 
 const Inventario = () => {
-  const { inventario } = useContext(gameContext);
+  const { playerItems, setPlayerItems } = useContext(gameContext);
+
+  const handleDrop = (indexBox, item) => {
+    const { id, name } = item;
+    //console.log(id);
+    //console.log(name);
+
+    let tempArr = [...playerItems];
+
+    if (tempArr[indexBox].itemName === "") {
+      tempArr[id].itemName = "";
+      tempArr[indexBox].itemName = name;
+    } else {
+      let dragItemName = tempArr[id].itemName;
+      tempArr[id].itemName = tempArr[indexBox].itemName;
+      tempArr[indexBox].itemName = dragItemName;
+    }
+
+    setPlayerItems(tempArr);
+  };
+
   return (
     <div className="contenitorePlayerInventario">
       <p className="titoloPlayerInventario">Inventario</p>
       <div className="inventario">
-        <div className="box box1">
-          {inventario[0][0] ? <Oggetto nome={inventario[0][1]} quantita={inventario[0][2]}/> 
-                            : "1"}
-        </div>
-        <div className="box box2">
-          {inventario[1][0] ? <Oggetto nome={inventario[1][1]} quantita={inventario[1][2]}/> 
-                            : "2"}
-        </div>
-        <div className="box box3">
-          {inventario[2][0] ? <Oggetto nome={inventario[2][1]} quantita={inventario[2][2]}/> 
-                            : "3"}
-        </div>
-        <div className="box box4">
-          {inventario[3][0] ? <Oggetto nome={inventario[3][1]} quantita={inventario[3][2]}/> 
-                            : "4"}
-        </div>
-        <div className="box box5">
-          {inventario[4][0] ? <Oggetto nome={inventario[4][1]} quantita={inventario[4][2]}/> 
-                            : "5"}
-        </div>
-        <div className="box box6">
-          {inventario[5][0] ? <Oggetto nome={inventario[5][1]} quantita={inventario[5][2]}/> 
-                            : "6"}
-        </div>
+        {playerItems.map((obj) => {
+          if (obj.id >= 2) {
+            return (
+              <Box
+                key={obj.id + obj.itemName}
+                id={obj.id}
+                itemName={obj.itemName}
+                dropFunz={(item) => handleDrop(obj.id, item)}
+              />
+            );
+          }
+        })}
       </div>
     </div>
   );
 };
 
-const Oggetto = (props) => {
+const Box = (props) => {
+  const [, drop] = useDrop({
+    accept: "imgItem",
+    drop: props.dropFunz,
+  });
+
   return (
-    <>
-      <img src={"img/oggetti/" + props.nome + ".png"} />
-      {props.quantita > 1 && <span className="quantitaOggetto">{"x" + props.quantita}</span>}
-      <p className="nomeOggetto">{props.nome}</p>
-    </>
+    <div className={"box " + "box" + props.id} ref={drop}>
+      <Item id={props.id} name={props.itemName} />
+    </div>
   );
+};
+
+const Item = (props) => {
+  const [, drag] = useDrag(() => ({
+    type: "imgItem",
+    item: { id: props.id, name: props.name },
+  }));
+
+  if (props.name !== "") {
+    return (
+      <>
+        <img src={"img/items/" + props.name + ".png"} ref={drag} />
+        <p className="nomeItem">{props.name}</p>
+      </>
+    );
+  }
 };
 
 export default Inventario;

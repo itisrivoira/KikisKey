@@ -211,6 +211,7 @@ $dimTesto2: clamp(1.3rem, 1.3vw, 1.6rem);
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
+    line-height: 30px;
 
     .characterName {
       margin-bottom: 20px;
@@ -234,27 +235,34 @@ $dimTesto2: clamp(1.3rem, 1.3vw, 1.6rem);
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
 
-.contenitoreRule {
-  display: flex;
-  justify-content: flex-start;
-}
+  .contenitoreRule {
+    display: flex;
+    justify-content: flex-start;
+  }
 
-.contenitoreRule:nth-child(2) {
-  justify-content: flex-end;
-}
+  .contenitoreRule:nth-child(2) {
+    justify-content: flex-end;
+  }
 
-.rule {
-  word-wrap: break-word;
-  width: 450px;
-  padding: 20px;
-  background-color: #c4c4c4;
-  margin-bottom: 75px;
-}
+  .rule {
+    word-wrap: break-word;
+    width: 450px;
+    padding: 20px;
+    background-color: #c4c4c4;
+    margin-bottom: 75px;
+    line-height: 30px;
 
-.ruleName {
-  font-size: $dimTesto2;
+    .ruleName {
+      font-size: $dimTesto2;
+      color: $colorePrimario;
+    }
+
+    .ruleDesc {
+      color: $colorePrimario;
+      padding-top: 10px;
+    }
+  }
 }
 
 .titoloSez5 {
@@ -262,14 +270,23 @@ $dimTesto2: clamp(1.3rem, 1.3vw, 1.6rem);
 }
 
 .contenitoreMappa {
-  height: 400px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.footer {
-  background-color: $colorePrimario;
-  color: #ffffff;
-  height: 300px;
+.mappa {
+  background-image: url(./../../assets/img/home/mappa.jpg);
+  height: 500px;
+  width: 600px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 1399.98px) {
+  .rule {
+    width: 400px !important;
+  }
 }
 
 @media (max-width: 1199.98px) {
@@ -286,6 +303,19 @@ $dimTesto2: clamp(1.3rem, 1.3vw, 1.6rem);
 @media (max-width: 991.98px) {
   .lineaTitolo {
     bottom: -3px;
+  }
+  .titoloSezioneChiaro {
+    text-align: center;
+  }
+
+  .rule {
+    margin-bottom: 35px !important;
+    width: 400px !important;
+  }
+
+  .contenitoreRule,
+  .contenitoreRule:nth-child(2) {
+    justify-content: center !important;
   }
 }
 
@@ -335,19 +365,6 @@ $dimTesto2: clamp(1.3rem, 1.3vw, 1.6rem);
       text-align: center;
       display: block;
     }
-  }
-
-  .titoloSezioneChiaro {
-    text-align: center;
-  }
-
-  .rule {
-    margin-bottom: 35px;
-  }
-
-  .contenitoreRule,
-  .contenitoreRule:nth-child(2) {
-    justify-content: center;
   }
 }
 
