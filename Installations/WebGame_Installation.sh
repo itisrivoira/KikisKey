@@ -35,6 +35,8 @@ fi
 
 if [ $var == 'False' ]
 then
+    cd ..
+    cd ./WebGame
     npm i
 fi
 
@@ -49,5 +51,7 @@ read avvia
 
 if [ $avvia == 's' ]
 then
-npm run start
+    cd ..
+    cd ./WebGame
+    npm run start
 fi
