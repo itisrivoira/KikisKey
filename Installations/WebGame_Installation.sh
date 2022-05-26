@@ -1,13 +1,13 @@
 #!/bin/bash
 
 echo "Checking package install..."
-sleep 2
+sleep 1.5
 var='False'
 type -P nodejs >/dev/null 2>&1 && var='True'
 if [[ $var == 'False' ]]
 then
-    echo "Python mancante..."
-    sleep 2
+    echo "NodeJs mancante..."
+    sleep 0.5
     sudo apt-get update
     sudo apt -y update
     sudo apt -y upgrade
@@ -17,12 +17,25 @@ var='False'
 type -P npm >/dev/null 2>&1 && var='True'
 if [ $var == 'False' ]
 then
+    echo "Npm mancante..."
+    sleep 0.5
     sudo apt-get update
     sudo apt install npm
     cd ..
     cd ./WebGame
     npm i
+fi
+
+var='False'
+FILE=./package.json
+
+if test -f "$FILE"; then
     var='True'
+fi
+
+if [ $var == 'False' ]
+then
+    npm i
 fi
 
 if [ $var == 'True' ]

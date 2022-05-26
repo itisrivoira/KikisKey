@@ -1,13 +1,13 @@
 #!/bin/bash
 
 echo "Checking package install..."
-sleep 2
+sleep 1.5
 var='False'
 type -P python3 >/dev/null 2>&1 && var='True'
 if [[ $var == 'False' ]]
 then
     echo "Python mancante..."
-    sleep 2
+    sleep 0.5
     sudo apt-get update
     sudo apt-get install python3.6
 fi
@@ -15,6 +15,8 @@ var='False'
 type -P pip >/dev/null 2>&1 && var='True'
 if [ $var == 'False' ]
 then
+    echo "Pip mancante..."
+    sleep 0.5
     sudo apt-get update
     sudo apt install python3-pip
 fi
@@ -24,6 +26,8 @@ if python3 -c 'import pkgutil; exit(not pkgutil.find_loader("pygame"))'; then   
 
 if [ $var == 'False' ]
 then
+    echo "Pygame mancante..."
+    sleep 0.5
     sudo pip install pygame
     var='True'
 fi
@@ -31,7 +35,7 @@ fi
 if [ $var == 'True' ]
 then
     echo "All packages are succefly installed..."
-    sleep 1
+    sleep 0.5
 fi
 
 echo -n "Vuoi avviare il gioco(s/n): "
