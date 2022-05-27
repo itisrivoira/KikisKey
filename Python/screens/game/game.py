@@ -110,9 +110,9 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
     i2=0
     clock = pygame.time.Clock()
 
-    musica1=music(True, "assets/music/musica1.mp3", 0.5)
-    musica2=music(True, "assets/music/musica2.mp3", 0.5)
-    musica3=music(True, "assets/music/musica3.mp3", 0.5)
+    musica1=music(True, "assets/music/musica1.wav", 0.5)
+    musica2=music(True, "assets/music/musica2.wav", 0.5)
+    musica3=music(True, "assets/music/musica3.wav", 0.5)
     
     togli=pygame.time.get_ticks()
     
