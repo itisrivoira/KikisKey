@@ -8,6 +8,12 @@ $dimTesto: clamp(0.9rem, 1.2vw, 1.1rem);
   src: url("./../../assets/fonts/forwardFont.TTF");
 }
 
+:root {
+  --displayHomeDot: none;
+  --displayAboutUsDot: none;
+  --displayContactsDot: none;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,12 +24,190 @@ $dimTesto: clamp(0.9rem, 1.2vw, 1.1rem);
 body {
   font-family: forwardFont;
   font-size: $dimTesto;
-  min-width: 380px;
+  min-width: 300px;
   overflow-x: hidden;
 
   a {
     text-decoration: none;
     color: $colorePrimario;
+  }
+}
+
+/**********************************************************************/
+/***** loder screen *****/
+
+.loaderScreen {
+  position: fixed;
+  background-color: #ffffff;
+  width: 100vw;
+  height: 100vh;
+  z-index: 6;
+}
+
+#loader {
+  animation: spin 1s linear infinite;
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -5px;
+}
+
+@keyframes spin {
+  0% {
+    box-shadow: 0px -30px $colorePrimario, 10px -30px $colorePrimario,
+      20px -20px $colorePrimario, 30px -10px $colorePrimario,
+      30px 0px $colorePrimario, 30px 10px $colorePrimario,
+      20px 20px $colorePrimario, 10px 30px $colorePrimario, 0px 30px transparent,
+      -10px 30px transparent, -20px 20px transparent, -30px 10px transparent,
+      -30px 0px transparent, -30px -10px transparent, -20px -20px transparent,
+      -10px -30px transparent;
+  }
+  6.25% {
+    box-shadow: 0px -30px transparent, 10px -30px $colorePrimario,
+      20px -20px $colorePrimario, 30px -10px $colorePrimario,
+      30px 0px $colorePrimario, 30px 10px $colorePrimario,
+      20px 20px $colorePrimario, 10px 30px $colorePrimario,
+      0px 30px $colorePrimario, -10px 30px transparent, -20px 20px transparent,
+      -30px 10px transparent, -30px 0px transparent, -30px -10px transparent,
+      -20px -20px transparent, -10px -30px transparent;
+  }
+  12.5% {
+    box-shadow: 0px -30px transparent, 10px -30px transparent,
+      20px -20px $colorePrimario, 30px -10px $colorePrimario,
+      30px 0px $colorePrimario, 30px 10px $colorePrimario,
+      20px 20px $colorePrimario, 10px 30px $colorePrimario,
+      0px 30px $colorePrimario, -10px 30px $colorePrimario,
+      -20px 20px transparent, -30px 10px transparent, -30px 0px transparent,
+      -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+  }
+  18.75% {
+    box-shadow: 0px -30px transparent, 10px -30px transparent,
+      20px -20px transparent, 30px -10px $colorePrimario,
+      30px 0px $colorePrimario, 30px 10px $colorePrimario,
+      20px 20px $colorePrimario, 10px 30px $colorePrimario,
+      0px 30px $colorePrimario, -10px 30px $colorePrimario,
+      -20px 20px $colorePrimario, -30px 10px transparent, -30px 0px transparent,
+      -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+  }
+  25% {
+    box-shadow: 0px -30px transparent, 10px -30px transparent,
+      20px -20px transparent, 30px -10px transparent, 30px 0px $colorePrimario,
+      30px 10px $colorePrimario, 20px 20px $colorePrimario,
+      10px 30px $colorePrimario, 0px 30px $colorePrimario,
+      -10px 30px $colorePrimario, -20px 20px $colorePrimario,
+      -30px 10px $colorePrimario, -30px 0px transparent, -30px -10px transparent,
+      -20px -20px transparent, -10px -30px transparent;
+  }
+  31.25% {
+    box-shadow: 0px -30px transparent, 10px -30px transparent,
+      20px -20px transparent, 30px -10px transparent, 30px 0px transparent,
+      30px 10px $colorePrimario, 20px 20px $colorePrimario,
+      10px 30px $colorePrimario, 0px 30px $colorePrimario,
+      -10px 30px $colorePrimario, -20px 20px $colorePrimario,
+      -30px 10px $colorePrimario, -30px 0px $colorePrimario,
+      -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+  }
+  37.5% {
+    box-shadow: 0px -30px transparent, 10px -30px transparent,
+      20px -20px transparent, 30px -10px transparent, 30px 0px transparent,
+      30px 10px transparent, 20px 20px $colorePrimario,
+      10px 30px $colorePrimario, 0px 30px $colorePrimario,
+      -10px 30px $colorePrimario, -20px 20px $colorePrimario,
+      -30px 10px $colorePrimario, -30px 0px $colorePrimario,
+      -30px -10px $colorePrimario, -20px -20px transparent,
+      -10px -30px transparent;
+  }
+  43.75% {
+    box-shadow: 0px -30px transparent, 10px -30px transparent,
+      20px -20px transparent, 30px -10px transparent, 30px 0px transparent,
+      30px 10px transparent, 20px 20px transparent, 10px 30px $colorePrimario,
+      0px 30px $colorePrimario, -10px 30px $colorePrimario,
+      -20px 20px $colorePrimario, -30px 10px $colorePrimario,
+      -30px 0px $colorePrimario, -30px -10px $colorePrimario,
+      -20px -20px $colorePrimario, -10px -30px transparent;
+  }
+  50% {
+    box-shadow: 0px -30px transparent, 10px -30px transparent,
+      20px -20px transparent, 30px -10px transparent, 30px 0px transparent,
+      30px 10px transparent, 20px 20px transparent, 10px 30px transparent,
+      0px 30px $colorePrimario, -10px 30px $colorePrimario,
+      -20px 20px $colorePrimario, -30px 10px $colorePrimario,
+      -30px 0px $colorePrimario, -30px -10px $colorePrimario,
+      -20px -20px $colorePrimario, -10px -30px $colorePrimario;
+  }
+  56.25% {
+    box-shadow: 0px -30px $colorePrimario, 10px -30px transparent,
+      20px -20px transparent, 30px -10px transparent, 30px 0px transparent,
+      30px 10px transparent, 20px 20px transparent, 10px 30px transparent,
+      0px 30px transparent, -10px 30px $colorePrimario,
+      -20px 20px $colorePrimario, -30px 10px $colorePrimario,
+      -30px 0px $colorePrimario, -30px -10px $colorePrimario,
+      -20px -20px $colorePrimario, -10px -30px $colorePrimario;
+  }
+  62.5% {
+    box-shadow: 0px -30px $colorePrimario, 10px -30px $colorePrimario,
+      20px -20px transparent, 30px -10px transparent, 30px 0px transparent,
+      30px 10px transparent, 20px 20px transparent, 10px 30px transparent,
+      0px 30px transparent, -10px 30px transparent, -20px 20px $colorePrimario,
+      -30px 10px $colorePrimario, -30px 0px $colorePrimario,
+      -30px -10px $colorePrimario, -20px -20px $colorePrimario,
+      -10px -30px $colorePrimario;
+  }
+  68.75% {
+    box-shadow: 0px -30px $colorePrimario, 10px -30px $colorePrimario,
+      20px -20px $colorePrimario, 30px -10px transparent, 30px 0px transparent,
+      30px 10px transparent, 20px 20px transparent, 10px 30px transparent,
+      0px 30px transparent, -10px 30px transparent, -20px 20px transparent,
+      -30px 10px $colorePrimario, -30px 0px $colorePrimario,
+      -30px -10px $colorePrimario, -20px -20px $colorePrimario,
+      -10px -30px $colorePrimario;
+  }
+  75% {
+    box-shadow: 0px -30px $colorePrimario, 10px -30px $colorePrimario,
+      20px -20px $colorePrimario, 30px -10px $colorePrimario,
+      30px 0px transparent, 30px 10px transparent, 20px 20px transparent,
+      10px 30px transparent, 0px 30px transparent, -10px 30px transparent,
+      -20px 20px transparent, -30px 10px transparent, -30px 0px $colorePrimario,
+      -30px -10px $colorePrimario, -20px -20px $colorePrimario,
+      -10px -30px $colorePrimario;
+  }
+  81.25% {
+    box-shadow: 0px -30px $colorePrimario, 10px -30px $colorePrimario,
+      20px -20px $colorePrimario, 30px -10px $colorePrimario,
+      30px 0px $colorePrimario, 30px 10px transparent, 20px 20px transparent,
+      10px 30px transparent, 0px 30px transparent, -10px 30px transparent,
+      -20px 20px transparent, -30px 10px transparent, -30px 0px transparent,
+      -30px -10px $colorePrimario, -20px -20px $colorePrimario,
+      -10px -30px $colorePrimario;
+  }
+  87.5% {
+    box-shadow: 0px -30px $colorePrimario, 10px -30px $colorePrimario,
+      20px -20px $colorePrimario, 30px -10px $colorePrimario,
+      30px 0px $colorePrimario, 30px 10px $colorePrimario, 20px 20px transparent,
+      10px 30px transparent, 0px 30px transparent, -10px 30px transparent,
+      -20px 20px transparent, -30px 10px transparent, -30px 0px transparent,
+      -30px -10px transparent, -20px -20px $colorePrimario,
+      -10px -30px $colorePrimario;
+  }
+  93.75% {
+    box-shadow: 0px -30px $colorePrimario, 10px -30px $colorePrimario,
+      20px -20px $colorePrimario, 30px -10px $colorePrimario,
+      30px 0px $colorePrimario, 30px 10px $colorePrimario,
+      20px 20px $colorePrimario, 10px 30px transparent, 0px 30px transparent,
+      -10px 30px transparent, -20px 20px transparent, -30px 10px transparent,
+      -30px 0px transparent, -30px -10px transparent, -20px -20px transparent,
+      -10px -30px $colorePrimario;
+  }
+  100% {
+    box-shadow: 0px -30px $colorePrimario, 10px -30px $colorePrimario,
+      20px -20px $colorePrimario, 30px -10px $colorePrimario,
+      30px 0px $colorePrimario, 30px 10px $colorePrimario,
+      20px 20px $colorePrimario, 10px 30px $colorePrimario, 0px 30px transparent,
+      -10px 30px transparent, -20px 20px transparent, -30px 10px transparent,
+      -30px 0px transparent, -30px -10px transparent, -20px -20px transparent,
+      -10px -30px transparent;
   }
 }
 
@@ -46,6 +230,33 @@ body {
   background-image: url(./../../assets/img/main/logo.png);
   height: 64px;
   width: 64px;
+}
+
+.tabs {
+  span {
+    position: relative;
+  }
+
+  span::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: $coloreSecondario;
+    bottom: -5px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  span:nth-child(1)::after {
+    display: var(--displayHomeDot);
+  }
+  span:nth-child(2)::after {
+    display: var(--displayAboutUsDot);
+  }
+  span:nth-child(3)::after {
+    display: var(--displayContactsDot);
+  }
 }
 
 .mainContenutoNavBar {
@@ -133,6 +344,23 @@ input[type="checkbox"] {
   z-index: 4;
 }
 
+.tabsOverlayMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 20px;
+
+  span {
+    padding: 10px;
+  }
+
+  span:nth-child(4) {
+    padding: 30px;
+  }
+}
+
 @media (max-width: 1199.98px) {
   .navBar {
     padding: 0 7.5%;
@@ -200,6 +428,7 @@ input[type="checkbox"] {
   background-repeat: no-repeat;
   background-size: contain;
   margin-bottom: 75px;
+  cursor: pointer;
 }
 
 .imgInstagram {
@@ -209,6 +438,7 @@ input[type="checkbox"] {
   background-repeat: no-repeat;
   background-size: contain;
   margin-right: 75px;
+  cursor: pointer;
 }
 
 .imgGithub {
@@ -217,6 +447,7 @@ input[type="checkbox"] {
   background-image: url(./../../assets/img/main/github.png);
   background-repeat: no-repeat;
   margin-right: 75px;
+  cursor: pointer;
 }
 
 .imgYoutube {
@@ -224,6 +455,7 @@ input[type="checkbox"] {
   width: 64px;
   background-image: url(./../../assets/img/main/youtube.png);
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .contenitoreCopyright {

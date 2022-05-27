@@ -3,6 +3,12 @@
   src: url("./../../assets/fonts/forwardFont.TTF");
 }
 
+:root {
+  --displayHomeDot: none;
+  --displayAboutUsDot: none;
+  --displayContactsDot: none;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -17,13 +23,176 @@
 body {
   font-family: forwardFont;
   font-size: clamp(0.9rem, 1.2vw, 1.1rem);
-  min-width: 380px;
+  min-width: 300px;
   overflow-x: hidden;
 }
 
 body a {
   text-decoration: none;
   color: #333333;
+}
+
+/**********************************************************************/
+/***** loder screen *****/
+.loaderScreen {
+  position: fixed;
+  background-color: #ffffff;
+  width: 100vw;
+  height: 100vh;
+  z-index: 6;
+}
+
+#loader {
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+  height: 10px;
+  width: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -5px;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+            box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+  }
+  6.25% {
+    -webkit-box-shadow: 0px -30px transparent, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+            box-shadow: 0px -30px transparent, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+  }
+  12.5% {
+    -webkit-box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+            box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+  }
+  18.75% {
+    -webkit-box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+            box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+  }
+  25% {
+    -webkit-box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+            box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+  }
+  31.25% {
+    -webkit-box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+            box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+  }
+  37.5% {
+    -webkit-box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px transparent, -10px -30px transparent;
+            box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px transparent, -10px -30px transparent;
+  }
+  43.75% {
+    -webkit-box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px transparent;
+            box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px transparent;
+  }
+  50% {
+    -webkit-box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+            box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+  }
+  56.25% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+            box-shadow: 0px -30px #333333, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+  }
+  62.5% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+            box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+  }
+  68.75% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+            box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+  }
+  75% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+            box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+  }
+  81.25% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+            box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+  }
+  87.5% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px #333333, -10px -30px #333333;
+            box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px #333333, -10px -30px #333333;
+  }
+  93.75% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px #333333;
+            box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px #333333;
+  }
+  100% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+            box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+            box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+  }
+  6.25% {
+    -webkit-box-shadow: 0px -30px transparent, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+            box-shadow: 0px -30px transparent, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+  }
+  12.5% {
+    -webkit-box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+            box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+  }
+  18.75% {
+    -webkit-box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+            box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+  }
+  25% {
+    -webkit-box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+            box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+  }
+  31.25% {
+    -webkit-box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+            box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+  }
+  37.5% {
+    -webkit-box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px transparent, -10px -30px transparent;
+            box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px #333333, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px transparent, -10px -30px transparent;
+  }
+  43.75% {
+    -webkit-box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px transparent;
+            box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px #333333, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px transparent;
+  }
+  50% {
+    -webkit-box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+            box-shadow: 0px -30px transparent, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px #333333, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+  }
+  56.25% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+            box-shadow: 0px -30px #333333, 10px -30px transparent, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px #333333, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+  }
+  62.5% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+            box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px transparent, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px #333333, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+  }
+  68.75% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+            box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px transparent, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px #333333, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+  }
+  75% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+            box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px transparent, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px #333333, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+  }
+  81.25% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+            box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px transparent, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px #333333, -20px -20px #333333, -10px -30px #333333;
+  }
+  87.5% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px #333333, -10px -30px #333333;
+            box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px transparent, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px #333333, -10px -30px #333333;
+  }
+  93.75% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px #333333;
+            box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px transparent, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px #333333;
+  }
+  100% {
+    -webkit-box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+            box-shadow: 0px -30px #333333, 10px -30px #333333, 20px -20px #333333, 30px -10px #333333, 30px 0px #333333, 30px 10px #333333, 20px 20px #333333, 10px 30px #333333, 0px 30px transparent, -10px 30px transparent, -20px 20px transparent, -30px 10px transparent, -30px 0px transparent, -30px -10px transparent, -20px -20px transparent, -10px -30px transparent;
+  }
 }
 
 /**********************************************************************/
@@ -46,6 +215,34 @@ body a {
   background-image: url(./../../assets/img/main/logo.png);
   height: 64px;
   width: 64px;
+}
+
+.tabs span {
+  position: relative;
+}
+
+.tabs span::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #e5b62e;
+  bottom: -5px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+
+.tabs span:nth-child(1)::after {
+  display: var(--displayHomeDot);
+}
+
+.tabs span:nth-child(2)::after {
+  display: var(--displayAboutUsDot);
+}
+
+.tabs span:nth-child(3)::after {
+  display: var(--displayContactsDot);
 }
 
 .mainContenutoNavBar {
@@ -148,6 +345,32 @@ input[type="checkbox"] {
   z-index: 4;
 }
 
+.tabsOverlayMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+  font-size: 20px;
+}
+
+.tabsOverlayMenu span {
+  padding: 10px;
+}
+
+.tabsOverlayMenu span:nth-child(4) {
+  padding: 30px;
+}
+
 @media (max-width: 1199.98px) {
   .navBar {
     padding: 0 7.5%;
@@ -232,6 +455,7 @@ input[type="checkbox"] {
   background-repeat: no-repeat;
   background-size: contain;
   margin-bottom: 75px;
+  cursor: pointer;
 }
 
 .imgInstagram {
@@ -241,6 +465,7 @@ input[type="checkbox"] {
   background-repeat: no-repeat;
   background-size: contain;
   margin-right: 75px;
+  cursor: pointer;
 }
 
 .imgGithub {
@@ -249,6 +474,7 @@ input[type="checkbox"] {
   background-image: url(./../../assets/img/main/github.png);
   background-repeat: no-repeat;
   margin-right: 75px;
+  cursor: pointer;
 }
 
 .imgYoutube {
@@ -256,6 +482,7 @@ input[type="checkbox"] {
   width: 64px;
   background-image: url(./../../assets/img/main/youtube.png);
   background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .contenitoreCopyright {

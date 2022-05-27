@@ -1,20 +1,116 @@
 /*************** sezione 1(main) ***************/
 bgSez1 = document.querySelector(".mainContenitoreSez1");
 
-const createMovingBg = () => {
-  mvBg = document.createElement("div");
-  mvBg.setAttribute("class", "movingBg");
-  bgSez1.appendChild(mvBg);
-};
-
-setInterval(async function () {
-  createMovingBg();
-  tlAnimaBg = gsap.to(".movingBg", {
-    x: bgSez1.offsetWidth,
-    duration: 5,
-    ease: "none",
-  });
-}, Math.floor(Math.random() * 3000) + 5000);
+particlesJS("particles-js", {
+  particles: {
+    number: {
+      value: 100,
+      density: {
+        enable: true,
+        value_area: 800,
+      },
+    },
+    color: {
+      value: "#565656",
+    },
+    shape: {
+      type: "circle",
+      stroke: {
+        width: 0,
+        color: "#000000",
+      },
+      polygon: {
+        nb_sides: 5,
+      },
+      image: {
+        src: "img/github.svg",
+        width: 100,
+        height: 100,
+      },
+    },
+    opacity: {
+      value: 1,
+      random: true,
+      anim: {
+        enable: true,
+        speed: 1,
+        opacity_min: 0,
+        sync: false,
+      },
+    },
+    size: {
+      value: 3,
+      random: true,
+      anim: {
+        enable: false,
+        speed: 4,
+        size_min: 0.3,
+        sync: false,
+      },
+    },
+    line_linked: {
+      enable: false,
+      distance: 150,
+      color: "#ffffff",
+      opacity: 0.4,
+      width: 1,
+    },
+    move: {
+      enable: true,
+      speed: 1,
+      direction: "top",
+      random: true,
+      straight: false,
+      out_mode: "out",
+      bounce: false,
+      attract: {
+        enable: false,
+        rotateX: 600,
+        rotateY: 600,
+      },
+    },
+  },
+  interactivity: {
+    detect_on: "canvas",
+    events: {
+      onhover: {
+        enable: false,
+        mode: "bubble",
+      },
+      onclick: {
+        enable: false,
+        mode: "repulse",
+      },
+      resize: false,
+    },
+    modes: {
+      grab: {
+        distance: 400,
+        line_linked: {
+          opacity: 1,
+        },
+      },
+      bubble: {
+        distance: 250,
+        size: 0,
+        duration: 2,
+        opacity: 0,
+        speed: 3,
+      },
+      repulse: {
+        distance: 400,
+        duration: 0.4,
+      },
+      push: {
+        particles_nb: 4,
+      },
+      remove: {
+        particles_nb: 2,
+      },
+    },
+  },
+  retina_detect: true,
+});
 
 /*************** sezione 2 ***************/
 mainTestoSez2 = document.querySelector(".testoSez2");
@@ -58,12 +154,12 @@ for (let i = 0; i < pagBtns.length; i++) {
 
     tlAnimaTestoSez2
       .set(".testoSez2", { opacity: 1 })
-      .to(".testoSez2", { opacity: 0, duration: 0.8 })
+      .to(".testoSez2", { opacity: 0, duration: 0.5 })
       .then(() => {
         mainTestoSez2.innerHTML = contenutoPagineSez2[i];
       })
       .then(() => {
-        tlAnimaTestoSez2.to(".testoSez2", { opacity: 1, duration: 0.8 });
+        tlAnimaTestoSez2.to(".testoSez2", { opacity: 1, duration: 0.5 });
       });
 
     //for per controllare bottone pagina cliccato e per cambiare l'opacita
@@ -77,15 +173,15 @@ for (let i = 0; i < pagBtns.length; i++) {
   });
 }
 
-/*************** sezione 3s ***************/
+/*************** sezione 3 ***************/
 gsap.to(".box", {
   duration: 1,
   scale: 0.1,
   y: 40,
   ease: "power1.inOut",
   stagger: {
-    grid: [3,6],
+    grid: [3, 6],
     from: "center",
-    amount: 1.5
-  }
+    amount: 1.5,
+  },
 });

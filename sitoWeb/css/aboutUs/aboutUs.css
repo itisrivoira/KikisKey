@@ -23,6 +23,7 @@
       -ms-flex-align: end;
           align-items: flex-end;
   padding-bottom: 50px;
+  overflow: hidden;
 }
 
 .swiper-slide {
