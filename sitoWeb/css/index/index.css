@@ -1,5 +1,7 @@
 body {
   overflow-x: hidden !important;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .contenutoMain {
@@ -106,15 +108,15 @@ body {
           justify-content: right;
 }
 
-.kiki {
-  background: url(./../../assets/img/home/kiki.svg) no-repeat left top;
+.walkingKiki {
+  background: url(./../../assets/img/home/walkingKiki.svg) no-repeat left top;
   height: 90px;
   width: 90px;
-  -webkit-animation: kikiWaking 1s steps(5) infinite;
-          animation: kikiWaking 1s steps(5) infinite;
+  -webkit-animation: animationkikiWaking 1s steps(5) infinite;
+          animation: animationkikiWaking 1s steps(5) infinite;
 }
 
-@-webkit-keyframes kikiWaking {
+@-webkit-keyframes animationkikiWaking {
   from {
     background-position: 0 0;
   }
@@ -123,7 +125,7 @@ body {
   }
 }
 
-@keyframes kikiWaking {
+@keyframes animationkikiWaking {
   from {
     background-position: 0 0;
   }
@@ -421,17 +423,16 @@ body {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: three;
-  background-image: url(./../../assets/img/home/characterImg.gif);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
+  min-height: 200px;
 }
 
 .mainContenutoSez3 .characterInfo {
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: four;
-  min-height: 300px;
   color: white;
   padding-left: 10%;
   padding-right: 10%;
@@ -487,13 +488,14 @@ body {
 .arrowsContainer .rightArrow {
   width: 50px;
   height: 50px;
-  background-color: #737373;
+  background-color: #d1a62a;
 }
 
 .arrowsContainer .leftArrow {
   background-image: url(./../../assets/img/home/arrowLeft.svg);
   background-position: center center;
   background-repeat: no-repeat;
+  background-color: #737373;
 }
 
 .arrowsContainer .rightArrow {
@@ -548,6 +550,7 @@ body {
   background-color: #c4c4c4;
   margin-bottom: 75px;
   line-height: 30px;
+  text-align: left;
 }
 
 .contenitoreRules .rule .ruleName {
@@ -564,24 +567,290 @@ body {
   margin-top: -150px;
 }
 
+@-webkit-keyframes tonext {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: 100%;
+  }
+  98% {
+    left: 100%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@keyframes tonext {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: 100%;
+  }
+  98% {
+    left: 100%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@-webkit-keyframes tostart {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: -600%;
+  }
+  98% {
+    left: -600%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@keyframes tostart {
+  75% {
+    left: 0;
+  }
+  95% {
+    left: -600%;
+  }
+  98% {
+    left: -600%;
+  }
+  99% {
+    left: 0;
+  }
+}
+
+@-webkit-keyframes snap {
+  96% {
+    scroll-snap-align: center;
+  }
+  97% {
+    scroll-snap-align: none;
+  }
+  99% {
+    scroll-snap-align: none;
+  }
+  100% {
+    scroll-snap-align: center;
+  }
+}
+
+@keyframes snap {
+  96% {
+    scroll-snap-align: center;
+  }
+  97% {
+    scroll-snap-align: none;
+  }
+  99% {
+    scroll-snap-align: none;
+  }
+  100% {
+    scroll-snap-align: center;
+  }
+}
+
 .contenitoreMappa {
+  max-width: 37.5rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  scrollbar-color: transparent transparent;
+  /* thumb and track color */
+  scrollbar-width: 0px;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: transparent;
+  border: none;
+}
+
+* {
+  -ms-overflow-style: none;
+}
+
+ol,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel {
+  position: relative;
+  padding-top: 75%;
+  -webkit-perspective: 100px;
+          perspective: 100px;
+}
+
+.carousel__viewport {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
 }
 
-.mappa {
-  background-image: url(./../../assets/img/home/mappa.jpg);
-  height: 500px;
-  width: 600px;
-  background-size: contain;
+.carousel__slide {
+  position: relative;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+  width: 100%;
+  background-position: center center;
   background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.carousel__slide:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -40%, 70px);
+          transform: translate3d(-50%, -40%, 70px);
+  color: #fff;
+  font-size: 2em;
+}
+
+.carousel__snapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: center;
+}
+
+@media (hover: hover) {
+  .carousel__snapper {
+    -webkit-animation-name: tonext, snap;
+            animation-name: tonext, snap;
+    -webkit-animation-timing-function: ease;
+            animation-timing-function: ease;
+    -webkit-animation-duration: 4s;
+            animation-duration: 4s;
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+  }
+  .carousel__slide:last-child .carousel__snapper {
+    -webkit-animation-name: tostart, snap;
+            animation-name: tostart, snap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel__snapper {
+    -webkit-animation-name: none;
+            animation-name: none;
+  }
+}
+
+.carousel:hover .carousel__snapper,
+.carousel:focus-within .carousel__snapper {
+  -webkit-animation-name: none;
+          animation-name: none;
+}
+
+.carousel::before,
+.carousel::after,
+.carousel__prev,
+.carousel__next {
+  position: absolute;
+  top: 0;
+  margin-top: 37.5%;
+  width: 3rem;
+  height: 3rem;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 0;
+  outline: none;
+}
+
+.carousel::before,
+.carousel__prev {
+  left: 0;
+}
+
+.carousel::after,
+.carousel__next {
+  right: 0;
+}
+
+.carousel::before,
+.carousel::after {
+  content: "";
+  z-index: 2;
+  background-color: #333;
+  background-size: 1.5rem 1.5rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: #fff;
+  font-size: 2.5rem;
+  line-height: 4rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.carousel::before {
+  background-image: url(./../../assets/img/home/arrowLeft.svg);
+}
+
+.carousel::after {
+  background-image: url(./../../assets/img/home/arrowRight.svg);
+}
+
+#carousel__slide1 {
+  background-image: url(./../../assets/img/home/stanze/chimica1.png);
+}
+
+#carousel__slide2 {
+  background-image: url(./../../assets/img/home/stanze/chimica2.png);
+}
+
+#carousel__slide3 {
+  background-image: url(./../../assets/img/home/stanze/aula1.png);
+}
+
+#carousel__slide4 {
+  background-image: url(./../../assets/img/home/stanze/aula2.png);
+}
+
+#carousel__slide5 {
+  background-image: url(./../../assets/img/home/stanze/bidelleria.png);
+}
+
+#carousel__slide6 {
+  background-image: url(./../../assets/img/home/stanze/aula3.png);
+}
+
+#carousel__slide7 {
+  background-image: url(./../../assets/img/home/stanze/aula4.png);
 }
 
 @media (max-width: 1399.98px) {
@@ -707,6 +976,21 @@ body {
   .tile17,
   .tile18 {
     display: none;
+  }
+  .rule {
+    width: 350px !important;
+  }
+}
+
+@media (max-width: 375.98px) {
+  .rule {
+    width: 300px !important;
+  }
+}
+
+@media (max-width: 330.98px) {
+  .rule {
+    width: 270px !important;
   }
 }
 /*# sourceMappingURL=index.css.map */

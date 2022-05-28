@@ -174,14 +174,152 @@ for (let i = 0; i < pagBtns.length; i++) {
 }
 
 /*************** sezione 3 ***************/
-gsap.to(".box", {
-  duration: 1,
-  scale: 0.1,
-  y: 40,
-  ease: "power1.inOut",
-  stagger: {
-    grid: [3, 6],
-    from: "center",
-    amount: 1.5,
+
+const characterInfo = [
+  {
+    name: "Kiki",
+    desc: "Kiki è il protagonista della vicenda che dovrà affrontarediverse prove per portare a termine il suo obiettivo. Una sua peculiarità è il suo braccio robotico che sarà poi essenziale per poter completare la sua avventura.",
+    img: "./assets/img/home/kiki.gif",
   },
+  {
+    name: "Bidello",
+    desc: "I bidelli sono delle persone ostili che cercheranno di intralciare Kiki a tutti i costi, cercando di trovarla mentre vaga per tutta la scuola. Bisogna stargli alla larga se non si vuole finire in grossi guai.",
+    img: "./assets/img/home/bidello.gif",
+  },
+];
+
+let characterNameDom = document.querySelector(".characterName");
+let characterDescDom = document.querySelector(".characterDesc");
+let characterImgDom = document.querySelector(".characterImg");
+
+let leftArrowBtn = document.querySelector(".leftArrowDiv");
+let rightArrowBtn = document.querySelector(".rightArrowDiv");
+
+let indexCharacterCorrente = 0;
+const numCharacters = 2;
+
+const updateCharacterImg = () => {
+  for (let i = 0; i < characterInfo.length; i++) {
+    if (indexCharacterCorrente == i) {
+      characterImgDom.style.backgroundImage = "url('" + characterInfo[i].img;
+      +"')";
+      console.log("url('" + characterInfo[i].img + "')");
+    }
+  }
+};
+
+const updateCharacterInfo = () => {
+  for (let i = 0; i < characterInfo.length; i++) {
+    if (indexCharacterCorrente == i) {
+      characterNameDom.innerText = characterInfo[i].name;
+      characterDescDom.innerText = characterInfo[i].desc;
+    }
+  }
+};
+
+updateCharacterImg();
+updateCharacterInfo();
+
+let tlAnimaChaImgSez3 = gsap.timeline();
+let tlAnimaChaInfoSez3 = gsap.timeline();
+
+leftArrowBtn.addEventListener("click", () => {
+  if (indexCharacterCorrente > 0) {
+    indexCharacterCorrente--;
+
+    tlAnimaChaImgSez3
+      .set(".characterImg", { scaleX: 1, scaleY: 1, opacity: 1 })
+      .to(".characterImg", { scaleX: 1.3, scaleY: 1.3, opacity: 0 })
+      .then(() => {
+        updateCharacterImg();
+      })
+      .then(() => {
+        tlAnimaChaImgSez3.to(".characterImg", {
+          scaleX: 1,
+          scaleY: 1,
+          opacity: 1,
+        });
+      });
+
+    tlAnimaChaInfoSez3
+      .set(".characterInfo", { opacity: 1, y: 0 })
+      .to(".characterInfo", { opacity: 0, y: 100 })
+      .then(() => {
+        updateCharacterInfo();
+      })
+      .then(() => {
+        tlAnimaChaInfoSez3
+          .set(".characterName", {
+            opacity: 0,
+            y: 0,
+          })
+          .to(".characterInfo", {
+            opacity: 1,
+            y: 0,
+          })
+          .to(".characterName", {
+            opacity: 1,
+          });
+      });
+  }
+
+  if (indexCharacterCorrente == 0) {
+    document.querySelector(".leftArrow").style.backgroundColor = "#737373";
+    document.querySelector(".rightArrow").style.backgroundColor = "#d1a62a";
+  }
+  if (indexCharacterCorrente == numCharacters - 1) {
+    document.querySelector(".leftArrow").style.backgroundColor = "#d1a62a";
+    document.querySelector(".rightArrow").style.backgroundColor = "#737373";
+  }
+});
+
+rightArrowBtn.addEventListener("click", () => {
+  if (indexCharacterCorrente < numCharacters - 1) {
+    indexCharacterCorrente++;
+
+    tlAnimaChaImgSez3
+      .set(".characterImg", { scaleX: 1, scaleY: 1, opacity: 1 })
+      .to(".characterImg", { scaleX: 1.3, scaleY: 1.3, opacity: 0 })
+      .then(() => {
+        updateCharacterImg();
+      })
+      .then(() => {
+        tlAnimaChaImgSez3.to(".characterImg", {
+          scaleX: 1,
+          scaleY: 1,
+          opacity: 1,
+        });
+      });
+
+    tlAnimaChaInfoSez3
+      .set(".characterInfo", { opacity: 1, y: 0 })
+      .to(".characterInfo", { opacity: 0, y: 100 })
+      .then(() => {
+        updateCharacterInfo();
+      })
+      .then(() => {
+        tlAnimaChaInfoSez3
+          .set(".characterName", {
+            opacity: 0,
+            y: 0,
+          })
+          .to(".characterInfo", {
+            opacity: 1,
+            y: 0,
+          })
+          .to(".characterName", {
+            opacity: 1,
+          });
+      });
+  }
+
+  console.log(indexCharacterCorrente);
+  if (indexCharacterCorrente == 0) {
+    document.querySelector(".leftArrow").style.backgroundColor = "#737373";
+    document.querySelector(".rightArrow").style.backgroundColor = "#d1a62a";
+  }
+  if (indexCharacterCorrente == numCharacters - 1) {
+    document.querySelector(".leftArrow").style.backgroundColor = "#d1a62a";
+    document.querySelector(".rightArrow").style.backgroundColor = "#737373";
+  }
 });

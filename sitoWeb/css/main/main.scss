@@ -227,7 +227,7 @@ body {
 
 .logo {
   display: inline-block;
-  background-image: url(./../../assets/img/main/logo.png);
+  background-image: url(./../../assets/img/main/animatedLogo.gif);
   height: 64px;
   width: 64px;
 }
@@ -401,10 +401,12 @@ input[type="checkbox"] {
 /**********************************************************************/
 /***** footer *****/
 .footer {
+  position: relative;
   background-color: $colorePrimario;
   color: #ffffff;
   height: auto;
   padding-top: 50px;
+  border-top: solid $coloreSecondario 3px;
 }
 
 .contenutoFooter {
@@ -429,6 +431,7 @@ input[type="checkbox"] {
   background-size: contain;
   margin-bottom: 75px;
   cursor: pointer;
+  box-shadow: 1px 4px 34px -9px #00cfff;
 }
 
 .imgInstagram {
@@ -460,10 +463,47 @@ input[type="checkbox"] {
 
 .contenitoreCopyright {
   padding: 20px;
-  margin-top: 35px;
+
   background-color: $coloreSecondario;
   color: $colorePrimario;
   text-align: center;
+  position: relative;
+}
+
+.jagged-border {
+  margin-top: 50px;
+  position: relative;
+  width: 100%;
+  height: 10px;
+  filter: drop-shadow(rgba(0, 0, 0, 0.3) 0px 1px 2px);
+}
+.jagged-border:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -10px;
+  width: 100%;
+  height: 10px;
+}
+.lightgray-bg {
+  background: $coloreSecondario;
+}
+.lightgray-bg:before {
+  background: linear-gradient(
+      45deg,
+      transparent 33.333%,
+      $coloreSecondario 33.333%,
+      $coloreSecondario 66.667%,
+      transparent 66.667%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 33.333%,
+      $coloreSecondario 33.333%,
+      $coloreSecondario 66.667%,
+      transparent 66.667%
+    );
+  background-size: 20px 40px;
 }
 
 @media (max-width: 575.98px) {
