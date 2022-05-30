@@ -25,6 +25,7 @@ $dimTesto2: clamp(1.3rem, 1.3vw, 1.6rem);
   justify-content: center;
   align-items: flex-end;
   padding-bottom: 50px;
+  overflow: hidden;
 }
 
 .swiper-slide {
@@ -103,5 +104,21 @@ $dimTesto2: clamp(1.3rem, 1.3vw, 1.6rem);
   .contenutoMain {
     margin: 0;
     width: 100%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .swiper {
+    width: 300px;
+    height: 320px;
+  }
+  .swiper-slide .name {
+    font-size: 20px;
+  }
+  .swiper-slide .title {
+    font-size: 10px;
+  }
+  .swiper-slide .desc {
+    font-size: 12px;
   }
 }

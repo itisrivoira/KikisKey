@@ -8,6 +8,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
     />
+    <link rel="icon" type="image/png" href="./assets/img/main/logo.png" />
     <link rel="stylesheet" href="./css/main/main.css" />
     <link
       rel="stylesheet"
@@ -16,7 +17,17 @@
     <link rel="stylesheet" href="./css/aboutUs/aboutUs.css" />
   </head>
   <body>
-    <div class="overlayMenu"></div>
+    <div class="loaderScreen">
+      <div id="loader"></div>
+    </div>
+    <div class="overlayMenu">
+      <span class="tabsOverlayMenu">
+        <span><a href="./index.html">home</a></span>
+        <span><a href="./aboutUs.html">about us</a></span>
+        <span><a href="./contact.html">contacts</a></span>
+        <span><a href="#">login</a></span>
+      </span>
+    </div>
     <div id="contenitore">
       <div class="navBar">
         <div class="contenutoNavBar">
@@ -51,8 +62,8 @@
               <div class="name">Arvind Pal</div>
               <div class="title">Full Stack Web Developer</div>
               <div class="desc">
-                Project menager, specializzato in web app, nello specifico,
-                React e JavaScript.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </div>
             </div>
             <div class="swiper-slide">
@@ -60,8 +71,8 @@
               <div class="name">Antonio La Porta</div>
               <div class="title">Video Editor</div>
               <div class="desc">
-                Programmatore e configuratore lato server, permettendo anche la
-                comunicazione con database.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </div>
             </div>
             <div class="swiper-slide">
@@ -69,8 +80,8 @@
               <div class="name">Mattia Barbero</div>
               <div class="title">Seo Specialist</div>
               <div class="desc">
-                Programmatore specializzato in Python e nella realizzazione del
-                gioco attraveso la libreria Pygame.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </div>
             </div>
             <div class="swiper-slide">
@@ -78,7 +89,8 @@
               <div class="name">Marco Toselli</div>
               <div class="title">I/O Psychologist</div>
               <div class="desc">
-                Programmatare sito web, specializzato in SCSS e HTML5.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </div>
             </div>
             <div class="swiper-slide">
@@ -86,8 +98,8 @@
               <div class="name">Paolo Petroccelli</div>
               <div class="title">Real State Agent</div>
               <div class="desc">
-                Programmatore di immagini, specializzato nella creazione e
-                modifica delle immagini.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </div>
             </div>
           </div>
@@ -96,20 +108,41 @@
       <div class="footer">
         <div class="contenutoSenzaLinea">
           <div class="contenutoFooter">
-            <div class="imgDenina"></div>
+            <a
+              target="_blank"
+              href="https://www.denina.it/"
+              class="imgDenina"
+            ></a>
             <div class="contenitoreSocial">
-              <div class="imgInstagram"></div>
-              <div class="imgGithub"></div>
-              <div class="imgYoutube"></div>
+              <a
+                target="_blank"
+                href="https://www.instagram.com/deninapellicorivoira"
+                class="imgInstagram"
+              ></a>
+              <a
+                target="_blank"
+                href="https://github.com/itisrivoira"
+                class="imgGithub"
+              ></a>
+              <a
+                target="_blank"
+                href="https://www.youtube.com/channel/UCY-94jXci5LUJdlAf89brrg"
+                class="imgYoutube"
+              ></a>
             </div>
           </div>
         </div>
-        <div class="contenitoreCopyright">© 2022 Copyright: KikisKey.com</div>
+        <div class="jagged-wrap-inner">
+          <div class="offset"></div>
+          <div class="lightgray-bg jagged-border"></div>
+        </div>
+        <div class="contenitoreCopyright"></div>
       </div>
     </div>
 
-    <script src="./js/main.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="./js/main.js"></script>
     <script src="./js/aboutUs.js"></script>
   </body>
 </html>
