@@ -2,7 +2,7 @@ import random
 from webbrowser import get
 from utilities.music import music
 import pygame
-from utilities.dialoghi import dialogo
+from utilities.dialoghi import dialogo, ottenuto
 from utilities.collisioni import collisioni
 from utilities.font import getFont
 
@@ -85,6 +85,7 @@ class player():
       self.agg=0
       self.aggiungi=0
       self.tempof=0
+      self.cont=0
 
 #--------------------------------------------------------------------------------#
 
@@ -239,9 +240,14 @@ class player():
                   self.y-=self.speed
 
             if self.rect.colliderect(acido) and self.oggAcido==False:
-               dialogo("prendi oggetto...",finestra,self.off)
+               dialogo("c'è qualcosa",finestra,self.off)
                if key:
                   self.oggAcido=True
+                  self.cont=pygame.time.get_ticks()+3000
+
+            if self.cont!=0 and self.oggAcido:
+               if self.timer<=self.cont:
+                  ottenuto("hai preso acido...",finestra,self.off)
 
             if self.rect.colliderect(porta1):
                   self.tipost="chimica1"
@@ -311,13 +317,22 @@ class player():
 
          #collisione personaggio misterioso
          if self.rect.colliderect(misterioso) and self.oggmoneta==False:
-            dialogo("ho fame, tieni questa moneta...",finestra,self.off)
+            dialogo("Tieni questo...",finestra,self.off)
             if key:
                self.oggmoneta=True
+               self.cont=pygame.time.get_ticks()+3000
+         if self.cont!=0 and self.oggmoneta and self.oggmartello==False:
+            if self.timer<=self.cont:
+               ottenuto("Hai ottenuto una moneta",finestra,self.off)
+
          if self.rect.colliderect(misterioso) and self.oggmerendina==True and self.oggmartello==False:
-            dialogo("tieni questo martello...",finestra,self.off)
+            dialogo("Tieni questo...",finestra,self.off)
             if key:
                self.oggmartello=True
+               self.cont=pygame.time.get_ticks()+3000
+         if self.cont!=0 and self.scaff3==False and self.oggmartello:
+            if self.timer<=self.cont:
+               ottenuto("Hai ottenuto un martello",finestra,self.off)
 
          #collisione macchinetta
          if self.rect.colliderect(macchinetta) and self.oggmoneta==False:
@@ -326,6 +341,10 @@ class player():
             dialogo("compra qualcosa...",finestra,self.off)
             if key:
                self.oggmerendina=True
+               self.cont=pygame.time.get_ticks()+3000
+         if self.cont!=0 and self.oggmerendina and self.oggmartello==False:
+            if self.timer<=self.cont:
+               ottenuto("Hai ottenuto una ciambella",finestra,self.off)
 
          #collisione finestra e cambio stanza in bidelleria interno
          if self.rect.colliderect(finestraRompi) and self.oggmartello==False:
@@ -401,9 +420,14 @@ class player():
                self.server=True
 
          if self.rect.colliderect(pc) and self.server and self.port1==False:
-            dialogo("Sblocca...",finestra,self.off)
+            dialogo("AttivaHai ottenuto un martello...",finestra,self.off)
             if key:
                self.port1=True
+               self.cont=pygame.time.get_ticks()+3000
+         if self.cont!=0 and self.port1:
+            if self.timer<=self.cont:
+               ottenuto("È successo qualcosa...",finestra,self.off)
+
          if self.rect.colliderect(pc) and self.server==False:
             dialogo("Server offline...",finestra,self.off)
       
@@ -497,6 +521,7 @@ class player():
                if self.scaff2==True and self.scaff1==True:
                   if key:
                      self.scaff3=True
+                     self.cont=pygame.time.get_ticks()+3000
                else:
                   if key:
                      self.scaff1=False
@@ -507,8 +532,9 @@ class player():
                dialogo("Ordine errato ritenta",finestra,self.off)
                if key:
                   self.flag=False
-         elif self.rect.colliderect(scaffale3) and self.scaff3:
-            dialogo("Si è sbloccato qualcosa",finestra,self.off)
+         if self.cont!=0 and self.scaff3:
+            if self.timer<=self.cont:
+               ottenuto("Si è sbloccato qualcosa...",finestra,self.off)
 
             if self.scaff1 and self.scaff2 and self.scaff3:
                self.port2=True
