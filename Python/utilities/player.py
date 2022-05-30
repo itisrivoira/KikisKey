@@ -240,7 +240,7 @@ class player():
                   self.y-=self.speed
 
             if self.rect.colliderect(acido) and self.oggAcido==False:
-               dialogo("c'è qualcosa",finestra,self.off)
+               dialogo("C'è qualcosa...",finestra,self.off)
                if key:
                   self.oggAcido=True
                   self.cont=pygame.time.get_ticks()+3000
@@ -491,10 +491,12 @@ class player():
                      self.scaff1=False
                      self.scaff2=False
                      self.scaff3=False
+                     self.cont=pygame.time.get_ticks()+2000
+         if self.cont!=0 and self.flag:
+            if self.timer<=self.cont:         
+               dialogo("Ordine errato ritenta...",finestra,self.off)
             else:
-               dialogo("Ordine errato ritenta",finestra,self.off)
-               if key:
-                  self.flag=False
+               self.flag=False
 
 
          if self.rect.colliderect(scaffale2) and self.scaff2==False:
@@ -509,10 +511,12 @@ class player():
                      self.scaff2=False
                      self.scaff3=False
                      self.flag=True
+                     self.cont=pygame.time.get_ticks()+2000
+         if self.cont!=0 and self.flag:
+            if self.timer<=self.cont:         
+               dialogo("Ordine errato ritenta...",finestra,self.off)
             else:
-               dialogo("Ordine errato ritenta",finestra,self.off)
-               if key:
-                  self.flag=False
+               self.flag=False
 
 
          if self.rect.colliderect(scaffale3) and self.scaff3==False:
@@ -528,10 +532,13 @@ class player():
                      self.scaff2=False
                      self.scaff3=False
                      self.flag=True
+                     self.cont=pygame.time.get_ticks()+2000                       
+         if self.cont!=0 and self.flag:
+            if self.timer<=self.cont:         
+               dialogo("Ordine errato ritenta...",finestra,self.off)
             else:
-               dialogo("Ordine errato ritenta",finestra,self.off)
-               if key:
-                  self.flag=False
+               self.flag=False
+
          if self.cont!=0 and self.scaff3:
             if self.timer<=self.cont:
                ottenuto("Si è sbloccato qualcosa...",finestra,self.off)
