@@ -612,7 +612,7 @@ class player():
          
          if self.tocca==False:
             self.x_boss+=self.speed_boss
-            rectBoss=pygame.Rect((self.x_boss+20), self.y_boss, (self.imgPreside.get_width()-40), self.imgPreside.get_height())
+            rectBoss=pygame.Rect((self.x_boss+20*self.off), self.y_boss, (self.imgPreside.get_width()-40)*self.off, self.imgPreside.get_height()*self.off)
             if self.hitted:
                finestra.blit(self.imgPresideHit,(self.x_boss,self.y_boss))
             else:
@@ -621,7 +621,7 @@ class player():
                self.tocca=True
          elif self.tocca==True:
             self.x_boss-=self.speed_boss
-            rectBoss=pygame.Rect(self.x_boss, self.y_boss, self.imgPreside.get_width(), self.imgPreside.get_height())
+            rectBoss=pygame.Rect((self.x_boss+20*self.off), self.y_boss, self.imgPreside.get_width()*self.off, self.imgPreside.get_height()*self.off)
             if self.hitted:
                finestra.blit(self.imgPresideHit,(self.x_boss,self.y_boss))
             else:
@@ -630,9 +630,9 @@ class player():
                self.tocca=False
 
          if attacco:
-            hit=pygame.Rect((self.x+15)*self.off, (self.y-120)*self.off, (self.img.get_width()-30)*self.off, (self.img.get_height()+120)*self.off)
+            hit=pygame.Rect(self.x+15*self.off, self.y-120*self.off, (self.img.get_width()-30)*self.off, (self.img.get_height()+120)*self.off)
             
-            finestra.blit(self.pungo,(self.x-20,self.y-134))
+            finestra.blit(self.pungo,(self.x-20*self.off,self.y-134*self.off))
             if hit.colliderect(rectBoss):
                self.vita-=1
                self.hitted=True

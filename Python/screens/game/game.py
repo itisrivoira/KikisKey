@@ -87,7 +87,7 @@ def giocaScreen(finestra, musicaSottofondo, OFFSET_FINESTRA, FPS):
         "martello":pygame.image.load('screens/game/assets/item/martello.png'),
     }
 
-    tipostanza="chimica1"
+    tipostanza="boss"
     imgPr =resizeImgs(imgPr, OFFSET_FINESTRA,3) 
     immaginiP = resizeImgs(immaginiP, OFFSET_FINESTRA,1.1) #l'ultimo valore moltiplicatore grandezza immagine
     immagini = resizeImgs(immagini, OFFSET_FINESTRA,3)
