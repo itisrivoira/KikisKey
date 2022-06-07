@@ -22,6 +22,7 @@ const useQuizData = () => {
 
   const checkPointQuiz = useRef([
     {
+      id: 0,
       name: "Domanda!",
       stanza: {
         name: "aula2",
@@ -31,6 +32,7 @@ const useQuizData = () => {
       ricompensa: "Moneta Epica",
     },
     {
+      id: 1,
       name: "Domanda!",
       stanza: {
         name: "aula4",

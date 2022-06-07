@@ -18,7 +18,6 @@ $testo: clamp(1.5rem, 1vw, 1.5rem);
 body {
   font-family: forwardFont;
   font-size: $testo;
-  overflow: hidden;
 }
 
 a {
@@ -41,7 +40,7 @@ a {
 
 :root {
   --toastify-font-family: forwardFont !important;
-  --toastify-z-index: 98 !important;
+  --toastify-z-index: 99 !important;
   --toastify-text-color-light: #333333 !important;
   --toastify-color-progress-light: #e5b62e !important;
 }

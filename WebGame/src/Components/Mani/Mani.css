@@ -8,6 +8,7 @@
           flex-direction: row;
   margin-top: 10px;
   z-index: 98;
+  padding-bottom: 10px;
 }
 
 .mano {

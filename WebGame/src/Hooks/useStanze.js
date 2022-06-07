@@ -2,13 +2,27 @@ import { useContext } from "react";
 import { gameContext } from "./useContext";
 
 const useStanze = () => {
-  const { stanze, gameData } = useContext(gameContext);
+  const { stanze, gameData, setShowAscensoreTime } = useContext(gameContext);
   const { stanzaLayer1Ref, stanzaLayer2Ref } = useContext(gameContext);
 
   const setPortaStanza = (nomeStanza, indexPorta, chiusaBool) => {
     for (let i = 0; i < stanze.current.length; i++) {
       if (stanze.current[i].name === nomeStanza) {
         stanze.current[i].porte[indexPorta].chiusa = chiusaBool;
+      }
+    }
+  };
+
+  const setNameStanza = (
+    nomeStanza,
+    indexNameStanza,
+    newNameStanza,
+    newSpawnCoords
+  ) => {
+    for (let i = 0; i < stanze.current.length; i++) {
+      if (stanze.current[i].name === nomeStanza) {
+        stanze.current[i].porte[indexNameStanza].stanza = newNameStanza;
+        stanze.current[i].porte[indexNameStanza].spawnPlayer = newSpawnCoords;
       }
     }
   };
@@ -37,9 +51,19 @@ const useStanze = () => {
       ) {
         gameData.current["stanzaCorrente"] = arrPorteStanza[i].stanza;
         stanzaLayer1Ref.current.src =
-          "/img/stanze/" + arrPorteStanza[i].stanza + "/layer1.png";
+          "/KikisKeyWebGame/img/stanze/" +
+          arrPorteStanza[i].stanza +
+          "/layer1.png";
         stanzaLayer2Ref.current.src =
-          "/img/stanze/" + arrPorteStanza[i].stanza + "/layer2.png";
+          "/KikisKeyWebGame/img/stanze/" +
+          arrPorteStanza[i].stanza +
+          "/layer2.png";
+
+        if (arrPorteStanza[i].stanza === "ascensore") {
+          setShowAscensoreTime(true);
+        } else {
+          setShowAscensoreTime(false);
+        }
 
         let spawnPlayerX = arrPorteStanza[i].spawnPlayer[0];
         let spawnPlayerY = arrPorteStanza[i].spawnPlayer[1];
@@ -52,6 +76,7 @@ const useStanze = () => {
   return {
     getStanzaCorrente,
     setPortaStanza,
+    setNameStanza,
     checkCambioStanza,
     updatePlayerPos,
   };

@@ -1,0 +1,91 @@
+$colorePrimario: #333333;
+$coloreSecondario: #e5b62e;
+
+$titolo: clamp(2.8rem, 5vw, 4rem);
+
+.contenitoreServer {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 380px;
+  z-index: 99;
+  min-width: 1152px !important;
+  min-height: 900px !important;
+}
+
+.titoloServer {
+  font-size: $titolo;
+  color: $coloreSecondario;
+  margin-bottom: 10px;
+}
+
+.server {
+  width: 450px;
+  height: 450px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  background-image: url(./../../../assets/img/Gioca/server.png);
+  position: relative;
+}
+
+.serverBtn {
+  width: 50px;
+  height: 50px;
+  background-color: #d83b4f;
+  position: absolute;
+  bottom: 30px;
+  right: 115px;
+  z-index: 2;
+  cursor: pointer;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  background-image: url(./../../../assets/img/Gioca/skull.png);
+  transition: all 0.5s ease;
+}
+
+.serverBtn:hover {
+  bottom: 37px;
+}
+
+.serverBtnBack {
+  width: 50px;
+  height: 50px;
+  bottom: 37px;
+  right: 115px;
+  position: absolute;
+  background-color: #a02b39;
+  z-index: 1;
+}
+
+.serverLight {
+  position: absolute;
+}
+
+.sl1 {
+  width: 15px;
+  height: 15px;
+  top: 70px;
+  left: 127px;
+}
+
+.sl2 {
+  width: 15px;
+  height: 15px;
+  top: 70px;
+  left: 169px;
+}
+
+.sl3 {
+  width: 30px;
+  height: 15px;
+  top: 225px;
+  right: 169px;
+}

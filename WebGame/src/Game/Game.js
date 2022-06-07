@@ -47,20 +47,60 @@ const Game = () => {
     { id: 7, itemName: "" },
   ]);
   const [manoSelezionata, setManoSelezionata] = useState(1);
+  const manoSelezionataRef = useRef(0);
 
   const [misteriosoItems, setMisteriosoItems] = useState([
-    { itemScambio: "Patate", itemOfferto: "Martello" },
-    { itemScambio: "Badge", itemOfferto: "ID" },
+    { itemScambio: "Patatine", itemOfferto: "Martello" },
+    { itemScambio: "Bibita", itemOfferto: "ID" },
+    { itemScambio: "OctoDuck", itemOfferto: "Forbici" },
   ]);
 
   const [showMisteriosoScreen, setShowMisteriosoScreen] = useState(false);
   const [showQuizScreen, setShowQuizScreen] = useState(false);
+
   const [showDistributoreScreen, setShowDistributoreScreen] = useState(false);
+  const showDistributoreScreenRef = useRef(false);
+
+  const [showComputerScreen, setShowComputerScreen] = useState(false);
+  const showComputerScreenRef = useRef(false);
+
+  const [showCodiceScreen, setShowCodiceScreen] = useState(false);
+  const showCodiceScreenRef = useRef(false);
+
+  const [showServerScreen, setShowServerScreen] = useState(false);
+  const showServerScreenRef = useRef(false);
+
+  const [showAscensoreScreen, setShowAscensoreScreen] = useState(false);
+  const showAscensoreScreenRef = useRef(false);
+
+  const [showAscensoreTime, setShowAscensoreTime] = useState(false);
+
+  const [showInfoScreen, setShowInfoScreen] = useState(false);
+  const [infoScreenText, setInfoScreenText] = useState("");
+
+  const [isPcOn, setIsPcOn] = useState(false);
+  const [isServerOn, setIsServerOn] = useState(false);
+
+  const [luci, setLuci] = useState(false);
+  const [portaBidelleria, setPortaBidelleria] = useState(false);
+  const [ascensore, setAscensore] = useState(false);
+
+  const [gameTime, setGameTime] = useState(0);
+  const [isGameTimeRunning, setIsGameTimeRunning] = useState(true);
+
+  const [showGameCompletedScreen, setShowGameCompletedScreen] = useState(false);
+  const showGameCompletedScreenRef = useRef(false);
 
   const gameData = useRef({
     stanzaCorrente: "chimica1",
-    capitoloCorrente: 1,
+    startedCapitoli: {
+      uno: true,
+      due: false,
+      tre: false,
+      final: false,
+    },
     quizCorrente: {
+      id: null,
       nomeQuiz: "",
       domanda: "",
       risposta: "",
@@ -71,14 +111,33 @@ const Game = () => {
     trovatoIdrogeno: false,
     creatoAcido: false,
     portaSciolta: false,
+    rispostoDomande: [false, false],
     monetaComuneRaccolta: false,
     finestraRotta: false,
+    isProjectorOn: false,
+    trovataMonetaRaraBidelleria: false,
+    ascensore: {
+      door: {
+        leftCurrentX: 390,
+        rightCurrentX: 670,
+      },
+      piano: {
+        current: 1,
+        prev: null,
+        requested: null,
+      },
+      interactAscController: true,
+    },
   });
 
   return (
     <>
       {/*componente per accendere la musica*/}
-      <ReactHowler src="/audio/musicaMenu.mp3" playing={flagMusica} loop />
+      <ReactHowler
+        src="/KikisKeyWebGame/audio/musicaMenu.wav"
+        playing={flagMusica}
+        loop
+      />
 
       {/*componente provider restituito dal gameContext per fornire i variabili globali agli altri componenti*/}
       <DndProvider backend={HTML5Backend}>
@@ -91,6 +150,10 @@ const Game = () => {
             secondario1Ref,
             secondario2Ref,
             stanze,
+            gameTime,
+            setGameTime,
+            isGameTimeRunning,
+            setIsGameTimeRunning,
             stanzaLayer1Ref,
             stanzaLayer2Ref,
             msgDialogBox,
@@ -99,6 +162,7 @@ const Game = () => {
             setPlayerItems,
             manoSelezionata,
             setManoSelezionata,
+            manoSelezionataRef,
             misteriosoItems,
             setMisteriosoItems,
             showMisteriosoScreen,
@@ -107,6 +171,38 @@ const Game = () => {
             setShowQuizScreen,
             showDistributoreScreen,
             setShowDistributoreScreen,
+            showDistributoreScreenRef,
+            showComputerScreen,
+            setShowComputerScreen,
+            showComputerScreenRef,
+            showCodiceScreen,
+            setShowCodiceScreen,
+            showCodiceScreenRef,
+            showServerScreen,
+            setShowServerScreen,
+            showServerScreenRef,
+            showAscensoreScreen,
+            setShowAscensoreScreen,
+            showAscensoreScreenRef,
+            showInfoScreen,
+            setShowInfoScreen,
+            infoScreenText,
+            setInfoScreenText,
+            isPcOn,
+            setIsPcOn,
+            isServerOn,
+            setIsServerOn,
+            luci,
+            setLuci,
+            portaBidelleria,
+            setPortaBidelleria,
+            ascensore,
+            setAscensore,
+            showAscensoreTime,
+            setShowAscensoreTime,
+            showGameCompletedScreen,
+            setShowGameCompletedScreen,
+            showGameCompletedScreenRef,
             gameData,
           }}
         >
@@ -114,12 +210,11 @@ const Game = () => {
 
           <AnimatePresence exitBeforeEnter initial={false}>
             <Routes location={location} key={location.pathname}>
-              {/*Route: utilizzato per assegnare un path ad un componente esistente*/}
               <Route path="/*" element={<Menu />} />
               <Route path="/Gioca" element={<Gioca />} />
               <Route path="/Opzioni" element={<Opzioni />} />
-              <Route path="/Classifica" element={<Classifica />} />
               <Route path="/Opzioni/Audio" element={<Audio />} />
+              <Route path="/Classifica" element={<Classifica />} />
             </Routes>
           </AnimatePresence>
         </gameContext.Provider>

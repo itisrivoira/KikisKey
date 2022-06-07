@@ -1,0 +1,35 @@
+$colorePrimario: #333333;
+$coloreSecondario: #e5b62e;
+
+.ascensoreTimeContainer {
+  width: 1152px;
+  height: 672px;
+  position: absolute;
+}
+
+.ascTime {
+  height: 50px;
+  width: 50px;
+  color: #fff;
+  background-color: #333333;
+  position: absolute;
+  top: 40px;
+  left: 360px;
+  border-radius: 3px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.ascPiano {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  color: #333333;
+  background-color: $coloreSecondario;
+  font-size: 15px;
+  border-radius: 3px;
+  text-align: center;
+  line-height: 30px;
+  top: 10px;
+  left: 560px;
+}

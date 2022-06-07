@@ -72,7 +72,12 @@ const Item = (props) => {
   }));
 
   if (props.name !== "") {
-    return <img src={"img/items/" + props.name + ".png"} ref={drag} />;
+    return (
+      <img
+        src={"/KikisKeyWebGame/img/items/" + props.name + ".png"}
+        ref={drag}
+      />
+    );
   }
 };
 

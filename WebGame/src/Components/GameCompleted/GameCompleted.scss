@@ -1,0 +1,35 @@
+$colorePrimario: #333333;
+$coloreSecondario: #e5b62e;
+
+$titolo: clamp(2.8rem, 5vw, 4rem);
+
+@font-face {
+  font-family: forwardFont;
+  src: url("../../../assets/fonts/forwardFont.TTF");
+}
+
+.containerGameCompleted {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 380px;
+  z-index: 99;
+  min-width: 1152px !important;
+  min-height: 900px !important;
+  background-color: #333333;
+  color: #e5b62e;
+}
+
+.wellDone,
+.score {
+  margin-top: 25px;
+  font-size: $titolo;
+}
+
+.score {
+  margin-bottom: 50px;
+}

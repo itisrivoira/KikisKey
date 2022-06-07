@@ -11,7 +11,7 @@ const usePlayer = () => {
   const { collisionDetectorX, collisionDetectorY } = useCollisionDetector();
 
   const player = useRef({
-    x: 1104,
+    x: 1008,
     y: 384,
     dim: 96,
     step: 48,
@@ -92,7 +92,11 @@ const usePlayer = () => {
 
   const animate = (cmdName) => {
     playerRef.current.src =
-      "/img/characters/kiki/" + cmdName + "/" + playerImgIndex + ".png";
+      "/KikisKeyWebGame/img/characters/kiki/" +
+      cmdName +
+      "/" +
+      playerImgIndex +
+      ".png";
 
     if (playerImgIndex >= 3) {
       playerImgIndex = 1;

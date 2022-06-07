@@ -1,0 +1,86 @@
+.contenitoreAscensoreScreen {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-width: 380px;
+  z-index: 99;
+  min-width: 1152px !important;
+  min-height: 900px !important;
+}
+
+.titoloAscensoreScreen {
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  color: #e5b62e;
+  margin-bottom: 50px;
+}
+
+.ascController {
+  width: 230px;
+  height: 300px;
+  background-color: #dae2e4;
+  -webkit-box-shadow: inset 0px 0px 0px 12px #333333;
+          box-shadow: inset 0px 0px 0px 12px #333333;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.ascBtn {
+  width: 60px;
+  height: 60px;
+  background-color: #a6a3c2;
+  position: absolute;
+  z-index: 2;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  color: #333333;
+  text-align: center;
+  line-height: 60px;
+}
+
+.ascBtnBack {
+  width: 60px;
+  height: 60px;
+  top: 30px;
+  position: absolute;
+  background-color: #7d7b91;
+  z-index: 1;
+}
+
+.ascBtn1 {
+  top: 80px;
+}
+
+.ascBtnBack1,
+.ascBtn1:hover {
+  top: 70px;
+}
+
+.ascBtn2 {
+  top: 180px;
+}
+
+.ascBtnBack2,
+.ascBtn2:hover {
+  top: 170px;
+}
+/*# sourceMappingURL=AscensoreScreen.css.map */

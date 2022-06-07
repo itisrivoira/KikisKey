@@ -18,6 +18,8 @@
           justify-content: center;
   min-width: 380px;
   z-index: 100;
+  min-width: 1152px !important;
+  min-height: 900px !important;
 }
 
 .titoloPauseManu {

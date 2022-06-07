@@ -9,9 +9,32 @@ $coloreSecondario: #e5b62e;
   flex-direction: column;
   align-items: center;
   background-color: $colorePrimario;
+  min-width: 1152px !important;
+  min-height: 900px !important;
 }
 
 .dialogBox {
   text-align: center;
+  color: #fff;
+}
+
+.luciOff {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 380px;
+  z-index: 95;
+  min-width: 1152px !important;
+  min-height: 900px !important;
+}
+
+.stopwatch {
+  width: 1152px;
+  text-align: left !important;
   color: #fff;
 }

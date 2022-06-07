@@ -19,6 +19,18 @@ $titolo: clamp(2.8rem, 5vw, 4rem);
   text-align: center;
 }
 
+.contenutoClassifica {
+  position: relative;
+  z-index: 2;
+}
+
+.particlesDiv {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
 .contenitoreTabella {
   max-width: 1000px;
   margin-left: auto;

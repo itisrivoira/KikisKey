@@ -12,7 +12,7 @@ const PauseMenu = (props) => {
   return (
     <div className="contenitorePauseManu">
       <p className="titoloPauseManu">PAUSED</p>
-      <Link to="/Menu">
+      <Link to="/KikisKeyWebGame">
         <motion.div
           whileHover={{ scale: 1.025 }}
           className="actionBtnPauseMenu menuBtn"

@@ -17,7 +17,9 @@
       -ms-flex-pack: center;
           justify-content: center;
   min-width: 380px;
-  z-index: 98;
+  z-index: 99;
+  min-width: 1152px !important;
+  min-height: 900px !important;
 }
 
 .titoloMisteriosoScreen {
@@ -53,7 +55,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: rgba(0, 0, 0, 0.3);
+  color: #fff;
   margin-left: 20px;
   margin-top: 10px;
   cursor: pointer;
@@ -132,7 +134,8 @@
 }
 
 .popupItemContainer {
-  background-color: #fff;
+  background-color: #e8e8e8;
+  border-radius: 5px;
   height: 300px;
   width: 600px;
   position: absolute;
@@ -156,7 +159,7 @@
       grid-template-rows: repeat(2, auto);
   grid-column-gap: 50px;
   grid-row-gap: 20px;
-  color: #333333;
+  color: #777777;
 }
 
 .popupScambio {
@@ -219,6 +222,6 @@
 }
 
 .popupBtns p:hover {
-  color: #e5b62e;
+  color: #333333;
 }
 /*# sourceMappingURL=MisteriosoScreen.css.map */

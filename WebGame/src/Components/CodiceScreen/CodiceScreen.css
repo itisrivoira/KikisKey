@@ -1,0 +1,125 @@
+.contenitoreCodice {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-width: 380px;
+  z-index: 99;
+  min-width: 1152px !important;
+  min-height: 900px !important;
+}
+
+.contenitoreCodice .pag1 {
+  height: 250px;
+  width: 200px;
+  background-color: #93c297;
+  -webkit-transform: rotate(10deg);
+          transform: rotate(10deg);
+  position: relative;
+  -webkit-box-shadow: inset 0px 0px 0px 12px #333333;
+          box-shadow: inset 0px 0px 0px 12px #333333;
+}
+
+.contenitoreCodice .pag1 .pag2 {
+  position: absolute;
+  height: 250px;
+  width: 200px;
+  background-color: #e78d7b;
+  border-radius: 5px;
+  -webkit-transform: rotate(-15deg);
+          transform: rotate(-15deg);
+  -webkit-box-shadow: inset 0px 0px 0px 12px #333333;
+          box-shadow: inset 0px 0px 0px 12px #333333;
+}
+
+.scratchContainer {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 100px;
+  width: 100px;
+  cursor: move;
+  font-size: 15px;
+  color: #333333;
+}
+
+.blackCover {
+  position: absolute;
+  height: 70px;
+  width: 178px;
+  background: #fff;
+  overflow: hidden;
+  opacity: 1;
+  -webkit-transition: 0s 250s;
+  transition: 0s 250s;
+}
+
+.blackCover:active {
+  -webkit-transition: 0s;
+  transition: 0s;
+  opacity: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+
+.shavings,
+.reward {
+  position: absolute;
+  height: 70px;
+  width: 180px;
+  overflow: hidden;
+}
+
+.shavings {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.shavings > span {
+  position: relative;
+  width: 10%;
+  padding-bottom: 10%;
+  /* Same as width, sets height */
+  position: relative;
+  background: #fff;
+  -webkit-transition: 0s 250s;
+  transition: 0s 250s;
+}
+
+.shavings > span:hover {
+  opacity: 0;
+  -webkit-transition: 0s;
+  transition: 0s;
+}
+
+.reward {
+  text-align: center;
+  line-height: 70px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+/*# sourceMappingURL=CodiceScreen.css.map */

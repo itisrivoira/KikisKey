@@ -1,11 +1,13 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef } from "react";
 import { gameContext } from "./useContext";
 import useStanze from "./useStanze";
 import useQuizData from "./useQuizData";
+import useToast from "./useToast";
 
 const useQuizScreen = (actionBtn) => {
   const { gameData, setShowQuizScreen } = useContext(gameContext);
   const { getStanzaCorrente } = useStanze();
+  const { showToast } = useToast();
 
   const { listaQuiz, checkPointQuiz } = useQuizData();
   const arrIndexQuizScelti = useRef([]);
@@ -31,18 +33,25 @@ const useQuizScreen = (actionBtn) => {
         playerX === checkPointQuiz.current[i].stanza.x &&
         playerY === checkPointQuiz.current[i].stanza.y
       ) {
-        setShowQuizScreen((prev) => !prev);
+        if (gameData.current.rispostoDomande[i] === false) {
+          setShowQuizScreen((prev) => !prev);
 
-        gameData.current.quizCorrente.nomeQuiz = checkPointQuiz.current[i].name;
+          gameData.current.quizCorrente.id = checkPointQuiz.current[i].id;
 
-        gameData.current.quizCorrente.domanda =
-          arrQuizScelti.current[i].domanda;
+          gameData.current.quizCorrente.nomeQuiz =
+            checkPointQuiz.current[i].name;
 
-        gameData.current.quizCorrente.risposta =
-          arrQuizScelti.current[i].risposta;
+          gameData.current.quizCorrente.domanda =
+            arrQuizScelti.current[i].domanda;
 
-        gameData.current.quizCorrente.ricompensa =
-          checkPointQuiz.current[i].ricompensa;
+          gameData.current.quizCorrente.risposta =
+            arrQuizScelti.current[i].risposta;
+
+          gameData.current.quizCorrente.ricompensa =
+            checkPointQuiz.current[i].ricompensa;
+        } else {
+          showToast("Non ho altre domande");
+        }
       }
     }
   };

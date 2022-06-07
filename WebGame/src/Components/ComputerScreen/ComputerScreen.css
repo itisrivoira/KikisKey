@@ -1,0 +1,430 @@
+.contenitoreComputer {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-width: 380px;
+  z-index: 99;
+  min-width: 1152px !important;
+  min-height: 900px !important;
+  font-size: 15px;
+}
+
+.contenitoreComputerScreen {
+  width: 600px;
+  height: 600px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  background-image: url(./../../../assets/img/Gioca/pc.png);
+  position: relative;
+}
+
+input {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.screen {
+  position: absolute;
+  top: 84px;
+  left: 54px;
+  width: 495px;
+  height: 295px;
+}
+
+.appScreen {
+  position: absolute;
+  top: 107px;
+  left: 92px;
+  width: 455px;
+  height: 269px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.appScreen .closeApp {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #d82929;
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+.projectorApp {
+  background-color: #c1c1c1;
+}
+
+.chromeApp {
+  background-color: #fff;
+  color: #333333;
+}
+
+.chromeApp .noInternet {
+  background-image: url(./../../../assets/img/Gioca/noInternet.jpg);
+  height: 350px;
+  width: 350px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+.chromeApp .internet {
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.chromeApp .internet .url {
+  background-color: #c1c1c1;
+}
+
+.chromeApp .internet .tabs {
+  width: 100%;
+  height: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.chromeApp .internet .tab {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #5a5f72;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.lockScreen2Container {
+  background-color: #4f194b;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  color: #fff;
+}
+
+.lockScreen2Container .main {
+  position: relative;
+  display: inline-block;
+}
+
+.lockScreen2Container span {
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.lockScreen2Container .back {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  cursor: pointer;
+}
+
+.lockScreen1Container {
+  background-color: #4f194b;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.lockScreen1Container .user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #5e1d58;
+  padding: 10px;
+  width: 190px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.lockScreen1Container .user .userImg {
+  background-image: url(./../../../assets/img/Gioca/user.png);
+  height: 50px;
+  width: 50px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  margin-right: 10px;
+}
+
+.lockScreen1Container .user .userName {
+  color: #fff;
+}
+
+.ubuntu {
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.powerOnScreenContainer {
+  background-color: #333333;
+}
+
+.icon {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  cursor: pointer;
+}
+
+.wifi {
+  height: 22px;
+  width: 22px;
+  top: 85px;
+  right: 55px;
+  background-image: url(./../../../assets/img/Gioca/wifi.png);
+}
+
+.noWifi {
+  height: 22px;
+  width: 22px;
+  top: 85px;
+  right: 55px;
+  background-image: url(./../../../assets/img/Gioca/noWifi.png);
+}
+
+.powerOn {
+  height: 22px;
+  width: 22px;
+  bottom: 190px;
+  right: 36px;
+  background-image: url(./../../../assets/img/Gioca/powerOn.png);
+}
+
+.chrome,
+.classeViva {
+  height: 30px;
+  width: 30px;
+  top: 95px;
+  left: 60px;
+  background-image: url(./../../../assets/img/Gioca/chrome.png);
+}
+
+.projector {
+  height: 40px;
+  width: 40px;
+  top: 95px;
+  left: 53px;
+  background-image: url(./../../../assets/img/Gioca/projector.png);
+}
+
+.libreOffice {
+  height: 35px;
+  width: 35px;
+  top: 150px;
+  left: 55px;
+  background-image: url(./../../../assets/img/Gioca/libreOffice.png);
+}
+
+.help {
+  height: 35px;
+  width: 35px;
+  top: 205px;
+  left: 55px;
+  background-image: url(./../../../assets/img/Gioca/help.png);
+}
+
+.powerLight {
+  width: 9px;
+  height: 9px;
+  background-color: #292935;
+  position: absolute;
+  bottom: 196px;
+  left: 40px;
+}
+
+:root {
+  --bg-color-1: #2e3d48;
+  --bg-color-2: #cbf3ff;
+  --btn-1: #8fe6ff;
+  --btn-shadow-1: #42d5ff;
+  --btn-2: #eee;
+  --btn-shadow-2: #ccc;
+  --circle: #fff;
+  --circle-shadow: #aaa;
+}
+
+.container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: var(--bg-color-1);
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+  position: absolute;
+  width: 455px;
+  height: 269px;
+}
+
+.container .appTitle {
+  position: absolute;
+  top: 50px;
+  left: 35%;
+  color: #688ca5;
+}
+
+.container.toggle {
+  background-color: var(--bg-color-2);
+}
+
+.btn {
+  display: block;
+  width: 80px;
+  height: 50px;
+  background-color: var(--btn-1);
+  border-radius: 5px;
+  /* 70/2 */
+  -webkit-box-shadow: 0 0 20px 0 var(--btn-shadow-1) inset;
+          box-shadow: 0 0 20px 0 var(--btn-shadow-1) inset;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+  cursor: pointer;
+}
+
+.small-circle {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: var(--circle);
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 5px 0 var(--circle-shadow);
+          box-shadow: 2px 2px 5px 0 var(--circle-shadow);
+  position: relative;
+  top: 50%;
+  left: 5px;
+  /* (70-60)/2 */
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+
+.toggle.btn {
+  background-color: var(--btn-2);
+  -webkit-box-shadow: 0 0 20px 0 var(--btn-shadow-2) inset;
+          box-shadow: 0 0 20px 0 var(--btn-shadow-2) inset;
+}
+
+.toggle.small-circle {
+  left: 100%;
+  -webkit-transform: translate(calc(-100% - 5px), -50%);
+          transform: translate(calc(-100% - 5px), -50%);
+}
+
+.Voti {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.votoDiv {
+  margin-bottom: 20px;
+}
+
+.alza {
+  margin-left: 20px;
+  background-color: #5a5f72;
+  padding: 3px;
+  color: #fff;
+  cursor: pointer;
+}
+
+b {
+  color: red;
+}
+
+.salva {
+  cursor: pointer;
+}
+
+.salva:hover {
+  color: #e5b62e;
+}
+/*# sourceMappingURL=ComputerScreen.css.map */

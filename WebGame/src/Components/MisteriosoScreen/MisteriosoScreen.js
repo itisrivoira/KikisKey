@@ -5,9 +5,11 @@ import usePlayerItemsManager from "../../Hooks/usePlayerItemsManager";
 import useToast from "../../Hooks/useToast";
 
 const MisteriosoScreen = () => {
-  const { misteriosoItems, setMisteriosoItems } = useContext(gameContext);
+  const { misteriosoItems } = useContext(gameContext);
   const [popupItemData, setPopupItemData] = useState([false, -1]); //[showPopItem, itemId]
   const { showToast } = useToast();
+
+  const [itemClicked, setItemClicked] = useState(null);
 
   return (
     <div className="contenitoreMisteriosoScreen">
@@ -21,6 +23,7 @@ const MisteriosoScreen = () => {
               itemScambio={obj.itemScambio}
               itemOfferto={obj.itemOfferto}
               setPopupItemData={setPopupItemData}
+              setItemClicked={setItemClicked}
             />
           );
         })}
@@ -31,6 +34,7 @@ const MisteriosoScreen = () => {
           popupItemData={popupItemData}
           setPopupItemData={setPopupItemData}
           showToast={showToast}
+          itemClicked={itemClicked}
         />
       ) : null}
     </div>
@@ -40,12 +44,17 @@ const MisteriosoScreen = () => {
 export default MisteriosoScreen;
 
 const ItemBox = (props) => {
+  const onItemBoxClick = () => {
+    props.setPopupItemData([true, props.index]);
+    props.setItemClicked(props.itemOfferto);
+  };
+
   return (
     <div
       className={"itemBox offerta" + Number(props.index + 1)}
-      onClick={() => props.setPopupItemData([true, props.index])}
+      onClick={onItemBoxClick}
     >
-      <img src={"/img/items/" + props.itemOfferto + ".png"} />
+      <img src={"/KikisKeyWebGame/img/items/" + props.itemOfferto + ".png"} />
     </div>
   );
 };
@@ -61,25 +70,27 @@ const PopupItem = (props) => {
 
   const scambia = () => {
     console.log(imgItemOffertoRef.current.src);
-    if (
-      imgItemOffertoRef.current.src ===
-      "http://localhost:3000/img/items/Martello.png"
-    ) {
-      if (checkItem("Patate")) {
-        rimuoviItem("Patate");
+    if (props.itemClicked === "Martello") {
+      console.log("martello");
+      if (checkItem("Patatine")) {
+        rimuoviItem("Patatine");
         aggiungiItem("Martello");
         props.showToast("Ottenuto martello!");
+      } else {
+        props.showToast("Non offro gratuitamente...");
       }
     }
-    if (
-      imgItemOffertoRef.current.src === "http://localhost:3000/img/items/ID.png"
-    ) {
-      if (checkItem("Badge") && checkItem("Moneta Epica")) {
-        rimuoviItem("Badge");
-        rimuoviItem("Moneta Epica");
+    if (props.itemClicked === "ID") {
+      if (checkItem("Bibita")) {
+        rimuoviItem("Bibita");
         aggiungiItem("ID");
         props.showToast("Ottenuto ID preside!");
+      } else {
+        props.showToast("Non offro gratuitamente...");
       }
+    }
+    if (props.itemClicked === "Forbici") {
+      props.showToast("Non offro gratuitamente...");
     }
 
     setShowMisteriosoScreen(false);
@@ -91,20 +102,20 @@ const PopupItem = (props) => {
         <div className="itemBox popupScambio">
           <img
             src={
-              "/img/items/" +
+              "/KikisKeyWebGame/img/items/" +
               props.misteriosoItems[props.popupItemData[1]].itemScambio +
               ".png"
             }
           />
         </div>
         <div className="popupMano">
-          <img src="/img/misc/mano.png" />
+          <img src="/KikisKeyWebGame/img/misc/mano.png" />
         </div>
         <div className="itemBox popupOfferta">
           <img
             ref={imgItemOffertoRef}
             src={
-              "/img/items/" +
+              "/KikisKeyWebGame/img/items/" +
               props.misteriosoItems[props.popupItemData[1]].itemOfferto +
               ".png"
             }

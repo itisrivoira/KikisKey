@@ -1,0 +1,29 @@
+$colorePrimario: #333333;
+$coloreSecondario: #e5b62e;
+
+$titolo: clamp(2.8rem, 5vw, 4rem);
+
+@font-face {
+  font-family: forwardFont;
+  src: url("../../../assets/fonts/forwardFont.TTF");
+}
+
+.contenitoreInfoScreen {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 380px;
+  z-index: 99;
+  min-width: 1152px !important;
+  min-height: 900px !important;
+}
+
+.contenutoInfoScreen {
+  color: #fff;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 10px;
+}

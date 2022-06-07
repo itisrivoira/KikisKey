@@ -1,10 +1,41 @@
 import "./Menu.css";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import ParticleBackground from "react-particle-backgrounds";
 
 const Menu = (props) => {
+  const particleBgSettings = {
+    canvas: {
+      canvasFillSpace: true,
+      width: 200,
+      height: 200,
+      useBouncyWalls: false,
+    },
+    particle: {
+      particleCount: 50,
+      color: "#800850",
+      minSize: 2,
+      maxSize: 5,
+    },
+    velocity: {
+      directionAngle: 0,
+      directionAngleVariance: 360,
+      minSpeed: 1,
+      maxSpeed: 1,
+    },
+    opacity: {
+      minOpacity: 0.3,
+      maxOpacity: 0.3,
+      opacityTransitionTime: 3000,
+    },
+  };
+
   return (
     <div className="contenitoreMenu">
+      <ParticleBackground
+        settings={particleBgSettings}
+        className="particlesDiv"
+      />
       <motion.div
         initial={{ x: "-100vw" }}
         animate={{ x: 0 }}
