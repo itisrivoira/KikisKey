@@ -17,8 +17,9 @@ La storia del gioco è basata su un escape room. Il protagonista, ovvero Kiki, h
 
 ## Useful Links
 
-<a href="https://justdevendra.github.io/KikisKeyWebsite/index.html"><h5>WebSite</h5></a>
-<br>
-<a href="https://justdevendra.github.io/KikisKeyWebGame/"><h5>WebGame</h5></a>
+<h5>WebSite: <a href="https://justdevendra.github.io/KikisKeyWebsite/index.html">https://justdevendra.github.io/KikisKeyWebsite/index.html</a></h5>
+<h5>WebGame: <a href="https://justdevendra.github.io/KikisKeyWebGame/">https://justdevendra.github.io/KikisKeyWebsite/index.html</a></h5>
+
+
 
 
